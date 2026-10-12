@@ -1,90 +1,48 @@
 (() => {
-  const dashboard = document.querySelector("[data-sns-dashboard]");
-  if (!dashboard) return;
-  const number = new Intl.NumberFormat("ko-KR");
-  const compact = new Intl.NumberFormat("ko-KR", { notation: "compact", maximumFractionDigits: 1 });
-  const dateTime = new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" });
-  const setText = (selector, value) => { const element = dashboard.querySelector(selector); if (element) element.textContent = value; };
-  const formatMetric = (value, options = {}) => value === null || value === undefined || Number.isNaN(Number(value)) ? "—" : options.percent ? `${Number(value).toFixed(2)}%` : compact.format(Number(value));
-  const formatDelta = (value, label) => value === null || value === undefined ? "비교 데이터 대기 중" : `${Number(value) > 0 ? "+" : ""}${number.format(Number(value))} ${label}`;
-  const setPlatformState = (platform, state, label) => {
-    const element = dashboard.querySelector(`[data-platform-state="${platform}"]`);
-    if (!element) return;
-    element.dataset.state = state;
-    const labelElement = element.querySelector("span:last-child");
-    if (labelElement) labelElement.textContent = label;
-  };
-
-  const renderHistory = (history = []) => {
-    const chart = dashboard.querySelector("[data-history-chart]");
-    if (!chart || !history.length) return;
-    const rows = history.slice(-7);
-    const values = rows.map((row) => Number(row.dailyViews || 0));
-    const max = Math.max(...values, 1);
-    chart.innerHTML = rows.map((row, index) => { const height = Math.max(8, (values[index] / max) * 100); const label = new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", month: "numeric", day: "numeric" }).format(new Date(row.date)); return `<div class="history-bar-wrap"><strong>${compact.format(values[index])}</strong><div class="history-bar" style="--bar-height:${height}%"></div><span>${label}</span></div>`; }).join("");
-    setText("[data-history-caption]", `${rows.length}일 기록`);
-  };
-
-  const renderInstagramHistory = (history = []) => {
-    const chart = dashboard.querySelector("[data-ig-history-chart]");
-    if (!chart || !history.length) return;
-    const rows = history.slice(-7);
-    const values = rows.map((row) => Number(row.followers || 0));
-    const min = Math.min(...values);
-    const range = Math.max(Math.max(...values) - min, 1);
-    chart.innerHTML = rows.map((row, index) => { const height = 20 + ((values[index] - min) / range) * 80; const label = new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", month: "numeric", day: "numeric" }).format(new Date(row.date)); return `<div class="history-bar-wrap"><strong>${compact.format(values[index])}</strong><div class="history-bar history-bar--instagram" style="--bar-height:${height}%"></div><span>${label}</span></div>`; }).join("");
-    setText("[data-ig-history-caption]", `${rows.length}일 기록`);
-  };
-
-  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[character]));
-  const videoCard = (video) => { const published = new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "short", day: "numeric" }).format(new Date(video.publishedAt)); return `<article class="youtube-video-card"><a class="video-thumbnail" href="https://www.youtube.com/watch?v=${encodeURIComponent(video.id)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(video.title)} YouTube에서 보기"><img src="${escapeHtml(video.thumbnail)}" alt="" loading="lazy"><span>${escapeHtml(video.durationLabel || "VIDEO")}</span></a><div class="video-card-body"><time>${published}</time><h3>${escapeHtml(video.title)}</h3><dl><div><dt>조회</dt><dd>${compact.format(Number(video.views || 0))}</dd></div><div><dt>좋아요</dt><dd>${compact.format(Number(video.likes || 0))}</dd></div><div><dt>댓글</dt><dd>${compact.format(Number(video.comments || 0))}</dd></div><div><dt>참여율</dt><dd>${Number(video.engagementRate || 0).toFixed(2)}%</dd></div></dl></div></article>`; };
-  const instagramCard = (post) => { const published = new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "short", day: "numeric" }).format(new Date(post.timestamp)); const thumbnail = post.thumbnailUrl || post.mediaUrl || ""; const caption = post.caption || `${post.mediaType || "Instagram"} 게시물`; const metric = (value) => value === null || value === undefined ? "—" : compact.format(Number(value)); return `<article class="youtube-video-card instagram-post-card"><a class="video-thumbnail" href="${escapeHtml(post.permalink)}" target="_blank" rel="noopener noreferrer" aria-label="Instagram 게시물 보기"><img src="${escapeHtml(thumbnail)}" alt="" loading="lazy"><span>${escapeHtml(post.mediaType || "POST")}</span></a><div class="video-card-body"><time>${published}</time><h3>${escapeHtml(caption)}</h3><dl><div><dt>좋아요</dt><dd>${metric(post.likes)}</dd></div><div><dt>댓글</dt><dd>${metric(post.comments)}</dd></div><div><dt>도달</dt><dd>${metric(post.reach)}</dd></div><div><dt>저장·공유</dt><dd>${metric(post.savesAndShares)}</dd></div></dl></div></article>`; };
-
-  const render = (data) => {
-    if (data.channel?.title) setText("[data-channel-title]", data.channel.title);
-    if (data.channel?.url) dashboard.querySelector("[data-channel-link]")?.setAttribute("href", data.channel.url);
-    const summary = data.summary || {};
-    Object.entries({ subscribers: summary.subscribers, totalViews: summary.totalViews, videoCount: summary.videoCount, averageRecentViews: summary.averageRecentViews }).forEach(([key, value]) => setText(`[data-metric="${key}"]`, formatMetric(value)));
-    setText('[data-metric="engagementRate"]', formatMetric(summary.engagementRate, { percent: true }));
-    setText('[data-delta="subscribers"]', formatDelta(data.delta?.subscribers, "명 / 전일"));
-    setText('[data-delta="totalViews"]', formatDelta(data.delta?.totalViews, "회 / 전일"));
-    renderHistory(data.history);
-    ["mostViewed", "mostLiked", "mostCommented"].forEach((key) => { const item = data.highlights?.[key]; setText(`[data-highlight="${key}"]`, item ? `${item.title} · ${compact.format(Number(item.value))}` : "—"); });
-    const list = dashboard.querySelector("[data-video-list]");
-    if (list && data.recentVideos?.length) list.innerHTML = data.recentVideos.slice(0, 6).map(videoCard).join("");
-  };
-
-  const renderInstagram = (data) => {
-    if (data.account?.username) setText("[data-instagram-title]", `@${data.account.username}`);
-    if (data.account?.url) dashboard.querySelector("[data-instagram-link]")?.setAttribute("href", data.account.url);
-    const summary = data.summary || {};
-    Object.entries({ followers: summary.followers, mediaCount: summary.mediaCount, averageEngagements: summary.averageEngagements, recentReach: summary.recentReach }).forEach(([key, value]) => setText(`[data-ig-metric="${key}"]`, formatMetric(value)));
-    setText('[data-ig-metric="engagementRate"]', formatMetric(summary.engagementRate, { percent: true }));
-    setText('[data-ig-delta="followers"]', formatDelta(data.delta?.followers, "명 / 전일"));
-    renderInstagramHistory(data.history);
-    ["mostLiked", "mostCommented", "mostReached"].forEach((key) => { const item = data.highlights?.[key]; setText(`[data-ig-highlight="${key}"]`, item ? `${item.title} · ${compact.format(Number(item.value))}` : "—"); });
-    const list = dashboard.querySelector("[data-instagram-list]");
-    if (list && data.recentPosts?.length) list.innerHTML = data.recentPosts.slice(0, 6).map(instagramCard).join("");
-  };
-
-  const getData = (name) => fetch(`data/${name}.json?v=${Date.now()}`, { cache: "no-store" }).then((response) => { if (!response.ok) throw new Error(`${name}: HTTP ${response.status}`); return response.json(); });
-  Promise.allSettled([getData("youtube"), getData("instagram")]).then(([youtube, instagram]) => {
-    if (youtube.status === "fulfilled") render(youtube.value);
-    if (instagram.status === "fulfilled") renderInstagram(instagram.value);
-    const youtubeReady = youtube.status === "fulfilled" && youtube.value.status === "ready";
-    const instagramReady = instagram.status === "fulfilled" && instagram.value.status === "ready";
-    const latestUpdate = [youtubeReady ? youtube.value.updatedAt : null, instagramReady ? instagram.value.updatedAt : null].filter(Boolean).sort().at(-1);
-    setPlatformState("youtube", youtube.status === "rejected" ? "error" : youtubeReady ? "ready" : "empty", youtube.status === "rejected" ? "동기화 실패" : youtubeReady ? "정상 업데이트" : "데이터 없음");
-    setPlatformState("instagram", instagram.status === "rejected" ? "error" : instagramReady ? "ready" : "empty", instagram.status === "rejected" ? "동기화 실패" : instagramReady ? "정상 업데이트" : "데이터 없음");
-    const hasFailure = youtube.status === "rejected" || instagram.status === "rejected";
-    if (hasFailure) setText("[data-sync-label]", "일부 데이터 동기화 실패");
-    else if (youtubeReady && instagramReady) setText("[data-sync-label]", "자동 동기화 정상");
-    else if (youtubeReady) setText("[data-sync-label]", "YouTube 정상 · Instagram 데이터 없음");
-    else if (instagramReady) setText("[data-sync-label]", "Instagram 정상 · YouTube 데이터 없음");
-    else setText("[data-sync-label]", "연결됨 · 수집된 데이터 없음");
-    setText("[data-last-updated]", latestUpdate ? `마지막 업데이트 ${dateTime.format(new Date(latestUpdate))}` : "데이터 동기화 전");
-    const syncState = dashboard.querySelector(".sns-sync-state");
-    syncState?.classList.toggle("is-ready", youtubeReady && instagramReady);
-    syncState?.classList.toggle("is-error", hasFailure);
-  });
+'use strict';
+const embedded=document.getElementById('sns-portfolio-data'); if(!embedded)return;
+const published=JSON.parse(embedded.textContent), key='tourism-sns-portfolio-v1';
+let data=structuredClone(published), storageAvailable=true;
+try { const draft=JSON.parse(localStorage.getItem(key)||'null'); if(draft && draft.version===1 && draft.channels?.length===2 && draft.channels.every((c,i)=>c.id===published.channels[i].id)) data=draft; } catch { storageAvailable=false; }
+const $=id=>document.getElementById(id), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=v=>v===null||v===undefined||v===''||!Number.isFinite(Number(v))?'미등록':new Intl.NumberFormat('ko-KR').format(Number(v));
+const text=v=>esc(v||'미등록');
+const safeUrl=v=>{try {const u=new URL(v);return u.protocol==='https:'?u.href:'';}catch{return '';}};
+const proofUrl=v=>/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(v||'')?v:'';
+const numeric=['before','after','volume','views','interactions','denominator'];
+const fields=[['startDate','측정 시작일','date'],['endDate','측정 종료일','date'],['role','담당 역할 · 본인 기여 범위','text'],['goal','채널 운영 목표','text'],['source','출처 · 추출일 · 집계 범위','text'],['before','시작 팔로워 / 구독자','number'],['after','종료 팔로워 / 구독자','number'],['volume','기간 내 발행 콘텐츠 수','number'],['views','기간 내 도달(IG) / 조회수(YT)','number'],['interactions','동일 범위 참여 수 합계','number'],['denominator','참여율 분모 · 도달(IG) / 조회수(YT)','number'],['history','월별 추이 · 한 줄에 YYYY-MM, 팔로워/구독자 수','textarea'],['contentTitle','대표 콘텐츠 제목','text'],['contentUrl','대표 콘텐츠 HTTPS 링크','url'],['hypothesis','발견한 문제와 가설','textarea'],['action','실행 · 바꾼 요소와 비교 방법','textarea'],['result','관찰 결과 · 비교 지표와 한계','textarea'],['learning','해석과 다음 개선안','textarea'],['evidenceCaption','캡처 설명 · 측정 기간 · 출처','text']];
+const metric=(label,value,note,extra='')=>'<article class="sns-metric-card '+extra+'"><span>'+label+'</span><strong>'+value+'</strong><small>'+note+'</small></article>';
+function render(){
+$('sns-records').innerHTML=data.channels.map(c=>{
+const ig=c.id==='instagram', valid=c.before!==null&&c.before!==undefined&&c.after!==null&&c.after!==undefined&&c.before!==''&&c.after!=='';
+const diff=valid?Number(c.after)-Number(c.before):null;
+const growth=valid&&Number(c.before)>0?((diff/Number(c.before))*100).toFixed(1)+'%':valid?'시작값 0 · 순증만 표시':'미등록';
+const rate=c.interactions!==null&&c.interactions!==undefined&&Number(c.denominator)>0?((Number(c.interactions)/Number(c.denominator))*100).toFixed(2)+'%':'미등록';
+const rows=(c.history||'').split('\n').map(l=>l.trim().split(',').map(x=>x.trim())).filter(a=>a.length===2&&/^\d{4}-(0[1-9]|1[0-2])$/.test(a[0])&&/^\d+$/.test(a[1])).sort((a,b)=>a[0].localeCompare(b[0]));
+const link=safeUrl(c.contentUrl),proof=proofUrl(c.evidence);
+return '<section class="section '+(ig?'instagram-section':'youtube-section section--soft')+'" id="'+c.id+'" aria-labelledby="'+c.id+'-heading"><div class="container"><div class="section-head"><div><p class="platform-kicker">'+c.id.toUpperCase()+' · GROWTH CASE</p><h2 class="section-title" id="'+c.id+'-heading">Growth &amp;<br>Learning</h2></div><p class="section-description">'+text(c.name)+'<br>'+text(c.startDate)+' → '+text(c.endDate)+'<br>'+(c.scope==='paid'?'유료 광고 포함':c.scope==='organic'?'오가닉 운영':'유료 / 오가닉 미구분')+'</p></div><div class="sns-metric-grid">'+metric(ig?'팔로워 · 시작 → 종료':'구독자 · 시작 → 종료',fmt(c.before)+' → '+fmt(c.after),'순증 '+(diff===null?'미등록':(diff>0?'+':'')+fmt(diff)))+metric('성장률',growth,'(종료 − 시작) ÷ 시작 × 100','sns-metric-card--accent')+metric('기간 내 발행 콘텐츠',fmt(c.volume),'측정 기간 내 게시물 / 영상 수')+metric('콘텐츠 참여율',rate,ig?'참여 합계 ÷ 도달 × 100':'(좋아요 + 댓글) ÷ 조회수 × 100','sns-metric-card--dark')+'</div><p class="sns-record-note">출처: '+text(c.source)+' · 기간 내 '+(ig?'도달':'조회수')+': '+fmt(c.views)+' · 참여 합계: '+fmt(c.interactions)+' · 참여율 분모: '+fmt(c.denominator)+'</p><div class="sns-analysis-grid"><article class="sns-panel"><div class="sns-panel-head"><div><span class="panel-kicker">CONTEXT &amp; OWNERSHIP</span><h3>목표와 담당 역할</h3></div></div><dl class="reaction-summary"><div><dt>운영 목표</dt><dd>'+text(c.goal)+'</dd></div><div><dt>본인 역할</dt><dd>'+text(c.role)+'</dd></div><div><dt>대표 콘텐츠</dt><dd>'+(link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+text(c.contentTitle)+' ↗</a>':text(c.contentTitle))+'</dd></div></dl></article><article class="sns-panel"><div class="sns-panel-head"><div><span class="panel-kicker">PERIOD SNAPSHOTS</span><h3>월별 성장 기록</h3></div><span>직접 등록한 동일 지표</span></div>'+(rows.length?'<div class="sns-table-scroll"><table><caption class="sns-record-note">월별 '+(ig?'팔로워':'구독자')+' 수 · 누적 지표</caption><thead><tr><th scope="col">기준 월</th><th scope="col">'+(ig?'팔로워':'구독자')+'</th><th scope="col">직전 기록 대비</th></tr></thead><tbody>'+rows.map((a,i)=>'<tr><td>'+esc(a[0])+'</td><td>'+fmt(a[1])+'</td><td>'+(i?fmt(Number(a[1])-Number(rows[i-1][1])):'기준 기록')+'</td></tr>').join('')+'</tbody></table></div>':'<p>월별 운영 기록을 등록하면 채널을 키워온 과정을 비교할 수 있습니다.</p>')+'</article></div><div class="content-performance-head"><div><span class="platform-kicker">ANALYSIS → ACTION</span><h2>데이터로 바꾼 콘텐츠</h2></div><p>관찰한 문제부터 다음 개선까지, 판단의 근거를 남깁니다.</p></div><div class="sns-analysis-grid">'+[['01 · HYPOTHESIS','문제와 가설',c.hypothesis,'처음 세운 목표와 실제 반응의 차이, 그 원인에 대한 가설을 기록하세요.'],['02 · EXECUTION','실행과 비교',c.action,'첫 문장, 영상 길이, 썸네일, CTA 중 바꾼 요소와 비교 방법을 기록하세요.'],['03 · RESULT','관찰한 결과',c.result,'같은 조건에서 비교한 수치, 측정 기간과 분석의 한계를 기록하세요.'],['04 · NEXT STEP','해석과 다음 개선',c.learning,'이번 결과에서 배운 점과 다음 콘텐츠에 적용할 개선안을 기록하세요.']].map(a=>'<article class="sns-panel"><span class="panel-kicker">'+a[0]+'</span><h3>'+a[1]+'</h3><p>'+esc(a[2]||a[3])+'</p></article>').join('')+'</div><div class="sns-panel sns-proof"><span class="panel-kicker">EVIDENCE</span><h3>성과의 근거</h3>'+(proof?'<figure><a href="'+proof+'" target="_blank" rel="noopener noreferrer" aria-label="'+c.id+' 인사이트 캡처 원본 보기"><img src="'+proof+'" alt="'+esc(c.evidenceCaption||c.id+' 인사이트 캡처')+'" loading="lazy"></a><figcaption>'+text(c.evidenceCaption)+'</figcaption></figure>':'<p>인사이트 캡처를 등록하면 이 자리에 표시됩니다. 아직 확인된 성과 수치와 증빙 자료가 등록되지 않았습니다.</p>')+'</div></div></section>';
+}).join('');
+}
+function editor(){ $('sns-editor-fields').innerHTML=data.channels.map(c=>'<fieldset><legend>'+esc(c.name)+'</legend><div class="sns-form-grid">'+fields.map(([k,label,type])=>'<label class="'+(type==='textarea'?'sns-full':'')+'">'+label+(type==='textarea'?'<textarea name="'+c.id+'-'+k+'" '+(k==='history'?'placeholder="2026-01, 120&#10;2026-02, 180"':'')+'>'+esc(c[k])+'</textarea>':'<input name="'+c.id+'-'+k+'" type="'+type+'" '+(type==='number'?'min="0" step="1"':'')+' value="'+esc(c[k])+'">')+'</label>').join('')+'<label>광고 집계 구분<select name="'+c.id+'-scope"><option value="organic" '+(c.scope==='organic'?'selected':'')+'>오가닉 운영</option><option value="paid" '+(c.scope==='paid'?'selected':'')+'>유료 광고 포함</option><option value="unknown" '+(c.scope==='unknown'?'selected':'')+'>미구분</option></select></label><label>인사이트 캡처 · PNG / JPG / WebP · 최대 1.5 MB<input name="'+c.id+'-evidence" type="file" accept="image/png,image/jpeg,image/webp"></label><label><span>기존 캡처 삭제</span><input style="width:auto;align-self:start" name="'+c.id+'-remove" type="checkbox"></label></div></fieldset>').join(''); }
+render();editor();
+$('sns-edit').addEventListener('click',()=>{const show=$('sns-editor').hidden;$('sns-editor').hidden=!show;$('sns-edit').setAttribute('aria-expanded',String(show));});
+$('sns-editor').addEventListener('submit',async e=>{e.preventDefault();const form=new FormData(e.target), next=structuredClone(data);try{
+for(const c of next.channels){for(const [k] of fields){const v=String(form.get(c.id+'-'+k)||'').trim();c[k]=numeric.includes(k)?v===''?null:Number(v):v;}
+c.scope=form.get(c.id+'-scope');
+if(c.startDate&&c.endDate&&c.startDate>c.endDate)throw new Error('측정 종료일은 시작일 이후여야 합니다.');
+if(c.contentUrl&&!safeUrl(c.contentUrl))throw new Error('콘텐츠 링크는 HTTPS 주소를 입력하세요.');
+if(c.history&&c.history.split('\n').some(l=>!/^\d{4}-(0[1-9]|1[0-2])\s*,\s*\d+$/.test(l.trim())))throw new Error('월별 기록은 YYYY-MM, 정수 형식으로 입력하세요.');
+const months=c.history.split('\n').filter(Boolean).map(l=>l.split(',')[0].trim());if(new Set(months).size!==months.length)throw new Error('월별 기록에 같은 월을 중복 입력할 수 없습니다.');
+if(form.has(c.id+'-remove'))c.evidence=''; const file=form.get(c.id+'-evidence');if(file?.size){if(file.size>1.5*1024*1024||!['image/png','image/jpeg','image/webp'].includes(file.type))throw new Error('캡처는 1.5 MB 이하 PNG / JPG / WebP 파일을 선택하세요.');c.evidence=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(new Error('이미지를 읽을 수 없습니다.'));reader.readAsDataURL(file);});}
+}
+data=next;let saved=true;try{localStorage.setItem(key,JSON.stringify(data));}catch{saved=false;}
+render();editor();$('sns-status').textContent=saved?'이 브라우저에 저장했습니다. 공개 반영은 SNS 페이지를 내보내 기존 sns.html과 교체하세요.':'미리보기에 반영했습니다. 브라우저 저장 공간이 부족하거나 제한되어 있으므로 지금 페이지를 내보내 보관하세요.';
+}catch(err){$('sns-status').textContent=err.message;}});
+$('sns-reset').addEventListener('click',()=>{data=structuredClone(published);try{localStorage.removeItem(key);}catch{}render();editor();$('sns-status').textContent='공개 페이지에 포함된 원래 기록으로 돌아왔습니다.';});
+$('sns-export').addEventListener('click',()=>{
+if(!$('sns-editor').hidden){$('sns-status').textContent='편집 중인 내용이 있다면 먼저 기록 저장을 눌러 반영하세요. 저장 후 편집을 닫고 다시 내보내세요.';return;}
+const copy=document.documentElement.cloneNode(true);copy.querySelector('#sns-portfolio-data').textContent=JSON.stringify(data).replace(/</g,'\\u003c');copy.querySelector('#sns-records').innerHTML='';copy.querySelector('#sns-editor-fields').innerHTML='';copy.querySelector('#sns-status').textContent='';copy.querySelector('#sns-editor').hidden=true;copy.querySelector('#sns-edit').setAttribute('aria-expanded','false');
+const blob=new Blob(['<!doctype html>\n'+copy.outerHTML],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='sns.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('sns-status').textContent='sns.html을 내보냈습니다. 웹사이트 폴더의 sns.html과 교체하면 기록과 캡처가 공개됩니다.';
+});
+if(!storageAvailable)$('sns-status').textContent='브라우저 저장 기능이 제한되어 있습니다. 작성 후 페이지를 내보내 기록을 보관하세요.';
 })();

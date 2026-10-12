@@ -33,16 +33,12 @@ SK플래닛 관광 콘텐츠 제작 프로젝트의 조사, 제작물, SNS 분�
 
 모든 링크와 에셋 경로가 상대경로로 작성되어 프로젝트형 GitHub Pages 주소에서도 별도 수정 없이 동작합니다.
 
-## SNS 자동 연동
+## SNS 성과 기록
 
-- YouTube 채널: `UC4Co3TmVcyKtfOuZgTMJvpw`
-- Instagram 계정: `naru.studio.busan`
-- `.github/workflows/sync-youtube.yml`이 두 플랫폼 데이터를 매일 00:00(KST)에 함께 갱신합니다.
-- YouTube Data API v3 키를 저장소의 **Settings → Secrets and variables → Actions**에서 `YOUTUBE_API_KEY`라는 이름으로 등록해야 합니다.
-- Instagram 전문 계정을 Meta 앱과 연결한 뒤 장기 액세스 토큰과 Instagram User ID를 각각 `INSTAGRAM_ACCESS_TOKEN`, `INSTAGRAM_USER_ID`라는 Actions Secret으로 등록해야 합니다. 토큰에는 계정·미디어·인사이트 조회 권한이 필요합니다.
-- 키 등록 후 Actions의 **Sync social dashboards → Run workflow**를 한 번 실행하면 최초 데이터가 바로 생성됩니다.
-- 동기화 결과는 `data/youtube.json`, `data/instagram.json`에 저장되며 SNS 페이지가 캐시 없이 읽습니다.
-- 한 플랫폼의 인증 정보가 아직 없으면 해당 플랫폼만 건너뛰고 다른 플랫폼의 동기화는 계속됩니다.
-- YouTube API 키가 없으면 공개 채널 수집 방식으로 자동 전환합니다. 다만 채널이 구독자 수를 숨겼거나 공개 영상이 없으면 해당 지표는 `—` 또는 `0`으로 표시됩니다.
-- Instagram은 Meta 정책상 공개 페이지 크롤링만으로 인사이트를 제공할 수 없으므로 위 두 Secret이 반드시 필요합니다. 누락 시 Actions가 실패 상태로 명확히 보고합니다.
-- 정각 예약 지연에 대비해 00:00, 00:10, 00:30(KST)에 재시도하며, 같은 날짜에 성공한 플랫폼은 중복 수집하지 않습니다.
+- 실시간 계정 연결 및 예약 수집을 제거했습니다.
+- SNS 탭의 **성과 기록 편집**에서 운영 기간, 역할, 전후 지표, 월별 추이, 대표 콘텐츠와 분석 사례를 직접 등록합니다.
+- 인사이트 캡처는 PNG/JPG/WebP, 채널별 최대 1.5 MB를 지원합니다.
+- 저장은 해당 브라우저의 로컬 기록입니다. 저장 후 편집을 닫고 **공개용 SNS 페이지 내보내기**를 누르면 기록과 캡처가 포함된 `sns.html`을 받습니다.
+- 내보낸 파일로 저장소의 `sns.html`을 교체하고 기존 배포 절차로 반영합니다. 다른 페이지는 변경하지 않습니다.
+- **공개 기록으로 돌아가기**는 로컬 초안을 지우고 현재 페이지에 포함된 기록을 복원합니다.
+- 확인되지 않은 수치는 미등록으로 표시하며, 시작값 0의 성장률과 분모 0의 참여율은 계산하지 않습니다.
