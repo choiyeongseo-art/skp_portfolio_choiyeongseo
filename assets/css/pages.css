@@ -1361,6 +1361,12 @@
 .character-selector-button strong { font-family: var(--font-display); font-size: clamp(17px, 2vw, 24px); font-weight: 800; letter-spacing: -.035em; }
 .character-selector-button small { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: .1em; }
 .character-entry { scroll-margin-top: 28px; }
+#brand-panel-character .character-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 20px; font-family: var(--font-display); font-size: clamp(54px, 6.3vw, 92px); letter-spacing: -.075em; white-space: normal; }
+#brand-panel-character .character-name-en { color: var(--color-support); font-family: var(--font-display); font-size: .3em; font-style: normal; font-weight: 800; letter-spacing: .02em; }
+#brand-panel-character .character-copy .character-name-en { margin-top: 0; font-size: clamp(18px, 2vw, 26px); }
+#brand-panel-character .character-selector-button .character-name-en { font-size: .55em; margin-left: 6px; }
+#brand-panel-character .character-entry--friend { margin-top: clamp(84px, 12vw, 156px); padding-top: clamp(58px, 8vw, 96px); border-top: 1px solid var(--color-line); }
+#brand-panel-character .character-hero--friend .character-copy h2 { font-family: var(--font-display); font-size: clamp(54px, 6.3vw, 92px); letter-spacing: -.075em; white-space: normal; }
 .character-entry--bukangi { margin-top: clamp(84px, 12vw, 156px); padding-top: clamp(58px, 8vw, 96px); border-top: 1px solid var(--color-line); }
 
 .character-hero {
