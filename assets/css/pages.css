@@ -1361,6 +1361,51 @@
 .character-selector-button strong { font-family: var(--font-display); font-size: clamp(17px, 2vw, 24px); font-weight: 800; letter-spacing: -.035em; }
 .character-selector-button small { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: .1em; }
 .character-entry { scroll-margin-top: 28px; }
+#brand-panel-character .character-selector { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+#brand-panel-character .character-selector-button { overflow: hidden; padding: 22px 18px; }
+#brand-panel-character .character-selector-button::before { position: absolute; inset: 0 0 auto; height: 5px; background: var(--character-color); content: ""; }
+#brand-panel-character .character-selector-button[href="#character-naru"] { --character-color: var(--color-brand-main); }
+#brand-panel-character .character-selector-button[href="#character-dalli"] { --character-color: #f23d88; }
+#brand-panel-character .character-selector-button[href="#character-morae"] { --character-color: #f6d46a; }
+#brand-panel-character .character-selector-button[href="#character-bukangi"] { --character-color: #b9bec8; }
+#brand-panel-character .character-selector-button:hover { border-color: var(--character-color); }
+#brand-panel-character .character-selector-button:focus-visible { outline-color: var(--color-ink); }
+#character-naru .character-portrait img { padding: 10px; }
+#brand-panel-character .character-variant-crop { position: absolute; inset: 6%; overflow: hidden; }
+@media (max-width: 767px) {
+  #brand-panel-character .character-selector { gap: 8px; }
+  #brand-panel-character .character-selector-button { grid-template-columns: 1fr; gap: 6px; min-height: 100px; padding: 14px 8px 10px; }
+  #brand-panel-character .character-selector-button > span { grid-row: auto; font-size: 8px; }
+  #brand-panel-character .character-selector-button strong { font-size: 14px; }
+  #brand-panel-character .character-selector-button small { font-size: 8px; letter-spacing: 0; word-break: keep-all; }
+  #brand-panel-character .character-selector-button .character-name-en { display: none; }
+}
+#brand-panel-character .character-variant-grid,
+#brand-panel-character .character-color-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+#brand-panel-character .character-variant-card { min-width: 0; overflow: hidden; background: #fff; border: 1px solid var(--color-line); border-radius: var(--radius-md); }
+#brand-panel-character .character-variant-image { position: relative; overflow: hidden; aspect-ratio: var(--cell-ratio); }
+#brand-panel-character .character-variant-image img { position: absolute; width: var(--sheet-width, 300%); max-width: none; height: auto; left: var(--image-x); top: var(--image-y); }
+#brand-panel-character .character-variant-image--single img { inset: 0; width: 100%; height: 100%; padding: 18px; object-fit: contain; }
+#character-dalli .character-variant-image--single img[src*="dalli-discovery-expression"] { padding: 0; }
+#brand-panel-character .character-variant-card figcaption { display: flex; align-items: baseline; gap: 12px; padding: 18px 20px; }
+#brand-panel-character .character-variant-card figcaption span { color: var(--color-muted); font-size: 10px; font-weight: 800; }
+#brand-panel-character .character-variant-card figcaption strong { font-size: clamp(14px, 1.5vw, 19px); word-break: keep-all; }
+#brand-panel-character .character-color-chip { overflow: hidden; padding-bottom: 20px; background: #fff; border: 1px solid var(--color-line); border-radius: var(--radius-md); }
+#brand-panel-character .character-color-swatch { height: clamp(64px, 9vw, 112px); background: var(--swatch); border-bottom: 1px solid var(--color-line); }
+#brand-panel-character .character-color-chip strong { display: block; margin: 18px 20px 6px; font-size: 15px; word-break: keep-all; }
+#brand-panel-character .character-color-chip > span { display: block; margin: 0 20px; color: var(--color-muted); font-size: 12px; letter-spacing: .04em; }
+@media (max-width: 767px) {
+  #brand-panel-character .character-variant-grid { grid-template-columns: 1fr; gap: 20px; }
+  #brand-panel-character .character-color-grid { gap: 8px; }
+  #brand-panel-character .character-color-chip strong { margin: 12px 10px 6px; font-size: 12px; }
+  #brand-panel-character .character-color-chip > span { margin: 0 10px; font-size: 10px; }
+  #brand-panel-character .character-color-chip { padding-bottom: 14px; }
+}
+#brand-panel-character .character-story { max-width: 820px; margin-bottom: clamp(32px, 5vw, 56px); }
+#brand-panel-character .character-story h2 { margin: 16px 0 20px; font-size: clamp(30px, 4.5vw, 56px); letter-spacing: -.055em; line-height: 1.2; text-wrap: balance; }
+#brand-panel-character .character-story p { color: var(--color-muted); font-size: clamp(15px, 1.5vw, 18px); line-height: 1.8; word-break: keep-all; }
+#brand-panel-character .character-copy > p { max-width: 34ch; word-break: keep-all; }
+#brand-panel-character .character-profile dd { line-height: 1.7; word-break: keep-all; }
 #brand-panel-character .character-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 20px; font-family: var(--font-display); font-size: clamp(54px, 6.3vw, 92px); letter-spacing: -.075em; white-space: normal; }
 #brand-panel-character .character-name-en { color: var(--color-support); font-family: var(--font-display); font-size: .3em; font-style: normal; font-weight: 800; letter-spacing: .02em; }
 #brand-panel-character .character-copy .character-name-en { margin-top: 0; font-size: clamp(18px, 2vw, 26px); }

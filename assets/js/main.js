@@ -173,6 +173,17 @@ if (brandTabs.length && brandPanels.length) {
       brandTabs[nextIndex].focus();
     });
   });
+
+  const showLinkedBrandPanel = () => {
+    const linkedTarget = document.getElementById(window.location.hash.slice(1));
+    const linkedPanel = linkedTarget?.closest('[data-brand-panel]');
+    const linkedTab = brandTabs.find((tab) => tab.dataset.brandTab === linkedPanel?.dataset.brandPanel);
+    if (!linkedTab) return;
+    selectBrandTab(linkedTab);
+    linkedTarget.scrollIntoView();
+  };
+  showLinkedBrandPanel();
+  window.addEventListener('hashchange', showLinkedBrandPanel);
 }
 
 const carousels = document.querySelectorAll("[data-carousel]");
