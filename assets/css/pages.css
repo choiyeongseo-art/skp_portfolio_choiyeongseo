@@ -1361,6 +1361,13 @@
 .character-selector-button strong { font-family: var(--font-display); font-size: clamp(17px, 2vw, 24px); font-weight: 800; letter-spacing: -.035em; }
 .character-selector-button small { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: .1em; }
 .character-entry { scroll-margin-top: 28px; }
+.character-ensemble { position: relative; margin: 32px 0 48px; }
+.character-ensemble-scene { display: block; width: 100%; height: auto; }
+.character-ensemble-title { position: absolute; top: 1%; left: 50%; width: 20%; height: auto; transform: translateX(-50%); filter: drop-shadow(1px 0 0 #00246f) drop-shadow(-1px 0 0 #00246f) drop-shadow(0 1px 0 #00246f) drop-shadow(0 -1px 0 #00246f); }
+@media (max-width: 600px) {
+  .character-ensemble { margin: 24px 0 32px; padding-top: 52px; }
+  .character-ensemble-title { top: 0; width: 30%; }
+}
 #brand-panel-character .character-selector { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 #brand-panel-character .character-selector-button { overflow: hidden; padding: 22px 18px; }
 #brand-panel-character .character-selector-button::before { position: absolute; inset: 0 0 auto; height: 5px; background: var(--character-color); content: ""; }
