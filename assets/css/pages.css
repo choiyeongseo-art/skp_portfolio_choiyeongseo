@@ -615,6 +615,35 @@
   gap: clamp(24px, 4vw, 44px);
 }
 
+.film-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  align-items: start;
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.film-feature-player video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #111;
+  border-radius: var(--radius-md);
+}
+
+.film-feature-player p {
+  margin-top: 12px;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.film-feature-player p span { display: block; }
+.film-feature-copy h3 { margin: 14px 0; font-size: clamp(36px, 5vw, 56px); }
+.film-feature-copy > p { line-height: 1.85; margin-bottom: 20px; }
+.film-feature-copy .film-feature-message { font-weight: 700; }
+
 .content-thumb--video {
   aspect-ratio: 1080 / 1934;
   background: #0a0d12;
