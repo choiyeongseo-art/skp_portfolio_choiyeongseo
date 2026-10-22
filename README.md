@@ -1,10 +1,25 @@
-# Tourism Content Archive
+# Yeongseo Choi Portfolio / Tourism Content Archive
+
+## 새 포트폴리오 홈
+
+- `index.html`: 기본 진입 화면. 블랙 배경, 네온 블루 `#00DFFF`, 배너 영상 자리와 교차 배치한 네 가지 메뉴.
+- `marketing.html`: 기존 관광 콘텐츠 아카이브 홈. CONTENTS MARKETING PROJECT 메뉴에서 연결됩니다.
+- `about.html`: 연락처, 프로필 사진 공간, AWARDS 및 EXPERIENCE.
+- `art.html`, `drawing.html`: 정사각형 프로젝트 썸네일 목록.
+- `project.html?collection=drawing&project=1`: 프로젝트별 여러 이미지 상세 화면. `collection=art`도 지원합니다.
+- 새 화면 스타일: `assets/css/portfolio.css`. 동작과 프로젝트 데이터: `assets/js/portfolio.js`.
+
+배너 영상은 `index.html`의 안내 주석에 따라 video 요소를 추가합니다. 프로필 사진은 `about.html`의 `.portrait` 내부를 img로 교체합니다. 수상·경험은 실제 내역이 없어 빈 공간으로 두었습니다.
+
+프로젝트는 `assets/js/portfolio.js`의 `projects` 객체에 `drawing-1` 또는 `art-1`부터 각각 6번까지 등록합니다. 각 항목의 `title`, 선택적인 `thumbnail`, `images: [{ src, alt }]`를 입력하면 목록의 썸네일과 상세 이미지가 함께 반영됩니다. 이미지는 원하는 수만큼 추가할 수 있습니다. 기본 상태는 모든 이미지가 비어 있습니다.
+
+기존 GitHub Pages 배포 방식 그대로 사용하면 루트 주소에서 새 홈이 열립니다.
 
 SK플래닛 관광 콘텐츠 제작 프로젝트의 조사, 제작물, SNS 분석과 최종 팀 프로젝트를 기록하는 반응형 정적 웹사이트입니다.
 
 ## 페이지
 
-- `index.html`: 소개 및 메인 랜딩
+- `marketing.html`: 관광 콘텐츠 아카이브 소개 및 메인 랜딩
 - `brand.html`: NARU studio 브랜드 아이덴티티 및 CI 가이드
 - `report.html`: 관광 자원 조사 및 콘텐츠 기획 자료
 - `contents.html`: 카드뉴스 및 영상 아카이브
