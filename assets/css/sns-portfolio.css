@@ -139,3 +139,8 @@
 .sns-portfolio .youtube-section tbody tr:nth-child(even) { background: #f7f7f7; }
 .sns-portfolio .youtube-section tbody tr:first-child { background: #fff0f1; }
 .sns-portfolio .youtube-section tbody tr:first-child :is(th, td) { color: #b71622; font-weight: 800; }
+.sns-portfolio .sns-channel-card--instagram .platform-icon {
+  color: #fff;
+  background: linear-gradient(135deg, #833ab4 0%, #c13584 36%, #e1306c 56%, #f56040 76%, #fcaf45 100%);
+  border-color: transparent;
+}

@@ -1,0 +1,23 @@
+/* Use the CONTENTS title scale for every page's main heading. */
+body h1.page-title,
+body h1.hero-title,
+body .brand-guide-title h1,
+body .research-report .report-hub h1,
+body .report-cover h1,
+body .noise-hero h1 {
+  font-size: var(--type-page);
+  line-height: 1.14;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  body h1.page-title,
+  body h1.hero-title,
+  body .brand-guide-title h1,
+  body .research-report .report-hub h1,
+  body .report-cover h1,
+  body .noise-hero h1 {
+    font-size: clamp(40px, 12vw, 58px);
+    line-height: 1;
+  }
+}

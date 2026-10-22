@@ -299,7 +299,14 @@
 
 .content-stack {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
   gap: clamp(70px, 9vw, 112px);
+}
+
+.content-stack > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .tourism-poster {
@@ -438,6 +445,14 @@
   margin-bottom: clamp(28px, 4vw, 46px);
 }
 
+.cardnews-gallery-head > div {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.cardnews-gallery-head > .cardnews-counter { flex: 0 0 auto; }
+
 .cardnews-gallery-head .tag {
   margin-bottom: 13px;
 }
@@ -490,6 +505,8 @@
 
 .cardnews-slides {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
   place-items: center;
 }
 
@@ -1469,6 +1486,12 @@
 .character-portrait img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; padding: clamp(24px, 4vw, 58px); object-fit: contain; object-position: center; }
 .character-portrait-label { position: absolute; top: 24px; left: 24px; z-index: 2; padding: 8px 11px; color: var(--color-ink); background: rgba(255,255,255,.78); font-family: var(--font-display); font-size: 10px; font-weight: 800; letter-spacing: .08em; backdrop-filter: blur(8px); }
 .character-eyebrow { color: var(--color-support); font-family: var(--font-display); font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+#character-dalli .character-copy .character-eyebrow,
+#character-dalli .character-copy .character-name-en { color: #F23D88; }
+#character-morae .character-copy .character-eyebrow,
+#character-morae .character-copy .character-name-en { color: #F6D46A; }
+#character-bukangi .character-copy .character-eyebrow,
+#character-bukangi .character-copy .character-name-en { color: #B9BEC8; }
 .character-copy h2 { margin: 16px 0 28px; font-family: var(--font-impact); font-size: var(--type-feature); letter-spacing: .01em; line-height: .95; white-space: nowrap; }
 .character-copy h2 em { display: inline-block; margin-top: 12px; color: var(--color-support); font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 32px); font-style: normal; letter-spacing: -.035em; }
 .character-copy > p { color: var(--color-muted); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.9; }
@@ -2086,3 +2109,143 @@
 .taste-site-screen figcaption p{margin-top:5px;color:var(--color-muted);font-size:12px;line-height:1.7}
 @media(max-width:767px){.taste-site-intro{grid-template-columns:1fr;gap:24px}.taste-site-screens{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}.taste-site-screen img{height:230px}}
 @media(max-width:420px){.taste-site-screens{grid-template-columns:1fr}.taste-site-screen img{height:340px}}
+/* Center-focused, touch-scrollable project screenshots. */
+.taste-site-screens.is-enhanced {
+  --screen-width: min(58vw, 680px);
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  contain: inline-size;
+  display: flex;
+  gap: 0;
+  padding: 30px 0 18px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+  isolation: isolate;
+}
+.taste-site-screens.is-enhanced::before,
+.taste-site-screens.is-enhanced::after {
+  content: "";
+  flex: 0 0 max(0px, calc((100% - var(--screen-width)) / 2));
+}
+.taste-site-screens.is-enhanced::-webkit-scrollbar { display: none; }
+.taste-site-screens.is-enhanced .taste-site-screen {
+  flex: 0 0 var(--screen-width);
+  position: relative;
+  z-index: 0;
+  scroll-snap-align: center;
+  transform: scale(.8);
+  opacity: .4;
+  transition: transform 240ms ease, opacity 240ms ease;
+}
+.taste-site-screens.is-enhanced .taste-site-screen + .taste-site-screen { margin-left: calc(var(--screen-width) * -.22); }
+.taste-site-screens.is-enhanced .taste-site-screen.is-centered { z-index: 2; transform: scale(1); opacity: 1; }
+.taste-site-screens.is-enhanced .taste-site-screen-window { aspect-ratio: 4 / 3; background: #eaf6fc; box-shadow: 0 12px 28px rgba(23,50,77,.1); }
+.taste-site-screens.is-enhanced .taste-site-screen img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; user-select: none; -webkit-user-drag: none; }
+.taste-site-screens.is-enhanced .taste-site-screen figcaption { text-align: center; visibility: hidden; }
+.taste-site-screens.is-enhanced .taste-site-screen.is-centered figcaption { visibility: visible; }
+.taste-site-screens.is-enhanced.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.taste-site-screens.is-enhanced.is-dragging img { cursor: grabbing; }
+.taste-site-screens.is-enhanced:focus-visible { outline: 2px solid #725178; outline-offset: 4px; }
+.taste-gallery-controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 10px; }
+.taste-gallery-controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #d7c9da; border-radius: 50%; background: #fff; color: var(--color-ink); font-size: 20px; cursor: pointer; }
+.taste-gallery-controls button:hover:not(:disabled) { background: #eaf6fc; border-color: #63b3df; }
+.taste-gallery-controls button:focus-visible { outline: 2px solid #725178; outline-offset: 3px; }
+.taste-gallery-controls button:disabled { opacity: .3; cursor: default; }
+.taste-gallery-controls span { font-size: 12px; color: var(--color-muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) { .taste-site-screens.is-enhanced { --screen-width: 72vw; } }
+@media (prefers-reduced-motion: reduce) { .taste-site-screens.is-enhanced .taste-site-screen { transition: none; } }
+/* Keep every gallery reader independent of the page index height. */
+.cardnews-gallery .cardnews-gallery-body {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+}
+.cardnews-gallery .cardnews-viewer { align-self: start; }
+.cardnews-gallery .cardnews-thumbnails {
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding: 5px 3px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #9caad3 transparent;
+}
+.cardnews-gallery .cardnews-thumbnail {
+  flex: 0 0 clamp(64px, 8vw, 96px);
+  scroll-snap-align: center;
+  background: #fff;
+}
+.cardnews-gallery .cardnews-thumbnail:hover,
+.cardnews-gallery .cardnews-thumbnail:focus-visible,
+.cardnews-gallery .cardnews-thumbnail.is-active { transform: none; }
+.cardnews-gallery .cardnews-thumbnail::after {
+  content: attr(data-page-number);
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: #17324d;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.cardnews-gallery .cardnews-thumbnail.is-active::after { background: #3749ad; }
+
+/* Reserve separate rows for the character logo, description, and group image. */
+#brand-panel-character .character-ensemble {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 32px;
+}
+#brand-panel-character .character-ensemble > * {
+  position: static;
+  grid-column: 1;
+  margin-top: 0;
+  transform: none;
+}
+#brand-panel-character .character-ensemble-title { grid-row: 1; }
+#brand-panel-character .character-bi-caption { grid-row: 2; }
+#brand-panel-character .character-ensemble-scene { grid-row: 3; }
+#brand-panel-character .character-selector-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 84px;
+  padding: 20px 12px;
+  text-align: center;
+}
+#brand-panel-character .character-selector-button > span {
+  flex: 0 0 auto;
+  font-size: 11px;
+}
+#brand-panel-character .character-selector-button strong { white-space: nowrap; }
+@media (max-width: 767px) {
+  #brand-panel-character .character-selector-button { gap: 6px; min-height: 72px; padding: 16px 6px; }
+  #brand-panel-character .character-selector-button > span { font-size: 9px; }
+}
+/* Preserve card artwork dimensions without contain letterboxing. */
+.cardnews-gallery .cardnews-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+}
+.sns-channel-card .channel-card-footer { justify-content: flex-end; }
+
+/* Temporary full-size banner backdrop. */
+.hero.hero--banner-placeholder { background: #000; color: #fff; }
+.hero.hero--banner-placeholder::before,
+.hero.hero--banner-placeholder::after { content: none; }
+.hero--banner-placeholder .hero-grid { grid-template-columns: minmax(0, 1fr); }
+.hero--banner-placeholder .hero-title { color: #fff; }

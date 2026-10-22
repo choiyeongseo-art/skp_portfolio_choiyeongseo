@@ -20,7 +20,7 @@ if (menuButton && navigation) {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && navigation.classList.contains("is-open")) {
       closeMenu();
       menuButton.focus();
     }
@@ -97,49 +97,6 @@ if (reportHub && reportWorkspaces.length) {
   }
 }
 
-const heroBackdrop = document.querySelector("[data-hero-backdrop]");
-
-if (heroBackdrop) {
-  const images = [...heroBackdrop.querySelectorAll(".hero-backdrop-image")];
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let activeIndex = Math.floor(Math.random() * images.length);
-  let rotationTimer;
-
-  images.forEach((image, index) => {
-    image.classList.toggle("is-active", index === activeIndex);
-  });
-
-  const showRandomImage = () => {
-    if (images.length < 2) return;
-
-    let nextIndex = activeIndex;
-    while (nextIndex === activeIndex) {
-      nextIndex = Math.floor(Math.random() * images.length);
-    }
-
-    images[activeIndex].classList.remove("is-active");
-    images[nextIndex].classList.add("is-active");
-    activeIndex = nextIndex;
-  };
-
-  const startRotation = () => {
-    if (reduceMotion || images.length < 2 || rotationTimer) return;
-    rotationTimer = window.setInterval(showRandomImage, 4500);
-  };
-
-  const stopRotation = () => {
-    window.clearInterval(rotationTimer);
-    rotationTimer = undefined;
-  };
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) stopRotation();
-    else startRotation();
-  });
-
-  startRotation();
-}
-
 const brandTabs = [...document.querySelectorAll("[data-brand-tab]")];
 const brandPanels = [...document.querySelectorAll("[data-brand-panel]")];
 
@@ -212,11 +169,24 @@ carousels.forEach((carousel) => {
       dot.classList.toggle("is-active", isCurrent);
       dot.setAttribute("aria-selected", String(isCurrent));
       dot.tabIndex = isCurrent ? 0 : -1;
+      if (carousel.classList.contains('cardnews-gallery--toon')) {
+        dot.dataset.pageNumber = String(index + 1);
+      }
     });
 
     previousButton.disabled = currentIndex === 0;
     nextButton.disabled = currentIndex === slides.length - 1;
     currentLabel.textContent = String(currentIndex + 1).padStart(2, "0");
+    if (carousel.classList.contains('cardnews-gallery--toon')) {
+      const strip = carousel.querySelector('.cardnews-thumbnails');
+      const selected = dots[currentIndex];
+      if (strip && selected && strip.clientWidth) {
+        strip.scrollTo({
+          left: strip.scrollLeft + selected.getBoundingClientRect().left - strip.getBoundingClientRect().left - (strip.clientWidth - selected.offsetWidth) / 2,
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+        });
+      }
+    }
   };
 
   previousButton.addEventListener("click", () => showSlide(currentIndex - 1));
@@ -224,6 +194,14 @@ carousels.forEach((carousel) => {
 
   dots.forEach((dot) => {
     dot.addEventListener("click", () => showSlide(Number(dot.dataset.carouselDot)));
+    if (carousel.classList.contains('cardnews-gallery--toon')) {
+      dot.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        showSlide(event.key === 'Home' ? 0 : event.key === 'End' ? slides.length - 1 : currentIndex + (event.key === 'ArrowRight' ? 1 : -1));
+        dots[currentIndex].focus({ preventScroll: true });
+      });
+    }
   });
 
   viewer.addEventListener("keydown", (event) => {
