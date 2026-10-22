@@ -10,9 +10,10 @@
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/common.css">
-  <link rel="stylesheet" href="assets/css/noise.css">
+  <link rel="stylesheet" href="assets/css/noise.css?v=20261022-editorial">
   <script src="assets/js/main.js" defer></script>
-  <script type="module" src="assets/js/noise.js"></script>
+  <script type="module" src="assets/js/noise.js?v=20261022-editorial"></script>
+  <script src="assets/js/noise-editorial.js" defer></script>
 </head>
 <body class="noise-theme">
   <a class="skip-link" href="#main-content">본문 바로가기</a>
@@ -27,29 +28,30 @@
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="메뉴 열기"><span class="menu-toggle-lines" aria-hidden="true"></span></button>
       <nav class="site-nav" id="site-navigation" aria-label="주요 메뉴">
         <ul>
-          <li><a href="brand.html">BRAND</a></li><li><a href="report.html">REPORT</a></li><li><a href="contents.html">CONTENTS</a></li><li><a href="sns.html">SNS</a></li><li><a href="spoton.html">SPOT:ON</a></li><li><a href="noise.html" aria-current="page">NØISE</a></li><li><a href="final.html">FINAL PROJECT</a></li>
+          <li><a href="brand.html">BRAND</a></li><li><a href="report.html">REPORT</a></li><li><a href="contents.html">CONTENTS</a></li><li><a href="sns.html">SNS</a></li><li><a href="spoton.html">SPOT:ON</a></li><li><a href="noise.html" aria-current="page">NØISE</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="noise-hero" aria-labelledby="noise-title">
+<nav class="noise-local-nav" aria-label="NØISE 프로젝트 메뉴"><div class="container"><a class="noise-wordmark" href="#noise-top">NØISE<span>OFFICIAL PROJECT</span></a><div><a href="#noise-profile">PROFILE</a><a href="#noise-music">MUSIC</a><a href="#noise-photos">PHOTO</a><a href="#noise-universe">UNIVERSE</a></div></div></nav>
+    <section id="noise-top" class="noise-hero" aria-labelledby="noise-title">
       <canvas class="noise-canvas" data-noise-canvas aria-hidden="true"></canvas>
       <div class="noise-grain" aria-hidden="true"></div>
       <img class="noise-hero-image" src="assets/images/noise/overview.png" alt="심야 버스 안에서 카메라를 향해 손을 뻗은 NØISE 멤버 네 명">
       <div class="noise-hero-shade" aria-hidden="true"></div>
       <div class="container noise-hero-content">
-        <p class="noise-kicker">NARU STUDIO / IDOL PROJECT / 2026</p>
+        <p class="noise-kicker">NARU STUDIO / FOUR VOICES, ONE FREQUENCY</p>
         <h1 id="noise-title">NØISE</h1>
         <div class="noise-hero-bottom">
           <p class="noise-manifesto">BLUE IS NOT THE SEA.<br><strong>BLUE IS OUR FREQUENCY.</strong></p>
-          <p class="noise-scroll">SCROLL TO TUNE <span aria-hidden="true">↓</span></p>
+          <a class="noise-hero-cta" href="#noise-music">FIRST TRANSMISSION <strong>BUS 1003 ↗</strong></a>
         </div>
       </div>
     </section>
 
-    <section class="noise-statement" aria-labelledby="about-noise">
+    <section id="noise-universe" class="noise-statement" aria-labelledby="about-noise">
       <div class="container noise-statement-grid">
         <p class="noise-index">00—PROJECT SIGNAL</p>
         <div>
@@ -59,19 +61,19 @@
       </div>
     </section>
 
-    <section class="noise-members" aria-labelledby="members-title">
+    <section id="noise-profile" class="noise-members" aria-labelledby="members-title">
       <div class="container">
-        <div class="noise-section-head"><p class="noise-index">01—FOUR FREQUENCIES</p><h2 id="members-title">MEET THE SIGNALS</h2><p>각기 다른 결의 네 목소리가<br>하나의 도시를 통과합니다.</p></div>
+        <div class="noise-section-head"><p class="noise-index">01—FOUR FREQUENCIES</p><h2 id="members-title">FOUR VOICES.<br>ONE NØISE.</h2><p>각기 다른 결의 네 목소리가<br>하나의 도시를 통과합니다.</p></div>
         <div class="noise-member-grid">
-          <article class="noise-member"><div class="noise-photo"><img src="assets/images/noise/nox.png" alt="NØISE 멤버 NOX의 야간 프로필"><span>01</span></div><div class="noise-member-copy"><h3>NOX <small>녹스</small></h3><p>차분하고 퇴폐적인 분위기 속 자유로운 감각. 상징은 밤과 신호.</p><ul><li>LEADER</li><li>MAIN RAPPER</li><li>PRODUCER</li></ul></div></article>
-          <article class="noise-member"><div class="noise-photo"><img src="assets/images/noise/venn.png" alt="NØISE 멤버 VENN의 야간 프로필"><span>02</span></div><div class="noise-member-copy"><h3>VENN <small>벤</small></h3><p>날카로운 인상과 강한 무대 장악력. 금속음과 글리치, 서로 다른 세계의 교차점.</p><ul><li>MAIN DANCER</li></ul></div></article>
-          <article class="noise-member"><div class="noise-photo"><img src="assets/images/noise/eln.png" alt="NØISE 멤버 ELN의 야간 프로필"><span>03</span></div><div class="noise-member-copy"><h3>ELN <small>엘른</small></h3><p>부드러운 비주얼과 섬세하고 우울한 분위기. 새벽빛 파우더 블루의 몽환적인 보컬.</p><ul><li>MAIN VOCAL</li><li>VISUAL</li></ul></div></article>
-          <article class="noise-member"><div class="noise-photo"><img src="assets/images/noise/rov.png" alt="NØISE 멤버 ROV의 야간 프로필"><span>04</span></div><div class="noise-member-copy"><h3>ROV <small>로브</small></h3><p>장난스럽고 친근한 에너지. 밝은 반응과 유연한 무대 표현으로 팀과 팬을 연결합니다.</p><ul><li>ALL-ROUNDER</li><li>LEAD VOCAL</li><li>RAPPER</li></ul></div></article>
+          <article class="noise-member"><button class="noise-profile-button" type="button" data-noise-dialog="profile-nox" aria-label="NOX 녹스 프로필 보기"><div class="noise-photo"><img src="assets/images/noise/nox.png" alt="NØISE 멤버 NOX의 야간 프로필" loading="lazy"><span>01</span><b aria-hidden="true">VIEW PROFILE ↗</b></div><div class="noise-member-copy"><h3>NOX <small>녹스</small></h3><ul><li>LEADER</li><li>MAIN RAPPER</li><li>PRODUCER</li></ul></div></button></article>
+          <article class="noise-member"><button class="noise-profile-button" type="button" data-noise-dialog="profile-venn" aria-label="VENN 벤 프로필 보기"><div class="noise-photo"><img src="assets/images/noise/venn.png" alt="NØISE 멤버 VENN의 야간 프로필" loading="lazy"><span>02</span><b aria-hidden="true">VIEW PROFILE ↗</b></div><div class="noise-member-copy"><h3>VENN <small>벤</small></h3><ul><li>MAIN DANCER</li></ul></div></button></article>
+          <article class="noise-member"><button class="noise-profile-button" type="button" data-noise-dialog="profile-eln" aria-label="ELN 엘른 프로필 보기"><div class="noise-photo"><img src="assets/images/noise/eln.png" alt="NØISE 멤버 ELN의 야간 프로필" loading="lazy"><span>03</span><b aria-hidden="true">VIEW PROFILE ↗</b></div><div class="noise-member-copy"><h3>ELN <small>엘른</small></h3><ul><li>MAIN VOCAL</li><li>VISUAL</li></ul></div></button></article>
+          <article class="noise-member"><button class="noise-profile-button" type="button" data-noise-dialog="profile-rov" aria-label="ROV 로브 프로필 보기"><div class="noise-photo"><img src="assets/images/noise/rov.png" alt="NØISE 멤버 ROV의 야간 프로필" loading="lazy"><span>04</span><b aria-hidden="true">VIEW PROFILE ↗</b></div><div class="noise-member-copy"><h3>ROV <small>로브</small></h3><ul><li>ALL-ROUNDER</li><li>LEAD VOCAL</li><li>RAPPER</li></ul></div></button></article>
         </div>
       </div>
     </section>
 
-    <section class="noise-track" aria-labelledby="track-title">
+    <section id="noise-music" class="noise-track" aria-labelledby="track-title">
       <img src="assets/images/noise/overview.png" alt="" aria-hidden="true">
       <div class="noise-track-overlay" aria-hidden="true"></div>
       <div class="container noise-track-content">
@@ -79,13 +81,14 @@
         <div class="noise-route"><span>BUSAN</span><i></i><span>1003</span><i></i><span>BLUE HOUR</span></div>
         <h2 id="track-title">BUS<br>1003.</h2>
         <p>목적지가 표시되지 않은 마지막 버스. 네 소년은 부산의 밤거리를 가로지르며 서로의 목소리로 사라진 주파수를 되살립니다. 찾는 것은 종점이 아니라, 함께 달리는 순간 그 자체입니다.</p>
-        <blockquote><span>“We go blue, not the sea.</span><span>Ride with me, all night.”</span></blockquote>
+        <blockquote><span>“We go blue, not the sea.</span><span>Ride with me, all night.”</span></blockquote><div class="noise-release"><span>CONCEPT SOUND / NARU STUDIO</span><button type="button" data-track-play aria-pressed="false"><span data-track-label>PLAY TRACK</span><b aria-hidden="true">↗</b></button><div class="noise-seek-row"><span data-track-current>0:00</span><input data-track-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="BUS 1003 재생 위치"><span data-track-duration>—:—</span></div><p data-track-status role="status" aria-live="polite"></p></div>
       </div>
     </section>
 
+<section class="noise-photo-section" id="noise-photos" aria-labelledby="noise-photo-title"><div class="container"><div class="noise-section-head"><p class="noise-index">03—VISUAL ARCHIVE</p><h2 id="noise-photo-title">AFTER DARK.</h2><p>부산의 밤, 서로 다른 네 시선.<br>이미지를 눌러 크게 볼 수 있습니다.</p></div><div class="noise-photo-gallery"><button type="button" class="noise-photo-tile" data-noise-photo="assets/images/noise/overview.png" aria-label="NØISE / LAST BUS 이미지 확대"><img src="assets/images/noise/overview.png" alt="NØISE / LAST BUS" loading="lazy"><span>NØISE / LAST BUS<b aria-hidden="true">↗</b></span></button><button type="button" class="noise-photo-tile" data-noise-photo="assets/images/noise/nox.png" aria-label="NOX / NIGHT SIGNAL 이미지 확대"><img src="assets/images/noise/nox.png" alt="NOX / NIGHT SIGNAL" loading="lazy"><span>NOX / NIGHT SIGNAL<b aria-hidden="true">↗</b></span></button><button type="button" class="noise-photo-tile" data-noise-photo="assets/images/noise/venn.png" aria-label="VENN / CROSS FREQUENCY 이미지 확대"><img src="assets/images/noise/venn.png" alt="VENN / CROSS FREQUENCY" loading="lazy"><span>VENN / CROSS FREQUENCY<b aria-hidden="true">↗</b></span></button><button type="button" class="noise-photo-tile" data-noise-photo="assets/images/noise/eln.png" aria-label="ELN / BLUE HOUR 이미지 확대"><img src="assets/images/noise/eln.png" alt="ELN / BLUE HOUR" loading="lazy"><span>ELN / BLUE HOUR<b aria-hidden="true">↗</b></span></button><button type="button" class="noise-photo-tile" data-noise-photo="assets/images/noise/rov.png" aria-label="ROV / CITY PULSE 이미지 확대"><img src="assets/images/noise/rov.png" alt="ROV / CITY PULSE" loading="lazy"><span>ROV / CITY PULSE<b aria-hidden="true">↗</b></span></button></div></div></section>
     <section class="noise-upcoming" aria-labelledby="upcoming-title">
       <div class="container">
-        <div class="noise-section-head"><p class="noise-index">03—NEXT TRANSMISSIONS</p><h2 id="upcoming-title">COMING SOON</h2><p>다음 공개 콘텐츠를 위한 공간입니다.</p></div>
+        <div class="noise-section-head"><p class="noise-index">04—NEXT TRANSMISSIONS</p><h2 id="upcoming-title">COMING SOON</h2><p>다음 공개 콘텐츠를 위한 공간입니다.</p></div>
         <div class="noise-upcoming-grid">
           <article><span>ALBUM / TRACK</span><h3>앨범·트랙 정보</h3><p>앨범 및 트랙 정보는 추후 추가합니다.</p></article>
           <article><span>TEASER</span><h3>티저</h3><p>티저 콘텐츠는 추후 추가합니다.</p></article>
@@ -94,6 +97,11 @@
         </div>
       </div>
     </section>
+<dialog class="noise-dialog" id="profile-nox" aria-labelledby="profile-title-nox"><button class="noise-dialog-close" type="button" data-noise-close aria-label="프로필 닫기">닫기 ×</button><div class="noise-dialog-grid"><img src="assets/images/noise/nox.png" alt="NØISE 멤버 NOX의 야간 프로필"><div><p class="noise-index">01 / FOUR FREQUENCIES</p><h2 id="profile-title-nox">NOX <small>녹스</small></h2><p>차분하고 퇴폐적인 분위기 속 자유로운 감각. 상징은 밤과 신호.</p><ul><li>LEADER</li><li>MAIN RAPPER</li><li>PRODUCER</li></ul></div></div></dialog>
+<dialog class="noise-dialog" id="profile-venn" aria-labelledby="profile-title-venn"><button class="noise-dialog-close" type="button" data-noise-close aria-label="프로필 닫기">닫기 ×</button><div class="noise-dialog-grid"><img src="assets/images/noise/venn.png" alt="NØISE 멤버 VENN의 야간 프로필"><div><p class="noise-index">02 / FOUR FREQUENCIES</p><h2 id="profile-title-venn">VENN <small>벤</small></h2><p>날카로운 인상과 강한 무대 장악력. 금속음과 글리치, 서로 다른 세계의 교차점.</p><ul><li>MAIN DANCER</li></ul></div></div></dialog>
+<dialog class="noise-dialog" id="profile-eln" aria-labelledby="profile-title-eln"><button class="noise-dialog-close" type="button" data-noise-close aria-label="프로필 닫기">닫기 ×</button><div class="noise-dialog-grid"><img src="assets/images/noise/eln.png" alt="NØISE 멤버 ELN의 야간 프로필"><div><p class="noise-index">03 / FOUR FREQUENCIES</p><h2 id="profile-title-eln">ELN <small>엘른</small></h2><p>부드러운 비주얼과 섬세하고 우울한 분위기. 새벽빛 파우더 블루의 몽환적인 보컬.</p><ul><li>MAIN VOCAL</li><li>VISUAL</li></ul></div></div></dialog>
+<dialog class="noise-dialog" id="profile-rov" aria-labelledby="profile-title-rov"><button class="noise-dialog-close" type="button" data-noise-close aria-label="프로필 닫기">닫기 ×</button><div class="noise-dialog-grid"><img src="assets/images/noise/rov.png" alt="NØISE 멤버 ROV의 야간 프로필"><div><p class="noise-index">04 / FOUR FREQUENCIES</p><h2 id="profile-title-rov">ROV <small>로브</small></h2><p>장난스럽고 친근한 에너지. 밝은 반응과 유연한 무대 표현으로 팀과 팬을 연결합니다.</p><ul><li>ALL-ROUNDER</li><li>LEAD VOCAL</li><li>RAPPER</li></ul></div></div></dialog>
+<dialog class="noise-dialog noise-image-dialog" id="noise-image-dialog" aria-label="콘셉트 이미지 확대"><button class="noise-dialog-close" type="button" data-noise-close aria-label="이미지 닫기">닫기 ×</button><img data-noise-expanded alt=""></dialog>
   </main>
 
   <footer class="noise-footer"><div class="container"><p>NØISE / NARU STUDIO</p><p>BLUE IS OUR FREQUENCY.</p><p>© <span data-current-year>2026</span></p></div></footer>

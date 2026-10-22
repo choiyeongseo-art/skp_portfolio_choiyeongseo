@@ -30,6 +30,8 @@ if (audio && audioToggle && audioLabel) {
     renderAudioState();
   });
 
+  audio.addEventListener("play", () => { soundEnabled = true; renderAudioState(); });
+  audio.addEventListener("pause", () => { soundEnabled = false; renderAudioState(); });
   renderAudioState();
 }
 

@@ -331,3 +331,23 @@ if (previewFrame && previewLoading) {
     }
   });
 }
+
+const episodeTabs = [...document.querySelectorAll('[data-episode]')];
+function selectEpisode(tab) {
+  episodeTabs.forEach(button => {
+    const selected = button === tab;
+    button.setAttribute('aria-selected', String(selected));
+    button.tabIndex = selected ? 0 : -1;
+    document.getElementById(button.getAttribute('aria-controls')).hidden = !selected;
+  });
+}
+episodeTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectEpisode(tab));
+  tab.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? episodeTabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + episodeTabs.length) % episodeTabs.length;
+    selectEpisode(episodeTabs[next]);
+    episodeTabs[next].focus();
+  });
+});

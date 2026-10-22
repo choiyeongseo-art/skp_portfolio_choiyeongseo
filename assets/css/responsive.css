@@ -202,7 +202,11 @@
 
   .site-nav {
     position: fixed;
-    inset: 68px 0 0;
+    inset: 68px 0 auto;
+    height: calc(100vh - 68px);
+    height: calc(100dvh - 68px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     visibility: hidden;
     background: var(--color-white);
     opacity: 0;
@@ -561,5 +565,20 @@
 
   .character-hero--bukangi .character-copy h2 {
     font-size: clamp(46px, 14vw, 68px);
+  }
+}
+
+@media (max-width: 767px) {
+  .shortform-video-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+  .shortform-video-grid .content-thumb--video {
+    aspect-ratio: 1080 / 1934;
+  }
+  .shortform-video-grid .content-thumb--video video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }
