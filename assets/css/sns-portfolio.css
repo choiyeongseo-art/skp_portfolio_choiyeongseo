@@ -26,3 +26,116 @@
 .sns-portfolio .sns-channel-card--facebook .connection-badge:before,
 .sns-portfolio .sns-channel-card--blog .connection-badge:before,
 .sns-portfolio .sns-channel-card--x .connection-badge:before { background: var(--channel-dot); }
+.sns-portfolio .instagram-section {
+  position: relative;
+  background: linear-gradient(145deg, #fcf9ff 0%, #fff 48%, #fff8f3 100%);
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(100deg, #6639c7, #c52e91, #e44757, #f6ab52) 1;
+}
+.sns-portfolio .instagram-section > .container > .section-head .platform-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ead8ee;
+  border-radius: 999px;
+  background: #fff;
+  color: #963276;
+  letter-spacing: .09em;
+}
+.sns-portfolio .instagram-section > .container > .section-head .section-title {
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", var(--font-sans);
+  font-size: clamp(38px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+.instagram-heading-accent {
+  color: #ad287e;
+  background: linear-gradient(100deg, #7336bc, #ba287f 55%, #c64b32);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sns-portfolio .instagram-section .sns-metric-card {
+  background: #fff;
+  border-color: #eadde9;
+  box-shadow: 0 8px 28px rgba(105, 41, 107, .04);
+}
+.sns-portfolio .instagram-section .sns-metric-card--accent {
+  background: linear-gradient(130deg, #f2eafa, #fcebf2 65%, #fff1e5);
+  border-color: #eed6e8;
+}
+.sns-portfolio .instagram-section .sns-metric-card--dark {
+  background: linear-gradient(135deg, #6735ac, #a82d82 65%, #b43c61);
+  border-color: transparent;
+  color: #fff;
+}
+.sns-portfolio .instagram-section .sns-metric-card--dark :is(span, strong, small) { color: #fff; }
+.sns-portfolio .instagram-section .panel-kicker { color: #983476; }
+.sns-portfolio .instagram-section .sns-panel { border-color: #eadde9; }
+.sns-portfolio .instagram-section .section-description { color: #77516f; }
+.instagram-insight-chart { margin: 28px 0; padding: clamp(18px, 3vw, 36px); overflow: hidden; border: 1px solid #eadde9; border-radius: var(--radius-md); background: #fff; }
+.instagram-insight-chart figcaption { margin-bottom: 16px; }
+.instagram-insight-chart h3 { margin-top: 8px; color: var(--color-ink); font-size: 22px; font-weight: 800; }
+.instagram-insight-chart img { display: block; width: 100%; height: auto; }
+.sns-portfolio .youtube-section > .container > .section-head .section-title { font-family: "Malgun Gothic", "Apple SD Gothic Neo", var(--font-sans); font-size: clamp(38px, 5.5vw, 72px); font-weight: 800; line-height: 1.25; letter-spacing: -.025em; }
+/* YouTube performance: black, red and white. */
+.sns-portfolio .youtube-section {
+  --color-ink: #171717;
+  --color-muted: #666;
+  --color-line: #e5e5e5;
+  --color-support: #c71922;
+  background: #fafafa;
+  color: #171717;
+  border-top: 5px solid #ef1725;
+}
+.sns-portfolio .youtube-section > .container > .section-head .platform-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  border-radius: 999px;
+  background: #171717;
+  color: #fff;
+  letter-spacing: .09em;
+}
+.sns-portfolio .youtube-section > .container > .section-head .platform-kicker::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid #ff3441;
+}
+.sns-portfolio .youtube-section > .container > .section-head .section-title { color: #171717; }
+.sns-portfolio .youtube-section .sns-metric-card {
+  background: #fff;
+  border-color: #e3e3e3;
+  box-shadow: 0 6px 22px rgba(0,0,0,.025);
+}
+.sns-portfolio .youtube-section .sns-metric-card:first-child {
+  border-top: 4px solid #ec1725;
+}
+.sns-portfolio .youtube-section .sns-metric-card--accent {
+  background: #c91825;
+  border-color: #c91825;
+  color: #fff;
+}
+.sns-portfolio .youtube-section .sns-metric-card--dark {
+  background: #171717;
+  border-color: #171717;
+  color: #fff;
+}
+.sns-portfolio .youtube-section :is(.sns-metric-card--accent, .sns-metric-card--dark) :is(span, strong, small) { color: #fff; }
+.sns-portfolio .youtube-section .sns-panel { background: #fff; border-color: #e3e3e3; }
+.sns-portfolio .youtube-section :is(.panel-kicker, .content-performance-head .platform-kicker) { color: #bc1622; }
+.sns-portfolio .youtube-section .reaction-summary { border-top-color: #222; }
+.sns-portfolio .youtube-section .reaction-summary a { text-decoration: underline; text-decoration-color: #e22631; text-underline-offset: 4px; }
+.sns-portfolio .youtube-section .reaction-summary a:focus-visible { outline: 2px solid #c91825; outline-offset: 4px; }
+.sns-portfolio .youtube-section thead th { color: #fff; background: #202020; border-bottom: 0; }
+.sns-portfolio .youtube-section tbody tr:nth-child(even) { background: #f7f7f7; }
+.sns-portfolio .youtube-section tbody tr:first-child { background: #fff0f1; }
+.sns-portfolio .youtube-section tbody tr:first-child :is(th, td) { color: #b71622; font-weight: 800; }

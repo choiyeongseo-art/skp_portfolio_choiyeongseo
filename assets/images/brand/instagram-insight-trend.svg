@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="542" viewBox="0 0 1080 542" role="img" aria-labelledby="title description">
+  <title id="title">인스타그램 인사이트 추이</title>
+  <desc id="description">제공된 인사이트 이미지의 축과 선 형태를 재현한 그래프. 세로축 표기는 아래부터 0, 862, 1천이며, 가로축 양 끝 표기는 10월 7일과 10월 20일입니다. 중후반에 1천 눈금까지 급상승한 뒤 낮아지는 형태입니다.</desc>
+  <rect width="1080" height="542" fill="#fff"/>
+  <g stroke="#eceeef" stroke-width="3">
+    <path d="M158 75H1024"/>
+    <path d="M158 250H1024"/>
+    <path d="M158 425H1024"/>
+  </g>
+  <g fill="#737a7f" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="38" font-weight="400">
+    <text x="125" y="89" text-anchor="end">1천</text>
+    <text x="125" y="265" text-anchor="end">862</text>
+    <text x="125" y="438" text-anchor="end">0</text>
+    <text x="158" y="486">10월 7일</text>
+    <text x="1024" y="486" text-anchor="end">10월 20일</text>
+  </g>
+  <path d="M158 388 L225 420 L291 424 L358 422 L425 425 L491 424 L558 425 L624 394 L691 75 L758 410 L824 422 L891 414 L958 410 L1024 412" fill="none" stroke="#ce00c0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
