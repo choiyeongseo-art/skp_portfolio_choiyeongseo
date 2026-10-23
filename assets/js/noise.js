@@ -3,38 +3,6 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.m
 const canvas = document.querySelector("[data-noise-canvas]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const audio = document.querySelector("[data-noise-audio]");
-const audioToggle = document.querySelector("[data-audio-toggle]");
-const audioLabel = document.querySelector("[data-audio-label]");
-
-if (audio && audioToggle && audioLabel) {
-  audio.volume = 0.72;
-  let soundEnabled = false;
-
-  const renderAudioState = () => {
-    audioToggle.classList.toggle("is-on", soundEnabled);
-    audioToggle.setAttribute("aria-pressed", String(soundEnabled));
-    audioToggle.setAttribute("aria-label", soundEnabled ? "BUS 1003 일시정지" : "BUS 1003 재생");
-    audioLabel.textContent = soundEnabled ? "재생 중" : "재생";
-  };
-
-  const playAudio = () => {
-    if (!soundEnabled) return;
-    audio.play().catch(() => {});
-  };
-
-  audioToggle.addEventListener("click", () => {
-    soundEnabled = !soundEnabled;
-    if (soundEnabled) playAudio();
-    else audio.pause();
-    renderAudioState();
-  });
-
-  audio.addEventListener("play", () => { soundEnabled = true; renderAudioState(); });
-  audio.addEventListener("pause", () => { soundEnabled = false; renderAudioState(); });
-  renderAudioState();
-}
-
 if (canvas && !reduceMotion) {
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));

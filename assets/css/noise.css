@@ -61,3 +61,49 @@ html{background:var(--noise-bg)}
 @media(max-width:900px){.noise-member-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 18px}.noise-section-head{gap:20px}.noise-member h3{font-size:38px}}
 @media(max-width:767px){.noise-local-nav{top:68px}.noise-local-nav>.container{min-height:58px;gap:12px}.noise-wordmark{font-size:22px}.noise-wordmark span{font-size:6px}.noise-local-nav .container>div{gap:14px}.noise-local-nav .container>div a{padding:22px 0;font-size:8px;letter-spacing:.02em}.noise-theme section[id]{scroll-margin-top:145px}.noise-hero,.noise-hero-content{min-height:calc(100svh - 126px)}.noise-hero-content{padding-top:35px;padding-bottom:32px;gap:70px}.noise-hero h1{font-size:clamp(82px,24vw,180px);line-height:.85}.noise-hero-bottom{gap:18px;align-items:end}.noise-manifesto{font-size:clamp(12px,3vw,18px);line-height:1.4}.noise-hero-cta{font-size:7px;gap:8px}.noise-hero-cta strong{font-size:13px}.noise-member h3{font-size:32px;line-height:1}.noise-member h3 small{display:block;margin:8px 0;font-size:12px}.noise-photo b{opacity:1;font-size:8px}.noise-member li{font-size:7px;padding:5px}.noise-photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.noise-photo-tile:first-child img{aspect-ratio:4/3}.noise-track-content{padding-block:80px}.noise-release{margin-left:0}.noise-dialog-grid{grid-template-columns:1fr;gap:20px}.noise-dialog-grid>img{max-height:42dvh;object-fit:contain}.noise-dialog h2{font-size:36px}.noise-dialog{padding-inline:20px}.noise-image-dialog>img{max-height:76dvh}.noise-header .site-nav{position:fixed;inset:68px 0 auto;height:calc(100dvh - 68px);overflow-y:auto;visibility:hidden;opacity:0;transform:translateY(-10px)}.noise-header .site-nav.is-open{visibility:visible;opacity:1;transform:none}.noise-header .site-nav ul{display:block;padding:24px var(--gutter)}.noise-header .site-nav a{font-size:clamp(26px,9vw,40px);padding:18px 0;border-bottom:1px solid var(--noise-line)}.noise-header .menu-toggle{display:inline-flex}.noise-header .header-inner{min-height:68px}.noise-header .brand-text{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:155px}}
 @media(prefers-reduced-motion:reduce){.noise-photo b{transition:none}}
+
+/* Discography — an album sleeve and its listening notes. */
+.noise-discography{padding:clamp(72px,9vw,136px) 0;background:#17191e;border-top:1px solid var(--noise-line)}
+.noise-discography-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px}
+.noise-discography-head .noise-index{color:#aebbd6;margin-bottom:20px}
+.noise-discography-head h2{font-size:clamp(38px,6vw,80px);font-weight:900;line-height:1.05;letter-spacing:-.055em;color:#f1f0eb}
+.noise-discography-count{padding-bottom:6px;color:#a0a5af;font-size:9px;letter-spacing:.13em;white-space:nowrap}
+.noise-album{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:start}
+.noise-album-artwork{min-width:0}.noise-album-artwork>img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;background:#e9e1ca}
+.noise-album-caption{display:flex;justify-content:space-between;gap:12px;padding-top:16px;font-size:8px;letter-spacing:.09em;color:#a0a5af}
+.noise-album-info{min-width:0;padding-top:4px}
+.noise-album-eyebrow{display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:.12em;color:#aebbd6}
+.noise-album-eyebrow>span{padding:5px 8px;border:1px solid #626d81;letter-spacing:.04em;color:#e0e5ef;font-size:10px}
+.noise-album-info h3{margin-top:22px;font-size:clamp(30px,3.7vw,58px);font-weight:900;line-height:1.06;letter-spacing:-.045em;color:#f1f0eb}
+.noise-album-description{margin-top:20px;color:#b2b5bd;font-size:13px;line-height:1.85}
+.noise-tracklist-heading{display:flex;justify-content:space-between;margin-top:36px;padding-bottom:12px;border-bottom:1px solid #656b78;font-size:9px;letter-spacing:.12em;color:#bbc6dd}
+.noise-tracklist-heading h4{font:inherit;font-weight:700}.noise-tracklist-heading>span{color:#a0a5af}
+.noise-album-tracks{list-style:none;padding:0;margin:0}
+.noise-album-tracks>li{border-bottom:1px solid #383c46}
+.noise-album-pending,.noise-album-title-track>button{display:flex;align-items:center;gap:16px;min-height:62px;padding:14px 12px}
+.noise-track-number{font-size:11px;font-variant-numeric:tabular-nums;color:#a0a5af;letter-spacing:.06em}
+.noise-track-name{flex:1;min-width:0;font-size:14px;font-weight:700;letter-spacing:.01em}
+.noise-album-pending .noise-track-name{font-size:12px;font-weight:400;color:#a0a5af}
+.noise-track-state{font-size:8px;letter-spacing:.09em;color:#a0a5af;white-space:nowrap}
+.noise-album-title-track>button{width:100%;background:#252d40;text-align:left;color:#f3f4f7;cursor:pointer;transition:background .2s}
+.noise-album-title-track>button:hover,.noise-album-title-track>button[aria-pressed=true]{background:#303e5c}
+.noise-title-badge{display:inline-block;vertical-align:middle;margin-left:8px;padding:3px 5px;border:1px solid #95acf1;color:#b8caff;font-size:8px;line-height:1;letter-spacing:.06em}
+.noise-album-play-icon{display:grid;place-items:center;width:28px;height:28px;border:1px solid #65789f;border-radius:50%;font-size:10px;color:#d0dcff}
+.noise-album-detail{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 0 4px;color:#c5cddd;font-size:11px}
+.noise-album-detail:hover{color:#fff}
+.noise-album-status{color:#b4c0e8;font-size:12px;line-height:1.6}.noise-album-status:not(:empty){margin-top:12px}
+.noise-album-title-track>button:focus-visible,.noise-album-detail:focus-visible{outline:2px solid var(--noise-blue);outline-offset:4px}
+.noise-upcoming-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1000px){.noise-album{gap:32px}.noise-album-info h3{font-size:clamp(28px,4vw,40px)}.noise-album-pending,.noise-album-title-track>button{min-height:56px}.noise-album-caption{font-size:7px}.noise-upcoming-grid h3{font-size:30px}}
+@media(max-width:767px){.noise-discography-head{align-items:start;flex-direction:column;gap:16px;margin-bottom:30px}.noise-discography-head .noise-index{margin-bottom:16px}.noise-album{grid-template-columns:1fr;gap:32px}.noise-album-info h3{font-size:clamp(34px,8vw,56px)}.noise-album-description{font-size:13px}.noise-album-caption{font-size:8px}.noise-tracklist-heading{margin-top:28px}.noise-album-pending,.noise-album-title-track>button{min-height:62px}.noise-upcoming-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.noise-album-title-track>button{transition:none}}
+@media(max-width:420px){.noise-header .header-inner{gap:12px}.noise-header .brand{flex:1;overflow:hidden}.noise-header .brand-mark,.noise-header .menu-toggle,.noise-header .portfolio-return{flex-shrink:0}}
+.noise-album-track>button{display:flex;align-items:center;gap:16px;min-height:62px;padding:14px 12px;width:100%;background:transparent;text-align:left;color:#f3f4f7;cursor:pointer;transition:background .2s}
+.noise-album-title-track>button{background:#252d40}
+.noise-album-track>button:hover,.noise-album-track>button.is-current{background:#303e5c}
+.noise-album-track>button:focus-visible{outline:2px solid var(--noise-blue);outline-offset:4px}
+.noise-album-track .noise-track-name{overflow-wrap:anywhere;line-height:1.5}
+.noise-album-play-icon{flex-shrink:0}
+.noise-album-player{padding-top:20px}.noise-album-player>p{margin-bottom:12px;color:#c5cddd;font-size:11px;overflow-wrap:anywhere}.noise-album-player .noise-seek-row>span{white-space:nowrap}
+.noise-audio-copy{min-width:0;max-width:min(190px,52vw)}.noise-audio-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.noise-album-track>button{transition:none}}
