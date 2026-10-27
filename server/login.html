@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/assets/css/variables.css"><title>관리자 로그인 · Chatbot Studio</title><link rel="stylesheet" href="/assets/css/admin.css"><script src="/assets/js/admin-login.js" defer></script></head>
+<body class="login-body">
+  <main class="login-card">
+    <span class="eyebrow">TOURISM CONTENT ARCHIVE</span>
+    <div class="studio-mark" aria-hidden="true">C<span>•</span></div>
+    <h1>챗봇 스튜디오</h1><p>안내를 다듬고, 확인하고, 게시하는 공간입니다.</p>
+    <section class="demo-account" aria-label="공개 체험 계정"><strong>관리자 체험 계정</strong><p>아이디 <code>admin</code> <span>비밀번호 <code>1234</code></span></p><small>계정이 미리 입력되어 있습니다. 로그인 버튼으로 관리자 기능을 체험할 수 있습니다.</small></section>
+    <form id="login-form">
+      <label>관리자 아이디<input name="username" value="admin" autocomplete="username" required maxlength="80" autofocus></label>
+      <label>비밀번호<input name="password" value="1234" type="password" autocomplete="current-password" required maxlength="256"></label>
+      <button class="primary" type="submit">관리자 로그인 →</button>
+      <p id="login-status" class="status" role="status"></p>
+    </form>
+    <a class="quiet-link" href="/index.html">← 포트폴리오 홈으로 돌아가기</a>
+  </main>
+</body></html>

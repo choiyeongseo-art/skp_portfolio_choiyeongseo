@@ -1,0 +1,892 @@
+{
+  "version": 1,
+  "title": "포트폴리오 안내",
+  "subtitle": "등록된 페이지와 콘텐츠로 안내하는 도우미",
+  "fallback": "등록된 안내를 찾지 못했어요. 아래 메뉴를 선택해주세요.",
+  "controls": {
+    "back": "이전으로",
+    "home": "처음으로",
+    "reset": "대화 초기화"
+  },
+  "nodes": {
+    "home": {
+      "answer": "안녕하세요. 최영서 포트폴리오 안내 도우미입니다. 소개와 경력, 프로젝트·드로잉, 브랜드·콘텐츠와 SNS 성과를 안내하는 공간입니다. 아래 메뉴 또는 현재 페이지 안내를 선택해 주시기 바랍니다.",
+      "keywords": [
+        "안녕",
+        "메뉴",
+        "도움말"
+      ],
+      "buttons": [
+        {
+          "label": "포트폴리오 둘러보기",
+          "next": "site_overview"
+        },
+        {
+          "label": "프로젝트·드로잉",
+          "next": "site_works"
+        },
+        {
+          "label": "마케팅 아카이브",
+          "next": "site_marketing"
+        },
+        {
+          "label": "오늘 조회수",
+          "next": "today"
+        },
+        {
+          "label": "이번 주 인사이트",
+          "next": "week"
+        },
+        {
+          "label": "자주 묻는 질문",
+          "next": "faq"
+        },
+        {
+          "label": "관리자 문의",
+          "next": "contact"
+        }
+      ]
+    },
+    "today": {
+      "answer": "[임시 안내] 오늘 조회수는 아직 등록 전입니다. 현재 대시보드는 특정 기간의 누적 성과를 정리한 자료입니다. 오늘 수치로 해석할 수 없는 데이터입니다.",
+      "keywords": [
+        "오늘 조회수",
+        "오늘",
+        "조회수",
+        "방문자"
+      ],
+      "buttons": [
+        {
+          "label": "등록된 기간 성과",
+          "next": "metrics"
+        },
+        {
+          "label": "집계 기준",
+          "next": "basis"
+        }
+      ],
+      "links": [
+        {
+          "label": "SNS 성과 페이지",
+          "href": "sns.html"
+        }
+      ]
+    },
+    "metrics": {
+      "answer": "대시보드에 등록된 인스타그램 조회수는 2,545회(2026.10.07~10.22)이며 유튜브 조회수는 1,746회(2026.09.23~10.20)입니다. 서로 다른 기간의 기록이며 오늘 또는 이번 주의 실시간 수치가 아닌 자료입니다.",
+      "keywords": [
+        "기간 성과",
+        "누적",
+        "인스타그램",
+        "인스타",
+        "유튜브"
+      ],
+      "buttons": [
+        {
+          "label": "집계 기준",
+          "next": "basis"
+        },
+        {
+          "label": "콘텐츠 개선 방향",
+          "next": "improve"
+        }
+      ],
+      "links": [
+        {
+          "label": "SNS 성과 페이지",
+          "href": "sns.html"
+        }
+      ]
+    },
+    "week": {
+      "answer": "[임시 안내] 이번 주 전용 인사이트는 등록 전입니다. 기존 대시보드의 주요 관찰은 인스타그램 썸네일 변경 후 조회수 증가와 유튜브 Shorts·검색 중심의 유입입니다. 게시 시점과 노출 조건이 달라 특정 요소의 효과로 단정할 수 없는 결과입니다.",
+      "keywords": [
+        "이번 주",
+        "이번주",
+        "인사이트",
+        "주간",
+        "분석"
+      ],
+      "buttons": [
+        {
+          "label": "콘텐츠 개선 방향",
+          "next": "improve"
+        },
+        {
+          "label": "등록된 기간 성과",
+          "next": "metrics"
+        }
+      ],
+      "links": [
+        {
+          "label": "SNS 성과 페이지",
+          "href": "sns.html"
+        }
+      ]
+    },
+    "improve": {
+      "answer": "기존 기록에 정리된 개선 방향입니다. 인스타그램은 캐릭터 클로즈업과 제목 자막, 유튜브는 초반 동작·반복 시청 구조와 부산·서면 등 검색 키워드를 점검하는 방향입니다. 성과 비교는 게시 후 동일한 경과 시점의 조회수와 전환 지표를 함께 확인하는 방식입니다.",
+      "keywords": [
+        "개선",
+        "썸네일",
+        "콘텐츠",
+        "검색 유입"
+      ],
+      "buttons": [
+        {
+          "label": "집계 기준",
+          "next": "basis"
+        },
+        {
+          "label": "자주 묻는 질문",
+          "next": "faq"
+        }
+      ],
+      "links": [
+        {
+          "label": "SNS 성과 페이지",
+          "href": "sns.html"
+        }
+      ]
+    },
+    "faq": {
+      "answer": "자주 묻는 질문 안내입니다. 확인할 항목을 선택해 주시기 바랍니다.",
+      "keywords": [
+        "자주 묻는 질문",
+        "faq",
+        "자주묻는질문"
+      ],
+      "buttons": [
+        {
+          "label": "실시간 데이터인가요?",
+          "next": "basis"
+        },
+        {
+          "label": "참여율 계산 방법",
+          "next": "rate"
+        },
+        {
+          "label": "사이트 이용 안내",
+          "next": "site_overview"
+        }
+      ]
+    },
+    "basis": {
+      "answer": "현재 화면은 수동으로 등록된 기간별 성과 자료입니다. 인스타그램과 유튜브의 측정 기간은 각각 다른 기준입니다. 오늘·주간 집계와 자동 갱신 주기는 운영자가 추가로 확정할 항목입니다.",
+      "keywords": [
+        "집계",
+        "기준",
+        "실시간",
+        "갱신",
+        "기간",
+        "업데이트"
+      ],
+      "buttons": [
+        {
+          "label": "참여율 계산 방법",
+          "next": "rate"
+        },
+        {
+          "label": "등록된 기간 성과",
+          "next": "metrics"
+        }
+      ],
+      "links": [
+        {
+          "label": "SNS 성과 페이지",
+          "href": "sns.html"
+        }
+      ]
+    },
+    "rate": {
+      "answer": "인스타그램 콘텐츠 참여율은 총 반응 68회 ÷ 조회한 사람 2,053명 × 100으로 약 3.31%입니다. 조회수 2,545회를 분모로 사용하지 않는 지표입니다. 유튜브 참여율은 현재 미등록입니다.",
+      "keywords": [
+        "참여율",
+        "반응",
+        "계산"
+      ],
+      "buttons": [
+        {
+          "label": "집계 기준",
+          "next": "basis"
+        }
+      ],
+      "links": [
+        {
+          "label": "SNS 성과 페이지",
+          "href": "sns.html"
+        }
+      ]
+    },
+    "contact": {
+      "answer": "관리자·제작 문의 접수 안내입니다. 이름, 이메일, 문의 내용과 개인정보 수집·이용 동의가 필요한 양식입니다. 접수 내용은 관리자만 확인 가능한 문의함에 보관되는 정보입니다.",
+      "keywords": [
+        "관리자 문의",
+        "제작 문의",
+        "문의",
+        "상담",
+        "연락"
+      ],
+      "form": "inquiry",
+      "buttons": [
+        {
+          "label": "자주 묻는 질문",
+          "next": "faq"
+        }
+      ],
+      "links": [
+        {
+          "label": "별도 문의 페이지 열기",
+          "href": "inquiry.html"
+        }
+      ]
+    },
+    "site_overview": {
+      "answer": "최영서의 콘텐츠·아트·드로잉 포트폴리오입니다. ABOUT은 소개와 경력, CONTENTS MARKETING은 브랜드와 관광 콘텐츠, PROJECT는 참여 프로젝트, DRAWING은 드로잉과 제작 과정을 살펴보는 메뉴입니다.",
+      "keywords": [
+        "포트폴리오",
+        "사이트 소개",
+        "홈 화면",
+        "전체 메뉴",
+        "어떤 사이트"
+      ],
+      "buttons": [
+        {
+          "label": "소개·경력",
+          "next": "site_profile"
+        },
+        {
+          "label": "프로젝트·드로잉",
+          "next": "site_works"
+        },
+        {
+          "label": "마케팅 아카이브",
+          "next": "site_marketing"
+        }
+      ],
+      "links": [
+        {
+          "label": "포트폴리오 홈",
+          "href": "index.html"
+        }
+      ]
+    },
+    "site_profile": {
+      "answer": "기획과 시각 표현으로 이야기를 연결하는 최영서의 소개 페이지입니다. 상명대학교 디지털콘텐츠전공, 수상 내역, 실무 경험과 학내외 활동을 정리한 자료입니다. 페이지에 등록된 학적은 2027년 2월 졸업예정, 학점은 4.21 / 4.5입니다.",
+      "keywords": [
+        "자기소개",
+        "프로필",
+        "about",
+        "학력",
+        "최영서",
+        "졸업",
+        "학점"
+      ],
+      "buttons": [
+        {
+          "label": "실무 경험·수상",
+          "next": "site_experience"
+        },
+        {
+          "label": "참여 프로젝트",
+          "next": "site_works"
+        },
+        {
+          "label": "관리자 문의",
+          "next": "contact"
+        }
+      ],
+      "links": [
+        {
+          "label": "ABOUT 전체 보기",
+          "href": "about.html"
+        }
+      ]
+    },
+    "site_experience": {
+      "answer": "ABOUT에 등록된 주요 경험은 111퍼센트 인턴의 2D 그래픽·게임 기획·Unity 이펙트, 포캣 원화팀 현장실습의 게임 배경 리소스 제작·채색입니다. 2023 BIC Rookie Division EXCELLENCE IN CASUAL 수상 프로젝트는 Spready입니다. 기간과 세부 활동은 ABOUT의 공개 기록을 기준으로 확인 가능한 정보입니다.",
+      "keywords": [
+        "경력",
+        "인턴",
+        "현장실습",
+        "수상",
+        "경험",
+        "111퍼센트",
+        "포캣",
+        "비아이씨 수상"
+      ],
+      "buttons": [
+        {
+          "label": "프로젝트 목록",
+          "next": "site_works"
+        },
+        {
+          "label": "관리자 문의",
+          "next": "contact"
+        }
+      ],
+      "links": [
+        {
+          "label": "경력·수상 확인",
+          "href": "about.html"
+        }
+      ]
+    },
+    "site_works": {
+      "answer": "PROJECT는 게임 아트와 시각 표현을 포함한 참여 프로젝트 목록이며, DRAWING은 캐릭터·배경·소품 디자인과 스터디를 모은 아카이브입니다. 등록된 프로젝트와 공개된 작업 범위를 기준으로 안내하는 메뉴입니다.",
+      "keywords": [
+        "프로젝트 목록",
+        "참여 프로젝트",
+        "게임 아트",
+        "작업물",
+        "작품",
+        "project"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트",
+          "next": "site_games"
+        },
+        {
+          "label": "드로잉·원화",
+          "next": "site_drawing"
+        },
+        {
+          "label": "마케팅 프로젝트",
+          "next": "site_marketing"
+        }
+      ],
+      "links": [
+        {
+          "label": "PROJECT 목록",
+          "href": "art.html"
+        },
+        {
+          "label": "DRAWING 목록",
+          "href": "drawing.html"
+        }
+      ]
+    },
+    "site_drawing": {
+      "answer": "드로잉 아카이브에는 캐릭터 디자인, 월드 맵, 별모래 사막·바람 둥지 숲·마녀의 성·봄꽃 저택의 배경과 소품, 제작 과정이 등록되어 있습니다. 인물·캐릭터 크로키와 정물·인물·풍경 컬러 스터디도 확인 가능한 작업입니다. 공개 자료가 없는 항목은 추가 설명을 제공하지 않는 원칙입니다.",
+      "keywords": [
+        "드로잉",
+        "drawing",
+        "원화",
+        "크로키",
+        "스터디",
+        "월드 맵",
+        "배경 디자인",
+        "바람 둥지 숲"
+      ],
+      "buttons": [
+        {
+          "label": "프로젝트 목록",
+          "next": "site_works"
+        },
+        {
+          "label": "관리자 문의",
+          "next": "contact"
+        }
+      ],
+      "links": [
+        {
+          "label": "디자인 포트폴리오",
+          "href": "project.html?collection=drawing&project=1"
+        },
+        {
+          "label": "크로키·컬러 스터디",
+          "href": "project.html?collection=drawing&project=2"
+        },
+        {
+          "label": "DRAWING 전체 보기",
+          "href": "drawing.html"
+        }
+      ]
+    },
+    "site_marketing": {
+      "answer": "지역의 이야기를 리서치와 기획, 콘텐츠 제작, SNS 운영과 성과 분석으로 연결한 관광 콘텐츠 아카이브입니다. BRAND·REPORT·CONTENTS·SNS·SPOT:ON·NØISE의 여섯 영역으로 구성된 작업 기록입니다.",
+      "keywords": [
+        "마케팅",
+        "콘텐츠 마케팅",
+        "marketing",
+        "관광 콘텐츠 아카이브",
+        "아카이브"
+      ],
+      "buttons": [
+        {
+          "label": "브랜드·캐릭터",
+          "next": "site_brand"
+        },
+        {
+          "label": "콘텐츠 결과물",
+          "next": "site_contents"
+        },
+        {
+          "label": "조사 리포트",
+          "next": "site_reports"
+        },
+        {
+          "label": "SNS 성과",
+          "next": "site_sns"
+        },
+        {
+          "label": "SPOT:ON",
+          "next": "site_spoton"
+        },
+        {
+          "label": "NØISE",
+          "next": "site_noise"
+        }
+      ],
+      "links": [
+        {
+          "label": "마케팅 아카이브 홈",
+          "href": "marketing.html"
+        }
+      ]
+    },
+    "site_brand": {
+      "answer": "NARU studio는 부산의 덕질 명소·전시·팝업·캐릭터 숍과 팬 문화를 연결하는 콘텐츠 스튜디오입니다. BRAND에는 로고, 컬러, 여백·최소 크기, 사용 규정, 타이포그래피와 나루와 취향들의 캐릭터 소개가 정리되어 있습니다. 브랜드의 파스텔 블루와 포트폴리오 홈의 네온 블루는 서로 다른 화면의 컬러 설정입니다.",
+      "keywords": [
+        "브랜드",
+        "나루",
+        "naru",
+        "로고",
+        "캐릭터",
+        "브랜드 컬러",
+        "ci 가이드"
+      ],
+      "buttons": [
+        {
+          "label": "제작 콘텐츠",
+          "next": "site_contents"
+        },
+        {
+          "label": "채널 성과",
+          "next": "site_sns"
+        },
+        {
+          "label": "NØISE 프로젝트",
+          "next": "site_noise"
+        }
+      ],
+      "links": [
+        {
+          "label": "BRAND 가이드 보기",
+          "href": "brand.html"
+        }
+      ]
+    },
+    "site_contents": {
+      "answer": "관광 포스터, 카드뉴스, 웹사이트, 인스타툰, 영상 콘텐츠를 형식별로 살펴보는 페이지입니다. 각 결과물에는 기획 의도와 핵심 메시지가 정리되어 있습니다. 메이플스토리 관광 포스터와 부산에서 만나는 취향들 브랜드 카드뉴스도 등록된 사례입니다.",
+      "keywords": [
+        "제작 콘텐츠",
+        "콘텐츠 보기",
+        "카드뉴스",
+        "포스터",
+        "인스타툰",
+        "영상 콘텐츠",
+        "contents"
+      ],
+      "buttons": [
+        {
+          "label": "조사 근거 보기",
+          "next": "site_reports"
+        },
+        {
+          "label": "SNS 성과",
+          "next": "site_sns"
+        },
+        {
+          "label": "브랜드 가이드",
+          "next": "site_brand"
+        }
+      ],
+      "links": [
+        {
+          "label": "CONTENTS 전체 보기",
+          "href": "contents.html"
+        }
+      ]
+    },
+    "site_reports": {
+      "answer": "부산의 콘텐츠를 여행과 연결하는 두 사례를 정리한 조사 리포트입니다. 메이플스토리 in 롯데월드 부산은 게임 IP·테마파크·관광 동선, 2026 BIC는 인디게임 행사·체류·지역 소비를 중심으로 다룬 자료입니다. 제안 내용과 공개된 성과는 구분해서 확인해야 하는 기록입니다.",
+      "keywords": [
+        "리포트",
+        "보고서",
+        "조사",
+        "메이플스토리",
+        "롯데월드",
+        "bic",
+        "부산인디커넥트페스티벌"
+      ],
+      "buttons": [
+        {
+          "label": "관광 콘텐츠",
+          "next": "site_contents"
+        },
+        {
+          "label": "SPOT:ON 여행 서비스",
+          "next": "site_spoton"
+        }
+      ],
+      "links": [
+        {
+          "label": "두 리포트 보기",
+          "href": "report.html"
+        }
+      ]
+    },
+    "site_sns": {
+      "answer": "인스타그램과 유튜브의 채널 운영 목표, 콘텐츠 반응, 유입 경로, 가설·실행·결과·다음 개선을 정리한 성과 페이지입니다. 채널별 집계 기간이 다른 수동 등록 자료이며 실시간 조회수가 아닌 데이터입니다.",
+      "keywords": [
+        "sns",
+        "소셜",
+        "채널 운영",
+        "운영 성과",
+        "성과 대시보드"
+      ],
+      "buttons": [
+        {
+          "label": "오늘 조회수",
+          "next": "today"
+        },
+        {
+          "label": "이번 주 인사이트",
+          "next": "week"
+        },
+        {
+          "label": "기간별 성과",
+          "next": "metrics"
+        },
+        {
+          "label": "참여율 계산",
+          "next": "rate"
+        }
+      ],
+      "links": [
+        {
+          "label": "SNS 성과 보기",
+          "href": "sns.html"
+        }
+      ]
+    },
+    "site_spoton": {
+      "answer": "SPOT:ON은 부산의 덕질 명소와 정보를 바탕으로 제한된 시간 안의 여행 코스를 설계하는 인터랙티브 서비스 프로젝트입니다. 페이지의 스마트폰 미리보기와 전체 화면 링크로 실제 서비스 화면을 살펴보는 구성입니다. 이 챗봇은 등록된 안내만 제공하며 실시간 여행 일정을 계산하지 않는 방식입니다.",
+      "keywords": [
+        "spot:on",
+        "spoton",
+        "스팟온",
+        "스폿온",
+        "여행 코스",
+        "여행 일정",
+        "여행 서비스"
+      ],
+      "buttons": [
+        {
+          "label": "관련 조사",
+          "next": "site_reports"
+        },
+        {
+          "label": "마케팅 아카이브",
+          "next": "site_marketing"
+        }
+      ],
+      "links": [
+        {
+          "label": "SPOT:ON 서비스 보기",
+          "href": "spoton.html"
+        }
+      ]
+    },
+    "site_noise": {
+      "answer": "NØISE는 부산의 밤과 서브컬처를 바탕으로 기획한 NARU studio의 4인조 AI 아이돌 콘셉트 프로젝트입니다. 멤버는 NOX·VENN·ELN·ROV이며 세계관, 프로필, 음악과 비주얼 콘텐츠를 소개하는 페이지입니다. 타이틀곡은 BUS 1003이며 일부 후속 콘텐츠는 공개 예정으로 표시된 상태입니다. 이 챗봇 자체는 생성형 AI 없이 등록된 규칙으로 작동하는 기능입니다.",
+      "keywords": [
+        "nøise",
+        "noise",
+        "노이즈",
+        "아이돌",
+        "녹스",
+        "벤",
+        "엘른",
+        "로브",
+        "bus 1003",
+        "음악"
+      ],
+      "buttons": [
+        {
+          "label": "브랜드 가이드",
+          "next": "site_brand"
+        },
+        {
+          "label": "마케팅 아카이브",
+          "next": "site_marketing"
+        }
+      ],
+      "links": [
+        {
+          "label": "NØISE 프로젝트 보기",
+          "href": "noise.html"
+        }
+      ]
+    },
+    "site_art_1": {
+      "answer": "Hit Salon 프로젝트 안내입니다. 때리고, 뺏고, 내 구역을 지키는 4인 멀티 경쟁 게임 등록된 참여 역할은 게임 아트 · 애니메이션 · 이펙트입니다. 작업 기간은 2026.05.27 – 2026.06.26입니다.",
+      "keywords": [
+        "Hit Salon"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "Hit Salon 상세 보기",
+          "href": "project.html?collection=art&project=1"
+        }
+      ]
+    },
+    "site_art_2": {
+      "answer": "헬로키티 스윗파티 프로젝트 안내입니다. 라이브 서비스 SNG 게임. 캐릭터와 배경을 위한 리소스 채색 작업에 참여했습니다. 등록된 참여 역할은 게임 리소스 채색입니다. 작업 기간은 2023.05 – 2026.10입니다. 작업물의 공개 범위를 고려하여, 본 페이지에서는 참여 분야와 작업 내역을 중심으로 소개합니다.",
+      "keywords": [
+        "헬로키티 스윗파티"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "헬로키티 스윗파티 상세 보기",
+          "href": "project.html?collection=art&project=2"
+        }
+      ]
+    },
+    "site_art_3": {
+      "answer": "두근두근 레스토랑 프로젝트 안내입니다. 라이브 서비스 SNG 게임. 배경 프랍 리소스 제작 및 채색 작업에 참여했습니다. 등록된 참여 역할은 배경 프랍 리소스 제작 · 채색입니다. 작업 기간은 2023.10 – 2024.10입니다. 작업물의 공개 범위를 고려하여, 본 페이지에서는 참여 분야와 작업 내역을 중심으로 소개합니다.",
+      "keywords": [
+        "두근두근 레스토랑"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "두근두근 레스토랑 상세 보기",
+          "href": "project.html?collection=art&project=3"
+        }
+      ]
+    },
+    "site_art_4": {
+      "answer": "라테일 프로젝트 안내입니다. 라이브 서비스 게임. 일러스트 배경과 인게임 배경 프랍 리소스 채색 작업에 참여했습니다. 등록된 참여 역할은 일러스트 배경 · 인게임 배경 프랍 리소스 채색입니다. 작업 기간은 2023.09 – 2024.08입니다. 작업물의 공개 범위를 고려하여, 본 페이지에서는 참여 분야와 작업 내역을 중심으로 소개합니다.",
+      "keywords": [
+        "라테일"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "라테일 상세 보기",
+          "href": "project.html?collection=art&project=4"
+        }
+      ]
+    },
+    "site_art_5": {
+      "answer": "2025 넥슨 대학생 게임잼 재밌넥 프로젝트 안내입니다. 힘내라! 교통쨩 — 페이퍼플리즈와 테트리스의 장르를 결합한 퍼즐 인디게임. 2일간의 게임잼에서 2D 아트 리소스 제작에 참여했습니다. 등록된 참여 역할은 2D 아트 리소스 제작입니다. 작업 기간은 2025.07 – 2025.07 (2일)입니다.",
+      "keywords": [
+        "2025 넥슨 대학생 게임잼 재밌넥"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "2025 넥슨 대학생 게임잼 재밌넥 상세 보기",
+          "href": "project.html?collection=art&project=5"
+        }
+      ]
+    },
+    "site_art_6": {
+      "answer": "Spready 프로젝트 안내입니다. 3D 착시 퍼즐 인디게임 등록된 참여 역할은 2D 아트 리소스 제작 · PV 영상 편집 · 텀블벅 굿즈 기획 및 작업입니다. 작업 기간은 2023.05 – 2025.07입니다.",
+      "keywords": [
+        "Spready"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "Spready 상세 보기",
+          "href": "project.html?collection=art&project=6"
+        }
+      ]
+    },
+    "site_art_7": {
+      "answer": "Splash Carnival 프로젝트 안내입니다. 탑뷰 로그라이크 슈팅 인디게임 등록된 참여 역할은 2D 아트 리소스 제작 · PV 영상 편집 · 애니메이션입니다. 작업 기간은 2023.03 – 2024.02입니다.",
+      "keywords": [
+        "Splash Carnival"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "Splash Carnival 상세 보기",
+          "href": "project.html?collection=art&project=7"
+        }
+      ]
+    },
+    "site_art_8": {
+      "answer": "Pancht 프로젝트 안내입니다. 야추 시스템 기반 서브컬쳐풍 인디게임 등록된 참여 역할은 캐릭터 콘셉트 디자인 · 캐릭터 포트레이트 일러스트입니다. 작업 기간은 2024.08 – 2025.08입니다. 작업물의 공개 범위를 고려하여, 본 페이지에서는 참여 분야와 작업 내역을 중심으로 소개합니다.",
+      "keywords": [
+        "Pancht"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "Pancht 상세 보기",
+          "href": "project.html?collection=art&project=8"
+        }
+      ]
+    },
+    "site_art_9": {
+      "answer": "Trumpush 프로젝트 안내입니다. 디펜스 인디게임 등록된 참여 역할은 2D 아트 리소스 제작입니다. 작업 기간은 2022.12 – 2023.02 (2개월)입니다.",
+      "keywords": [
+        "Trumpush"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "Trumpush 상세 보기",
+          "href": "project.html?collection=art&project=9"
+        }
+      ]
+    },
+    "site_art_10": {
+      "answer": "2023 부산일러스트레이션페어 V.4 프로젝트 안내입니다. 창작 그림 상품을 기획·제작하고, 1인 부스를 운영한 일러스트레이션 페어 참가 프로젝트입니다. 등록된 참여 역할은 1인 부스 운영입니다. 작업 기간은 2023.06 – 2023.09입니다.",
+      "keywords": [
+        "2023 부산일러스트레이션페어 V.4"
+      ],
+      "buttons": [
+        {
+          "label": "게임 프로젝트 목록",
+          "next": "site_games"
+        }
+      ],
+      "links": [
+        {
+          "label": "2023 부산일러스트레이션페어 V.4 상세 보기",
+          "href": "project.html?collection=art&project=10"
+        }
+      ]
+    },
+    "site_games": {
+      "answer": "PROJECT 페이지에 등록된 참여 작업 안내입니다. 프로젝트를 선택하면 공개된 소개·역할·기간과 상세 페이지를 확인할 수 있는 메뉴입니다.",
+      "keywords": [
+        "게임 프로젝트",
+        "게임 목록",
+        "참여 게임"
+      ],
+      "buttons": [
+        {
+          "label": "Hit Salon",
+          "next": "site_art_1"
+        },
+        {
+          "label": "헬로키티 스윗파티",
+          "next": "site_art_2"
+        },
+        {
+          "label": "두근두근 레스토랑",
+          "next": "site_art_3"
+        },
+        {
+          "label": "라테일",
+          "next": "site_art_4"
+        },
+        {
+          "label": "2025 넥슨 대학생 게임잼 재밌넥",
+          "next": "site_art_5"
+        },
+        {
+          "label": "Spready",
+          "next": "site_art_6"
+        },
+        {
+          "label": "Splash Carnival",
+          "next": "site_art_7"
+        },
+        {
+          "label": "Pancht",
+          "next": "site_art_8"
+        },
+        {
+          "label": "Trumpush",
+          "next": "site_art_9"
+        },
+        {
+          "label": "2023 부산일러스트레이션페어 V.4",
+          "next": "site_art_10"
+        }
+      ],
+      "links": [
+        {
+          "label": "PROJECT 전체 보기",
+          "href": "art.html"
+        }
+      ]
+    }
+  },
+  "inquiry": {
+    "controller": "사이트 운영자",
+    "purpose": "관리자·제작 문의 확인 및 이메일 답변",
+    "retentionDays": 30
+  },
+  "catalogRevision": 1,
+  "pageGuides": {
+    "index.html": "site_overview",
+    "about.html": "site_profile",
+    "art.html": "site_works",
+    "drawing.html": "site_drawing",
+    "project.html": "site_works",
+    "marketing.html": "site_marketing",
+    "brand.html": "site_brand",
+    "contents.html": "site_contents",
+    "report.html": "site_reports",
+    "sns.html": "site_sns",
+    "spoton.html": "site_spoton",
+    "noise.html": "site_noise",
+    "inquiry.html": "contact"
+  }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/assets/css/variables.css"><title>챗봇 스튜디오 · 관리자</title><link rel="stylesheet" href="/assets/css/admin.css"><script src="/assets/js/admin.js" defer></script></head>
+<body class="admin-body">
+  <aside class="admin-sidebar">
+    <a class="studio-brand" href="/admin"><span class="brand-icon">C•</span><span>챗봇 스튜디오<small>CONTENT MANAGER</small></span></a>
+    <p class="sidebar-label">WORKSPACE</p>
+    <nav aria-label="관리자 메뉴">
+      <button type="button" data-tab="editor" aria-current="page">01 <span>안내 콘텐츠</span></button>
+      <button type="button" data-tab="versions">02 <span>게시 버전</span></button>
+      <button type="button" data-tab="inquiries">03 <span>문의함</span><span id="inquiry-badge" class="badge">0</span></button>
+      <button type="button" data-tab="account">04 <span>계정 설정</span></button>
+    </nav>
+    <div class="sidebar-bottom"><a href="/index.html" target="_blank" rel="noopener">포트폴리오 홈 ↗</a><p><span class="online-dot"></span> <span id="admin-name">관리자</span></p><button type="button" id="logout">로그아웃</button></div>
+  </aside>
+  <main class="admin-main">
+    <header class="workspace-header"><span>WORKSPACE / CHATBOT</span><div class="workspace-user"><span class="workspace-private">관리자 전용</span><button type="button" id="logout-mobile" class="mobile-logout">로그아웃</button></div></header>
+    <div id="admin-status" class="global-status" role="status" aria-live="polite">관리 데이터를 불러오는 중입니다.</div>
+    <section id="tab-editor" class="tab-section">
+      <div class="page-heading"><div><p class="eyebrow">EDIT → PREVIEW → PUBLISH</p><h1>안내 콘텐츠</h1><p>저장은 초안으로, 게시는 확인한 내용으로.</p></div><button type="button" id="reload" class="secondary">서버 초안 다시 불러오기</button></div>
+      <div class="stat-grid"><article><span>현재 공개 버전</span><strong id="current-version">—</strong><small id="published-at">—</small></article><article><span>저장된 초안</span><strong id="draft-revision">—</strong><small id="draft-at">—</small></article><article><span>편집 상태</span><strong id="edit-state">불러오는 중</strong><small id="preview-state">미리보기 후 게시할 수 있습니다.</small></article></div>
+      <div class="editor-layout">
+        <div class="editor-column">
+          <section class="panel"><div class="panel-heading"><h2>기본 안내</h2><span class="tag">GLOBAL</span></div>
+            <label>챗봇 이름<input id="content-title" maxlength="80"></label>
+            <label>보조 설명<input id="content-subtitle" maxlength="160"></label>
+            <label>일치하는 안내가 없을 때<textarea id="content-fallback" rows="2" maxlength="1000"></textarea></label>
+            <div class="three-fields"><label>이전 버튼<input id="control-back" maxlength="40"></label><label>시작 버튼<input id="control-home" maxlength="40"></label><label>초기화 버튼<input id="control-reset" maxlength="40"></label></div>
+          </section>
+          <section class="panel"><div class="panel-heading"><h2>질문 · 답변 · 분기</h2><span id="node-count" class="tag">—</span></div>
+            <label>편집할 단계<select id="node-select"></select></label>
+            <div class="node-tools"><input id="new-node-id" aria-label="새 단계 ID" placeholder="새 단계 ID (예: campaign)" maxlength="40"><button type="button" id="add-node" class="secondary">단계 추가</button><button type="button" id="delete-node" class="danger-text">삭제</button></div>
+            <label>등록된 답변<textarea id="node-answer" rows="6" maxlength="3000"></textarea></label>
+            <label>매칭 키워드 <span class="field-note">쉼표 또는 줄바꿈으로 구분 · 긴 키워드 우선</span><textarea id="node-keywords" rows="2"></textarea></label>
+            <label>단계 유형<select id="node-form"><option value="">일반 안내</option><option value="inquiry">문의 접수 양식</option></select></label>
+            <div class="panel-heading compact"><h3>다음 선택지</h3><button type="button" id="add-choice" class="secondary small">+ 선택지 추가</button></div>
+            <div id="choice-list"></div>
+            <p class="field-note">버튼명과 이동할 단계를 연결합니다. 시작 단계 ID는 home입니다.</p>
+            <div class="panel-heading compact"><h3>관련 페이지 링크</h3><button type="button" id="add-link" class="secondary small">+ 페이지 링크 추가</button></div>
+            <div id="page-link-list"></div>
+            <p class="field-note">예: about.html 또는 project.html?collection=art&amp;project=1 · 사이트 내부 HTML만 연결됩니다.</p>
+          </section>
+          <section class="panel"><div class="panel-heading"><h2>페이지별 안내 연결</h2><span class="tag">SITE GUIDE</span></div><p class="field-note">각 화면의 ‘현재 페이지 안내’ 버튼이 이동할 단계를 설정합니다.</p><div id="page-guide-list" class="page-guide-list"></div></section>
+          <section class="panel"><div class="panel-heading"><h2>문의 개인정보 안내</h2><span class="tag">CONSENT</span></div>
+            <p class="field-note">문의 양식에 표시되며, 새로 접수하는 문의의 보관 기간에 적용됩니다.</p>
+            <label>수집 주체<input id="inquiry-controller" maxlength="120"></label>
+            <label>수집 목적<input id="inquiry-purpose" maxlength="300"></label>
+            <label>보관 기간 (접수일 기준, 일)<input id="inquiry-retention" type="number" min="1" max="365"></label>
+            <p class="field-note">이름·이메일·문의 내용·동의 일시를 수집합니다. 보관 기간이 지난 문의는 서버에서 정리됩니다.</p>
+          </section>
+        </div>
+        <aside class="preview-column">
+          <section class="panel preview-panel"><div class="panel-heading"><h2>실제 챗봇 미리보기</h2><span class="tag" id="preview-tag">미게시</span></div>
+            <p class="field-note">같은 챗봇 코드로 답변과 분기를 확인합니다. 미리보기에서는 실제 문의가 접수되지 않습니다.</p>
+            <div class="preview-empty" id="preview-empty"><span aria-hidden="true">↗</span><strong>게시 전에 한 번 더.</strong><p>편집 후 ‘미리보기’를 눌러<br>대화 흐름을 확인해 주세요.</p></div>
+            <iframe id="preview-frame" title="미게시 초안 챗봇 미리보기" hidden></iframe>
+            <div class="preview-actions"><button type="button" id="save-draft" class="secondary">초안 저장</button><button type="button" id="preview" class="primary">미리보기</button></div>
+          </section>
+          <section class="panel publish-panel"><span class="eyebrow">FINAL STEP</span><h2>확인한 내용을 게시합니다.</h2><p class="field-note">미리보기 이후 수정하면 다시 확인해야 합니다. 최종 게시 전까지 공개 사이트는 기존 버전으로 유지됩니다.</p><label>게시 메모<input id="publish-note" maxlength="200" placeholder="예: 오늘 조회수 안내 업데이트"></label><button type="button" id="publish" class="primary" disabled>최종 게시</button><p id="publish-help" class="field-note">최신 초안 미리보기가 필요합니다.</p></section>
+        </aside>
+      </div>
+    </section>
+    <section id="tab-versions" class="tab-section" hidden><div class="page-heading"><div><p class="eyebrow">PUBLICATION HISTORY</p><h1>게시 버전</h1><p>이전 안내를 확인하고 초안으로 불러올 수 있습니다.</p></div><button type="button" id="refresh-versions" class="secondary">새로고침</button></div><div class="notice">이전 버전을 불러와도 공개 내용은 바뀌지 않습니다. 미리보기와 최종 게시를 거쳐 새 버전으로 기록됩니다.</div><div id="version-list" class="record-list"></div><section class="panel" id="version-detail" hidden><h2 id="version-detail-title"></h2><pre id="version-json"></pre></section></section>
+    <section id="tab-inquiries" class="tab-section" hidden><div class="page-heading"><div><p class="eyebrow">INBOX</p><h1>문의함</h1><p>개인정보 수집·이용에 동의한 문의만 접수됩니다.</p></div><button type="button" id="refresh-inquiries" class="secondary">새로고침</button></div><div class="inbox-filter"><label>상태 필터<select id="inquiry-filter"><option value="all">전체</option><option value="new">새 문의</option><option value="read">확인</option><option value="done">처리 완료</option></select></label><p id="inquiry-count" class="field-note"></p></div><div id="inquiry-list" class="record-list"></div></section>
+    <section id="tab-account" class="tab-section" hidden><div class="page-heading"><div><p class="eyebrow">ACCOUNT</p><h1>계정 설정</h1><p>관리자 비밀번호를 변경합니다.</p></div></div><form id="password-form" class="panel account-panel"><label>현재 비밀번호<input name="currentPassword" type="password" autocomplete="current-password" maxlength="256" required></label><label>새 비밀번호 (8~128자)<input name="newPassword" type="password" autocomplete="new-password" minlength="8" maxlength="128" required></label><label>새 비밀번호 확인<input name="confirmPassword" type="password" autocomplete="new-password" minlength="8" maxlength="128" required></label><button class="primary" type="submit">비밀번호 변경 후 다시 로그인</button></form></section>
+  </main>
+</body></html>
