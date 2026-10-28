@@ -45,7 +45,7 @@ python server/server.py
 ## 새 포트폴리오 홈
 
 - `index.html`: 기본 진입 화면. 블랙 배경, 네온 블루 `#00DFFF`, 배너 영상 자리와 교차 배치한 네 가지 메뉴.
-- `marketing.html`: 기존 관광 콘텐츠 아카이브 홈. CONTENTS MARKETING PROJECT 메뉴에서 연결됩니다.
+- `marketing.html`: 콘텐츠 마케팅 전체 아카이브. PROJECT 목록의 첫 번째 CONTENTS MARKETING 항목과 홈 상단 바로가기 버튼에서 연결됩니다.
 - `about.html`: 연락처, 프로필 사진 공간, AWARDS 및 EXPERIENCE.
 - `art.html`, `drawing.html`: 정사각형 프로젝트 썸네일 목록.
 - `project.html?collection=drawing&project=1`: 프로젝트별 여러 이미지 상세 화면. `collection=art`도 지원합니다.

@@ -4,6 +4,12 @@
    ] }
    Image paths are relative to the HTML page. No sample artwork is loaded.
 */
+const marketingProject = {
+  title: 'CONTENTS MARKETING',
+  thumbnail: 'assets/images/portfolio/marketing-thumbnail.png',
+  thumbnailAlt: '콘텐츠 마케팅 포트폴리오 — 네온 블루 조명 속 NØISE 캐릭터',
+  period: '2026'
+};
 const projects = {
   "drawing-1": {
     "title": "PROJECT 01",
@@ -410,7 +416,7 @@ const current = projects[`${collection}-${number}`];
 // The same source controls gallery titles and thumbnails and detail image stacks.
 document.querySelectorAll('.project-card').forEach(card => {
   const query = new URL(card.href).searchParams;
-  const entry = projects[`${query.get('collection')}-${query.get('project')}`];
+  const entry = card.dataset.project === 'marketing' ? marketingProject : projects[`${query.get('collection')}-${query.get('project')}`];
   if (!entry) return;
   if (entry.title) {
     card.querySelector('h2').textContent = entry.title;
@@ -443,9 +449,9 @@ if (archiveGrid && document.querySelector('#portfolio-nav a[aria-current="page"]
   const cards = [...archiveGrid.querySelectorAll('.project-card')];
   const yearsFor = card => {
     const id = new URL(card.href).searchParams.get('project');
-    const period = projects[`art-${id}`]?.period;
+    const period = card.dataset.project === 'marketing' ? marketingProject.period : projects[`art-${id}`]?.period;
     const years = period?.match(/\d{4}/g)?.map(Number);
-    return years?.length === 2 ? years : null;
+    return years?.length === 1 ? [years[0], years[0]] : years?.length === 2 ? years : null;
   };
   const matchesYear = (card, year) => {
     const range = yearsFor(card);
