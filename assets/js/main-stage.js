@@ -4,7 +4,6 @@ const carousel = stage?.querySelector('.work-carousel');
 if (stage && carousel) {
   const slides = [...stage.querySelectorAll('.work-slide')];
   const dots = [...stage.querySelectorAll('[data-work-select]')];
-  const count = stage.querySelector('.work-count');
   const names = ['한술', 'NOX', 'Spready'];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0, drag = null, suppressClickUntil = 0;
@@ -25,7 +24,6 @@ if (stage && carousel) {
       if (active) slide.setAttribute('aria-current', 'true'); else slide.removeAttribute('aria-current');
     });
     dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === current)));
-    count.textContent = `0${current + 1} / 03 — ${names[current]}`;
   }
   function select(index) {
     current = (index + slides.length) % slides.length;
