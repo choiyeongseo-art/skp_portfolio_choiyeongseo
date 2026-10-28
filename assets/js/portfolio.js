@@ -676,22 +676,10 @@ if (document.querySelector('#project-title')) {
 }
 
 const bannerVideo = document.querySelector('#banner-video');
-const bannerControl = document.querySelector('.banner-control');
-if (bannerVideo && bannerControl) {
-  const updateVideoControl = () => {
-    bannerControl.textContent = bannerVideo.paused ? 'PLAY' : 'PAUSE';
-    bannerControl.setAttribute('aria-label', bannerVideo.paused ? '배너 영상 재생' : '배너 영상 일시정지');
-  };
-  bannerVideo.addEventListener('play', updateVideoControl);
-  bannerVideo.addEventListener('pause', updateVideoControl);
-  bannerControl.addEventListener('click', () => {
-    if (bannerVideo.paused) bannerVideo.play().catch(updateVideoControl);
-    else bannerVideo.pause();
-  });
+if (bannerVideo) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (reducedMotion.matches) {
     bannerVideo.autoplay = false;
     bannerVideo.pause();
   }
-  updateVideoControl();
 }
