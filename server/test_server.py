@@ -57,6 +57,18 @@ class CMSIntegrationTests(unittest.TestCase):
         self.csrf = r['json']['csrf']
         return r
 
+    def test_studio_entry_and_public_discovery(self):
+        entry = self.request('/chatbot-studio.html', authenticated=False)
+        self.assertEqual(entry['status'], 200)
+        self.assertIn('studio-entry.js'.encode(), entry['body'])
+        discovery = self.request('/api/studio/status', authenticated=False)
+        self.assertEqual(discovery['status'], 200)
+        self.assertEqual(discovery['json'], {'service': 'chatbot-studio', 'loginPath': '/admin/login'})
+        self.assertEqual(discovery['headers']['Access-Control-Allow-Origin'], '*')
+        self.assertNotIn('Set-Cookie', discovery['headers'])
+        self.assertEqual(self.request('/admin/login', authenticated=False)['status'], 200)
+        self.assertEqual(self.request('/api/admin/state', authenticated=False)['status'], 401)
+
     def test_authentication_and_private_files(self):
         for path in ['/api/admin/state', '/api/admin/inquiries', '/api/admin/versions', '/api/admin/preview?token=nope']:
             self.assertEqual(self.request(path, authenticated=False)['status'], 401)

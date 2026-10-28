@@ -245,6 +245,9 @@ def dispatch(req, db):
         raise APIError(405, '지원하지 않는 요청 방식입니다.')
     if method == 'POST':
         req.same_origin()
+    if path == '/api/studio/status' and method == 'GET':
+        return json_response({'service': 'chatbot-studio', 'loginPath': '/admin/login'},
+                             headers=[('Access-Control-Allow-Origin', '*')])
     if path == '/api/admin/login' and method == 'POST':
         payload = req.payload()
         limit(db, 'login:' + req.env.get('REMOTE_ADDR', ''), 8, 600)
