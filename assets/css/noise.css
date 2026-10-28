@@ -1,4 +1,41 @@
 :root{--noise-bg:#141414;--noise-text:#d5d5d5;--noise-dim:#7b7b7b;--noise-line:#343434;--noise-blue:#839eff}
+/* BUS 1003 — a playable final chapter, following the existing content. */
+.noise-game{padding:clamp(72px,9vw,136px) 0;background:#17191e;border-top:1px solid var(--noise-line)}
+.noise-game-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,112px);align-items:center}
+.noise-game-copy,.noise-game-stage{min-width:0}
+.noise-game .noise-index{color:#aebbd6;margin-bottom:48px}
+.noise-game-label{color:#a0a5af;font-size:10px;letter-spacing:.15em;margin-bottom:18px}
+.noise-game h2{font-size:clamp(76px,10vw,152px);font-weight:900;line-height:.85;letter-spacing:-.065em;color:#f1f0eb}
+.noise-game h2 span{color:var(--noise-blue)}
+.noise-game-description{margin-top:32px;font-size:clamp(17px,1.7vw,23px);line-height:1.7;color:#e0e5ef;word-break:keep-all}
+.noise-game-detail{max-width:400px;margin-top:18px;font-size:13px;line-height:1.9;color:#b2b5bd;word-break:keep-all}
+.noise-game-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.noise-game-controls button,.noise-game-controls a{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:12px 15px;border:1px solid #596477;color:#e0e5ef;background:transparent;font:inherit;font-size:11px;cursor:pointer}
+.noise-game-controls button:hover,.noise-game-controls a:hover{background:#303e5c;border-color:var(--noise-blue)}
+.noise-game-controls a{color:#bbcaff}
+.noise-game-note,.noise-game-status{margin-top:18px;font-size:11px;line-height:1.8;color:#a0a5af}
+.noise-game-status{min-height:40px;color:#bbcaff}
+.noise-game-stage{display:grid;justify-items:center;padding:8px 12px 0}
+.noise-game-phone{position:relative;width:min(100%,416px);aspect-ratio:416/870;padding:11px;border:2px solid #59606e;border-radius:50px;background:#101116;box-shadow:0 0 0 4px #22252d,24px 28px 80px #0008}
+.noise-game-side{position:absolute;right:-5px;top:150px;width:4px;height:66px;border-radius:0 3px 3px 0;background:#687184}
+.noise-game-screen{position:relative;width:100%;height:100%;overflow:hidden;border-radius:37px;background:#101624}
+.noise-game-screen iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+.noise-game-screen [hidden]{display:none}
+.noise-game-cover{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;height:100%;padding:clamp(24px,3vw,38px);background:radial-gradient(ellipse at 100% 0,#3c5690 0,transparent 62%),linear-gradient(160deg,#1b263e,#0b0e15 80%);color:#f1f0eb}
+.noise-game-cover-kicker{font-size:8px;line-height:1.8;letter-spacing:.14em;color:#b8c9f5;margin-bottom:auto;padding-top:24px}
+.noise-game-route{display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.14em;color:#aebbd6;margin-top:40px}
+.noise-game-route i{width:34px;height:1px;background:#839eff}
+.noise-game-cover strong{display:block;margin-top:24px;font-size:clamp(64px,7vw,100px);font-weight:900;line-height:.88;letter-spacing:-.065em}
+.noise-game-cover>p{margin-top:24px;font-size:12px;color:#bdc9e1}
+.noise-game-cover button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:54px;margin-top:auto;padding:16px 20px;background:#a9bfff;color:#101624;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.noise-game-cover button:hover{background:#c6d4ff}
+.noise-game-caption{margin-top:26px;font-size:8px;letter-spacing:.12em;color:#aebbd6;text-align:center;line-height:1.8}
+.noise-game-caption span{margin-right:7px;color:var(--noise-blue)}
+.noise-game button:focus-visible,.noise-game a:focus-visible{outline:2px solid #c6d4ff;outline-offset:5px}
+.noise-game-phone:fullscreen{width:min(100vw,480px);height:100dvh;max-width:none;margin:auto;padding:0;border:0;border-radius:0;aspect-ratio:auto;box-shadow:none}
+.noise-game-phone:fullscreen .noise-game-screen{border-radius:0}
+.noise-game-phone::backdrop{background:#0b0e15}
+@media(max-width:767px){.noise-game-grid{grid-template-columns:1fr;gap:32px}.noise-game .noise-index{margin-bottom:32px}.noise-game h2{font-size:clamp(78px,23vw,130px)}.noise-game-stage{padding-inline:6px}.noise-game-cover strong{font-size:clamp(64px,20vw,100px)}.noise-game-cover{padding:28px}.noise-game-status{min-height:0}.noise-game-note{font-size:10px}.noise-game-caption{font-size:7px}}
 html{background:var(--noise-bg)}
 .noise-theme{color:var(--noise-text);background:var(--noise-bg);font-family:Arial,"Noto Sans KR",sans-serif}
 .noise-theme ::selection{color:#141414;background:var(--noise-text)}
