@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="제작한 관광 포스터와 카드뉴스, 영상 콘텐츠를 모은 아카이브입니다.">
+  <meta name="description" content="관광 포스터와 카드뉴스, 영상, 3D 프리비즈 스튜디오와 NØISE 로브의 광고 화보 예시를 모은 콘텐츠 아카이브입니다.">
   <meta name="theme-color" content="#a9d8f3">
   <title>Contents · Tourism Content Archive</title>
   <link rel="icon" href="assets/images/common/favicon.svg" type="image/svg+xml">
@@ -11,6 +11,8 @@
   <script src="assets/js/main.js?v=20261022-toon-strip" defer></script>
   <script src="assets/js/taste-gallery.js?v=20261022-stable" defer></script>
   <link rel="stylesheet" href="assets/css/main-headings.css?v=20261022">
+  <link rel="stylesheet" href="assets/css/previs-feature.css?v=20261028">
+  <script src="assets/js/previs-feature.js?v=20261028" defer></script>
   <link rel="stylesheet" href="assets/css/chatbot.css">
   <script src="assets/js/inquiry.js" defer></script>
   <script src="assets/js/chatbot.js" defer></script>
@@ -28,7 +30,7 @@
     <header class="page-header"><div class="container">
       <p class="eyebrow">02 · Created Works</p>
       <h1 class="page-title">CONTENTS<span class="accent">.</span></h1>
-      <p class="page-intro">조사를 바탕으로 제작한 관광 포스터와 카드뉴스, 영상 콘텐츠를 모아 보여주는 공간입니다. 각 결과물의 기획 의도와 핵심 메시지를 함께 기록했습니다.</p>
+      <p class="page-intro">조사를 바탕으로 제작한 관광 포스터와 카드뉴스, 영상부터 3D 프리비즈와 광고 화보까지. 각 결과물의 기획 의도와 제작 과정을 함께 기록했습니다.</p>
     </div></header>
 
     <section class="section section--soft" aria-labelledby="works-heading"><div class="container">
@@ -40,8 +42,41 @@
         <button class="filter-button" type="button" data-filter="web" aria-pressed="false">웹사이트</button>
         <button class="filter-button" type="button" data-filter="instatoon" aria-pressed="false">인스타툰</button>
         <button class="filter-button" type="button" data-filter="video" aria-pressed="false">영상</button>
+        <button class="filter-button" type="button" data-filter="photo" aria-pressed="false">포토 · 3D</button>
       </div>
       <div class="content-stack">
+
+        <article id="previs-studio" class="previs-feature filterable-content" data-category="web photo" aria-labelledby="previs-title">
+          <div class="previs-feature-heading">
+            <div><span class="tag">3D PREVIS · AI PHOTO</span><h3 id="previs-title">구도를 만들고,<br>화보로 완성하다.</h3></div>
+            <p>캐릭터와 인물의 배치, 카메라 앵글과 조명을 먼저 설계하는 프리비즈 스튜디오.<br>직접 장면을 만들어 보고, NØISE 로브와 함께한 광고 화보 예시를 확인하세요.</p>
+          </div>
+          <div class="previs-feature-grid">
+            <div class="previs-tool">
+              <div class="previs-step"><span>01 / BUILD THE SCENE</span><span>INTERACTIVE TOOL</span></div>
+              <a class="previs-tool-preview" href="tools/previs-studio/index.html" target="_blank" rel="noopener noreferrer" data-previs-popup aria-label="프리비즈 스튜디오 팝업으로 열기">
+                <img src="assets/images/contents/previs-studio-preview.png" alt="다크 테마의 NARU 프리비즈 스튜디오. 캐릭터와 사람 모델, 카메라와 조명 편집 화면" loading="lazy" width="1412" height="900">
+                <span>프리비즈 스튜디오 열기 <b aria-hidden="true">↗</b></span>
+              </a>
+              <div class="previs-tool-copy">
+                <h4>NARU studio<br>프리비즈 스튜디오</h4>
+                <p>캐릭터와 사람 모델의 구도부터 카메라 화각, 조명과 배경까지. 원하는 장면을 미리 확인하고 이미지로 저장할 수 있습니다.</p>
+                <ul class="previs-capabilities" aria-label="스튜디오 주요 기능"><li>3D 시점 · 광각 조절</li><li>조명 · 배경 편집</li><li>PNG · 장면 저장</li></ul>
+                <a class="previs-open" href="tools/previs-studio/index.html" target="_blank" rel="noopener noreferrer" data-previs-popup>스튜디오 팝업으로 열기 <span aria-hidden="true">↗</span></a>
+                <p class="previs-open-note">큰 팝업 화면에서 작업하거나 별도 탭으로 열 수 있습니다.</p>
+                <a class="previs-scene-link" href="tools/previs-studio/rov-campaign-scene.json" download>화보의 광각 구도 파일 받기 ↓</a>
+              </div>
+            </div>
+            <figure class="previs-photo">
+              <div class="previs-step"><span>02 / THE FINAL PHOTO</span><span>CAMPAIGN EXAMPLE</span></div>
+              <div class="previs-photo-image">
+                <img src="assets/images/contents/noise-rov-figure-campaign.png" alt="NØISE ROV(로브)를 모델로 한 캐릭터 피규어 광고 화보 예시. 흑백 백스테이지에서 로브가 피규어를 카메라 앞으로 들고 있는 광각 사진" width="1122" height="1402" loading="lazy" role="button" tabindex="0" data-lightbox-image aria-label="NØISE 로브 광고 화보 확대 보기">
+                <span class="previs-photo-badge" aria-hidden="true">PHOTO ↗</span>
+              </div>
+              <figcaption><div><span class="previs-photo-kicker">NØISE · ROV</span><h4>로브와 함께한 피규어 광고 화보</h4></div><p>전경의 피규어와 얼굴이 함께 드러나는 광각 구도에 흑백 플래시, 필름 입자와 백스테이지 무드를 더한 AI 제작 광고 예시입니다.</p><span class="previs-photo-credit">프리비즈 구도 설계 → AI 화보 제작 · MODEL: NØISE ROV(로브)</span></figcaption>
+            </figure>
+          </div>
+        </article>
 
         <article class="tourism-poster filterable-content" data-category="poster" aria-labelledby="poster-title">
           <figure class="tourism-poster-visual">
@@ -284,6 +319,11 @@
         </div>
       </div>
     </div></section>
+
+    <dialog class="previs-dialog" data-previs-dialog aria-labelledby="previs-dialog-title">
+      <div class="previs-dialog-bar"><h2 id="previs-dialog-title">프리비즈 스튜디오</h2><div><a href="tools/previs-studio/index.html" target="_blank" rel="noopener noreferrer">새 탭으로 열기 ↗</a><button type="button" data-previs-close aria-label="프리비즈 스튜디오 닫기">닫기 ×</button></div></div>
+      <iframe data-previs-frame title="NARU 프리비즈 스튜디오 편집 화면" allow="fullscreen" allowfullscreen></iframe>
+    </dialog>
 
     <dialog class="image-lightbox" data-image-lightbox aria-label="확대 이미지">
       <button type="button" data-lightbox-close aria-label="확대 이미지 닫기">닫기 ×</button>

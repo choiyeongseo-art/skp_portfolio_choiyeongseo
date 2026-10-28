@@ -1,0 +1,44 @@
+.previs-feature{padding:clamp(24px,4vw,56px);color:#e9edf3;background:#16181d;border:1px solid #313640;scroll-margin-top:108px}
+.previs-feature[hidden]{display:none}
+.previs-feature-heading{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;padding-bottom:34px;margin-bottom:30px;border-bottom:1px solid #3a3e48}
+.previs-feature .tag{color:#a9c5ff;background:transparent;border:1px solid #53647e}
+.previs-feature-heading h3{margin-top:18px;font-size:clamp(30px,4vw,52px);line-height:1.2;letter-spacing:-.055em;font-weight:800;color:#f4f4f1}
+.previs-feature-heading>p{font-size:13px;line-height:1.9;color:#b6becb;word-break:keep-all}
+.previs-feature-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.previs-tool,.previs-photo{min-width:0}
+.previs-step{display:flex;justify-content:space-between;gap:12px;margin-bottom:16px;font-size:9px;line-height:1.6;letter-spacing:.09em;color:#a8b7d1}
+.previs-step>span:last-child{color:#858d9c;text-align:right}
+.previs-tool-preview{position:relative;display:block;overflow:hidden;border:1px solid #444b57;background:#202227}
+.previs-tool-preview img{display:block;width:100%;height:auto;aspect-ratio:1412/900;object-fit:contain}
+.previs-tool-preview>span{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 18px;background:#262d3b;color:#d9e5ff;font-size:12px;font-weight:700}
+.previs-tool-preview:hover>span{background:#35435e}
+.previs-tool-copy{padding-top:26px}
+.previs-tool-copy h4{font-size:clamp(22px,2.4vw,32px);line-height:1.35;letter-spacing:-.04em;color:#f4f4f1;font-weight:800}
+.previs-tool-copy>p{margin-top:16px;font-size:13px;line-height:1.9;color:#b6becb;word-break:keep-all}
+.previs-capabilities{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding:0;list-style:none}
+.previs-capabilities li{padding:6px 9px;border:1px solid #454e5f;color:#c7d1e2;font-size:10px;line-height:1.5}
+.previs-open{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:50px;margin-top:28px;padding:15px 18px;background:#a9c5ff;color:#111827;font-size:13px;font-weight:800}
+.previs-open:hover{background:#c2d5ff}
+.previs-tool-copy>.previs-open-note{margin-top:10px;font-size:10px;color:#a3adbd}
+.previs-scene-link{display:inline-block;margin-top:16px;padding-block:5px;color:#b8ceff;font-size:11px;border-bottom:1px solid #586a8b}
+.previs-photo-image{position:relative}
+.previs-photo-image>img{display:block;width:100%;height:auto;cursor:zoom-in}
+.previs-photo-badge{position:absolute;right:14px;bottom:14px;padding:7px 10px;border:1px solid #ffffff70;color:#fff;background:#141414a6;pointer-events:none;font-size:9px;letter-spacing:.08em}
+.previs-photo figcaption{padding-top:22px}
+.previs-photo-kicker{font-size:10px;letter-spacing:.15em;color:#a9c5ff}
+.previs-photo h4{margin-top:10px;color:#f4f4f1;font-size:20px;letter-spacing:-.04em;font-weight:700;line-height:1.5}
+.previs-photo figcaption p{margin-top:12px;color:#b6becb;font-size:12px;line-height:1.9;word-break:keep-all}
+.previs-photo-credit{display:block;margin-top:18px;padding-top:15px;border-top:1px solid #3a3e48;color:#929dac;font-size:9px;line-height:1.8}
+.previs-feature a:focus-visible,.previs-feature [role=button]:focus-visible{outline:3px solid #a9c5ff;outline-offset:5px}
+.previs-dialog{width:calc(100vw - 40px);max-width:1600px;height:calc(100dvh - 40px);max-height:none;margin:auto;padding:0;border:1px solid #4b5059;background:#222;color:#eee;box-shadow:0 25px 100px #0008;overflow:hidden}
+.previs-dialog[open]{display:flex;flex-direction:column}
+.previs-dialog::backdrop{background:#090c12c9;backdrop-filter:blur(5px)}
+.previs-dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:54px;padding:10px 18px;border-bottom:1px solid #444;background:#181818}
+.previs-dialog-bar h2{font-size:14px;font-weight:700;line-height:1.5;color:#eee}
+.previs-dialog-bar>div{display:flex;gap:16px;align-items:center;flex-shrink:0}
+.previs-dialog-bar a,.previs-dialog-bar button{padding:8px 0;color:#ccc;background:transparent;font:inherit;font-size:11px;cursor:pointer;white-space:nowrap}
+.previs-dialog-bar a:hover,.previs-dialog-bar button:hover{color:#fff}
+.previs-dialog-bar a:focus-visible,.previs-dialog-bar button:focus-visible{outline:2px solid #a9c5ff;outline-offset:3px}
+.previs-dialog iframe{display:block;width:100%;flex:1;min-height:0;border:0;background:#222}
+@media(max-width:767px){.previs-dialog{width:100vw;height:100dvh;border:0}.previs-dialog-bar{padding:10px 12px;gap:8px}.previs-dialog-bar h2{font-size:12px}.previs-dialog-bar>div{gap:12px}.previs-dialog-bar a,.previs-dialog-bar button{font-size:10px}}
+@media(max-width:767px){.previs-feature-heading{grid-template-columns:1fr;gap:20px;padding-bottom:24px;margin-bottom:24px}.previs-feature-grid{grid-template-columns:1fr;gap:40px}.previs-feature{padding:24px 18px}.previs-feature-heading>p{font-size:12px}.previs-step{font-size:8px}.previs-feature-heading h3{font-size:34px}.previs-tool-copy h4{font-size:26px}}
