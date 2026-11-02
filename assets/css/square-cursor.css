@@ -1,0 +1,11 @@
+@media (hover:hover) and (pointer:fine){
+  html.has-square-cursor,html.has-square-cursor *{cursor:none!important}
+  html.has-square-cursor input,html.has-square-cursor textarea,html.has-square-cursor [contenteditable="true"]{cursor:text!important}
+}
+.square-cursor,.square-cursor-trail{position:fixed;top:0;left:0;pointer-events:none!important;z-index:2147483647}
+.square-cursor{width:16px;height:16px;margin:-8px 0 0 -8px;border:1px solid var(--pf-accent,#00dfff);background:transparent;box-shadow:0 0 7px #00dfff99,inset 0 0 5px #00dfff55;opacity:0;transition:background .12s,box-shadow .12s,opacity .12s;will-change:transform}
+.square-cursor.is-visible{opacity:1}
+.square-cursor.is-link{background:var(--pf-accent,#00dfff);box-shadow:0 0 14px #00dfffbb,inset 0 0 4px #fff9}
+.square-cursor.is-pressed{width:12px;height:12px;margin:-6px 0 0 -6px}
+.square-cursor-trail{width:100%;height:100%}
+@media (forced-colors:active){.square-cursor,.square-cursor-trail{display:none}}

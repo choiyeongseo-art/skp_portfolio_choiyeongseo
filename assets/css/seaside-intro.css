@@ -1,0 +1,36 @@
+.seaside-intro{position:fixed;inset:0;z-index:20000;overflow:hidden;background:#a9d8f3;pointer-events:none;animation:seaside-failsafe .3s 2.3s forwards}
+.seaside-intro canvas{display:block;width:100%;height:100%}
+.seaside-intro-copy{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;color:#17324d;text-align:center;pointer-events:none}
+.seaside-intro-copy small{font:10px var(--font-sans);letter-spacing:.25em}
+.seaside-intro-copy strong{font:800 clamp(40px,10vw,120px)/.95 var(--font-display);letter-spacing:-.065em}
+.seaside-intro-copy span{font:11px var(--font-sans);letter-spacing:.15em}
+.seaside-intro button{position:absolute;right:5vw;bottom:6vh;background:transparent;color:#17324d;border:1px solid #17324d66;border-radius:999px;padding:10px 16px;pointer-events:auto;cursor:pointer;font:11px var(--font-sans)}
+.seaside-intro.is-leaving{opacity:0;transition:opacity .35s ease;pointer-events:none}
+.seaside-intro.is-leaving button{pointer-events:none}
+@keyframes seaside-failsafe{to{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.seaside-intro{display:none}}
+/* Adapted from Animista slide-in-bottom, generated 2026-11-02.
+ * Copyright 2017 Ana Travas. FreeBSD (BSD-2-Clause).
+ * Source: https://animista.net/play/entrances/slide-in/slide-in-bottom
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * Travel distance reduced from 1000px to 26px for this short intro. */
+@keyframes seaside-slide-in-bottom{0%{transform:translateY(26px);opacity:0}100%{transform:translateY(0);opacity:1}}
+.seaside-intro-copy strong{animation:seaside-slide-in-bottom .55s cubic-bezier(.25,.46,.45,.94) both}
+@media(prefers-reduced-motion:reduce){.seaside-intro-copy strong{animation:none}}

@@ -20,7 +20,7 @@ if (stage && carousel) {
       slide.style.transform = `translateX(calc(-50% + ${x}px)) translateZ(${active ? 0 : -190}px) rotateY(${-relative * 13}deg)`;
       slide.style.zIndex = active ? '3' : '1';
       slide.classList.toggle('is-active', active);
-      slide.querySelector('a').setAttribute('aria-label', `${names[i]} 제작 과정 보기${active ? '' : ' — 먼저 카드 선택'}`);
+      slide.querySelector('a').setAttribute('aria-label', `${names[i]} 작업 프로세스 미리보기${active ? '' : ' — 먼저 카드 선택'}`);
       if (active) slide.setAttribute('aria-current', 'true'); else slide.removeAttribute('aria-current');
     });
     dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === current)));
@@ -137,7 +137,7 @@ if (stage && carousel) {
   }
   if ('requestIdleCallback' in window) requestIdleCallback(addAtmosphere, { timeout: 1000 }); else addAtmosphere();
 
-  // Pause the original banner while it is below the new MAIN to avoid decoding off screen.
+  // Pause the home banner whenever it is off screen.
   const banner = document.querySelector('#banner-video');
   if (banner) new IntersectionObserver(entries => {
     if (reduced.matches || document.hidden || !entries[0].isIntersecting) banner.pause();
