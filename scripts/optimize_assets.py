@@ -1,0 +1,135 @@
+"""Lossless site assets and responsive derivatives. Run with Pillow/WebP installed."""
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from PIL import Image
+import json
+import re
+import shutil
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[1]
+BACKUP = ROOT.parent / 'output' / 'optimization-originals'
+REPORT = ROOT.parent / 'output' / 'optimization-report.json'
+
+
+def archive(path):
+    dest = BACKUP / path.relative_to(ROOT)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if not dest.exists():
+        shutil.copy2(path, dest)
+
+
+def image_asset(path):
+    source_bytes = path.stat().st_size
+    with Image.open(path) as raw:
+        if getattr(raw, 'is_animated', False):
+            return None
+        image = raw.convert('RGBA' if 'A' in raw.getbands() or 'transparency' in raw.info else 'RGB')
+        options = {'lossless': True, 'method': 4, 'exact': True}
+        if raw.info.get('icc_profile'):
+            options['icc_profile'] = raw.info['icc_profile']
+        target = path.with_suffix('.webp')
+        if target.exists():
+            raise RuntimeError(f'Unexpected destination: {target}')
+        image.save(target, **options)
+        with Image.open(target) as check:
+            assert check.convert(image.mode).tobytes() == image.tobytes(), path
+        if target.stat().st_size >= source_bytes * .97:
+            target.unlink()
+            return None
+        archive(path)
+        derivatives = []
+        if image.width >= 1100 and source_bytes >= 100_000:
+            for width in (640, 1280, 1920):
+                if width >= image.width * .85:
+                    continue
+                variant = target.with_name(f'{target.stem}.w{width}.webp')
+                preview = image.resize((width, round(image.height * width / image.width)), Image.Resampling.LANCZOS)
+                preview.save(variant, **options)
+                derivatives.append([variant.relative_to(ROOT).as_posix(), width])
+        derivatives.append([target.relative_to(ROOT).as_posix(), image.width])
+        return {'old': path.relative_to(ROOT).as_posix(), 'src': target.relative_to(ROOT).as_posix(),
+                'width': image.width, 'height': image.height, 'sources': derivatives,
+                'before': source_bytes, 'after': target.stat().st_size}
+
+
+def main():
+    if REPORT.exists():
+        raise SystemExit('This one-time migration already completed. Keep the existing manifest and report; do not overwrite them.')
+    before = sum(p.stat().st_size for p in (ROOT / 'assets').rglob('*') if p.is_file())
+    files = [p for p in (ROOT / 'assets/images').rglob('*.png') if p.stat().st_size > 30_000]
+    images = []
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        for i, result in enumerate(pool.map(image_asset, files), 1):
+            if result:
+                images.append(result)
+            if i % 10 == 0:
+                print(f'Images processed: {i}/{len(files)}', flush=True)
+    mapping = {r['old']: r['src'] for r in images}
+    audio = []
+    for path in (ROOT / 'assets/audio').glob('*.wav'):
+        target = path.with_suffix('.flac')
+        subprocess.run(['ffmpeg', '-v', 'error', '-nostdin', '-i', str(path), '-c:a', 'flac', '-compression_level', '8', str(target)], check=True)
+        def pcm_hash(p):
+            return subprocess.check_output(['ffmpeg', '-v', 'error', '-nostdin', '-i', str(p), '-map', '0:a:0', '-f', 'hash', '-hash', 'sha256', '-']).strip()
+        assert pcm_hash(path) == pcm_hash(target), path
+        if target.stat().st_size < path.stat().st_size:
+            archive(path)
+            mapping[path.relative_to(ROOT).as_posix()] = target.relative_to(ROOT).as_posix()
+            audio.append({'src': target.relative_to(ROOT).as_posix(), 'before': path.stat().st_size, 'after': target.stat().st_size})
+        else:
+            target.unlink()
+    text_files = [p for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts and p.suffix in ('.html', '.js', '.css', '.json', '.py', '.md')]
+    for path in text_files:
+        if path == Path(__file__).resolve():
+            continue
+        text = path.read_text(encoding='utf-8')
+        updated = text
+        for old, new in mapping.items():
+            updated = updated.replace(old, new).replace(old.removeprefix('assets/'), new.removeprefix('assets/'))
+        if updated != text:
+            path.write_text(updated, encoding='utf-8')
+    # Delete only assets with verified lossless replacements, after updating references.
+    for old in mapping:
+        (ROOT / old).unlink()
+    manifest = {r['src']: {'width': r['width'], 'height': r['height'],
+                'srcset': ', '.join(f'{p} {w}w' for p, w in r['sources'])} for r in images}
+    (ROOT / 'data/image-manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    script = '/* Generated by scripts/optimize_assets.py. */\nconst siteImages=' + json.dumps(manifest, ensure_ascii=False, separators=(',', ':')) + ';\n'
+    script += "window.setSiteImage=(image,src,sizes='(max-width: 768px) 100vw, 90vw')=>{const info=siteImages[src];if(info){image.width=info.width;image.height=info.height;image.sizes=sizes;image.srcset=info.srcset;}image.decoding='async';image.src=src;};\n"
+    (ROOT / 'assets/js/responsive-images.js').write_text(script, encoding='utf-8')
+    # Static images get native srcset with no runtime observer or extra request.
+    for path in ROOT.glob('*.html'):
+        text = path.read_text(encoding='utf-8')
+        def update_img(match):
+            tag = match.group(0)
+            source = re.search(r'\bsrc="([^"]+)"', tag)
+            if not source:
+                return tag
+            local = ROOT / source[1]
+            if not local.is_file():
+                return tag
+            try:
+                with Image.open(local) as image:
+                    w, h = image.size
+            except Exception:
+                return tag
+            additions = ' decoding="async"' if 'decoding=' not in tag else ''
+            if not re.search(r'\bwidth=', tag):
+                additions += f' width="{w}"'
+            if not re.search(r'\bheight=', tag):
+                additions += f' height="{h}"'
+            info = manifest.get(source[1])
+            if info and 'srcset=' not in tag and len(info['srcset'].split(',')) > 1:
+                sizes = '(max-width: 540px) 100vw, 50vw' if path.name == 'index.html' else '100vw'
+                additions += f' srcset="{info["srcset"]}" sizes="{sizes}"'
+            return tag[:-1] + additions + '>'
+        text = re.sub(r'<img\b[^>]*>', update_img, text)
+        path.write_text(text, encoding='utf-8')
+    after = sum(p.stat().st_size for p in (ROOT / 'assets').rglob('*') if p.is_file())
+    REPORT.write_text(json.dumps({'before': before, 'after': after, 'images': images, 'audio': audio}, ensure_ascii=False, indent=2), encoding='utf-8')
+    print(f'Asset bytes: {before:,} -> {after:,}; {len(images)} images and {len(audio)} tracks; report: {REPORT}', flush=True)
+
+
+if __name__ == '__main__':
+    main()

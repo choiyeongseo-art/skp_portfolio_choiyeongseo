@@ -48,3 +48,6 @@ body{background:var(--pf-bg);color:var(--pf-text);font-family:var(--font-sans);l
 .project-trailer{margin-top:24px}.project-trailer h2{font-size:20px;margin-bottom:20px}.project-trailer video{display:block;width:100%;aspect-ratio:16/9;background:#101012;object-fit:contain;border:1px solid var(--pf-line)}.project-trailer>a{display:inline-block;margin-top:14px}.project-trailer>a:hover{color:var(--pf-accent)}
 
 .resume-section-caption{font-size:12px;color:var(--pf-muted);margin-top:12px}.activity-columns{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px}.activity-columns h4{font-size:11px;color:var(--pf-accent);letter-spacing:.05em;font-weight:500}.activity-columns .experience-bullets{margin-top:10px}.activity-columns>div+div{padding-left:22px;border-left:1px solid var(--pf-line)}.resume-publication{color:var(--pf-muted);font-size:12px;line-height:1.9;margin-top:10px}@media(max-width:600px){.activity-columns{grid-template-columns:1fr;gap:22px}.activity-columns>div+div{padding-left:0;padding-top:20px;border-left:0;border-top:1px solid var(--pf-line)}}
+
+/* Club names and their academic affiliations share a left-aligned hierarchy. */
+.resume-entry .activity-affiliation{font-size:12px;font-weight:400;line-height:1.8;color:var(--pf-muted);margin:0;text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere}

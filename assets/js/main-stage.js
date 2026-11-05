@@ -7,10 +7,15 @@ if (stage && carousel) {
   const names = ['한술', 'NOX', 'Spready'];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0, drag = null, suppressClickUntil = 0;
-  function draw(offset = 0) {
-    const width = slides[0].offsetWidth;
+  let slideWidth = 0, resizeFrame = 0;
+  function measure() {
+    slideWidth = slides[0].offsetWidth;
     const height = Math.max(...slides.map(slide => slide.offsetHeight)) + 62;
     if (carousel.style.height !== `${height}px`) carousel.style.height = `${height}px`;
+    draw();
+  }
+  function draw(offset = 0) {
+    const width = slideWidth;
     const mobile = innerWidth <= 540;
     slides.forEach((slide, i) => {
       let relative = (i - current + slides.length) % slides.length;
@@ -71,8 +76,12 @@ if (stage && carousel) {
     if (drag?.id === event.pointerId) { drag = null; carousel.classList.remove('is-dragging'); draw(); }
   });
   carousel.addEventListener('dragstart', event => event.preventDefault());
-  new ResizeObserver(() => draw()).observe(carousel);
-  stage.classList.add('carousel-ready'); select(0);
+  const sizing = new ResizeObserver(() => {
+    if (!resizeFrame) resizeFrame = requestAnimationFrame(() => { resizeFrame = 0; measure(); });
+  });
+  sizing.observe(carousel);
+  slides.forEach(slide => sizing.observe(slide));
+  stage.classList.add('carousel-ready'); measure(); select(0);
   // Keep the original helper on the original home, clear of the new gallery.
   document.body.classList.add('main-is-visible');
   new IntersectionObserver(entries => {
@@ -102,7 +111,7 @@ if (stage && carousel) {
       geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
       const material = new THREE.PointsMaterial({ color: 0x00dfff, size: .014, transparent: true, opacity: .35, depthWrite: false });
       const field = new THREE.Points(geometry, material); scene.add(field);
-      let target = 0, visible = true, raf = 0, previous = 0;
+      let target = 0, visible = false, raf = 0, previous = 0;
       const resize = () => {
         renderer.setSize(stage.clientWidth, stage.clientHeight, false);
         camera.aspect = stage.clientWidth / stage.clientHeight; camera.updateProjectionMatrix();
@@ -110,24 +119,30 @@ if (stage && carousel) {
       new ResizeObserver(resize).observe(stage); resize();
       stage.addEventListener('workchange', event => { target = event.detail * .34; });
       function frame(now) {
+        raf = 0;
+        if (!visible || document.hidden) return;
         raf = requestAnimationFrame(frame);
-        if (!visible || document.hidden || now - previous < 32) return;
+        if (now - previous < 32) return;
         previous = now;
         field.rotation.y += (target - field.rotation.y) * .025;
         field.rotation.z = Math.sin(now * .00007) * .06;
         renderer.render(scene, camera);
       }
+      function syncFrames() {
+        if (visible && !document.hidden && !raf) raf = requestAnimationFrame(frame);
+        if ((!visible || document.hidden) && raf) { cancelAnimationFrame(raf); raf = 0; }
+      }
+      document.addEventListener('visibilitychange', syncFrames);
       const observer = new IntersectionObserver(entries => {
         visible = entries[0].isIntersecting;
-        if (visible && !raf) raf = requestAnimationFrame(frame);
-        if (!visible && raf) { cancelAnimationFrame(raf); raf = 0; }
+        syncFrames();
       });
       observer.observe(stage);
       canvas.addEventListener('webglcontextlost', event => {
         event.preventDefault(); cancelAnimationFrame(raf); raf = 0; canvas.hidden = true;
       });
       reduced.addEventListener('change', event => {
-        if (event.matches) { cancelAnimationFrame(raf); raf = 0; observer.disconnect(); renderer.dispose(); geometry.dispose(); material.dispose(); canvas.hidden = true; }
+        if (event.matches) { document.removeEventListener('visibilitychange', syncFrames); cancelAnimationFrame(raf); raf = 0; observer.disconnect(); renderer.dispose(); geometry.dispose(); material.dispose(); canvas.hidden = true; }
       }, { once: true });
       stage.dataset.webgl = 'ready';
     } catch {
@@ -135,15 +150,10 @@ if (stage && carousel) {
       stage.dataset.webgl = 'fallback';
     }
   }
-  if ('requestIdleCallback' in window) requestIdleCallback(addAtmosphere, { timeout: 1000 }); else addAtmosphere();
-
-  // Pause the home banner whenever it is off screen.
-  const banner = document.querySelector('#banner-video');
-  if (banner) new IntersectionObserver(entries => {
-    if (reduced.matches || document.hidden || !entries[0].isIntersecting) banner.pause();
-    else if (!banner.dataset.userPaused) banner.play().catch(() => {});
-  }, { threshold: .08 }).observe(banner);
-  document.querySelector('.banner-control')?.addEventListener('click', () => {
-    if (banner) banner.dataset.userPaused = banner.paused ? 'true' : '';
-  });
+  // Keep the 3D library off the initial network/parse path until this section approaches.
+  const loader = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    loader.disconnect(); addAtmosphere();
+  }, {rootMargin: '200px'});
+  loader.observe(stage);
 }

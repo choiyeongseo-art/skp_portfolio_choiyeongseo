@@ -1,9 +1,11 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
 
 const canvas = document.querySelector("[data-noise-canvas]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (canvas && !reduceMotion) {
+async function startNoiseAtmosphere() {
+  if (!canvas || reduceMotion || navigator.connection?.saveData) return;
+  try {
+  const THREE = await import('./vendor/three.module.min.js');
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   const scene = new THREE.Scene();
@@ -21,5 +23,26 @@ if (canvas && !reduceMotion) {
   window.addEventListener("resize", resize); resize();
   window.addEventListener("pointermove", (event) => material.uniforms.uPointer.value.set(event.clientX/window.innerWidth,1-event.clientY/window.innerHeight), { passive: true });
   const clock = new THREE.Clock();
-  const draw = () => { material.uniforms.uTime.value=clock.getElapsedTime(); renderer.render(scene,camera); requestAnimationFrame(draw); }; draw();
+  let raf = 0, inView = false, previous = 0;
+  const draw = now => {
+    raf = 0;
+    if (!inView || document.hidden) return;
+    raf = requestAnimationFrame(draw);
+    if (now - previous < 32) return;
+    previous = now;
+    material.uniforms.uTime.value=clock.getElapsedTime(); renderer.render(scene,camera);
+  };
+  function sync() {
+    if (inView && !document.hidden && !raf) raf = requestAnimationFrame(draw);
+    if ((!inView || document.hidden) && raf) { cancelAnimationFrame(raf); raf = 0; }
+  }
+  document.addEventListener('visibilitychange', sync);
+  new IntersectionObserver(entries => { inView = entries[0].isIntersecting; sync(); }).observe(canvas);
+  } catch { canvas.hidden = true; }
+}
+if (canvas) {
+  const loader = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting)) { loader.disconnect(); startNoiseAtmosphere(); }
+  }, {rootMargin: '100px'});
+  loader.observe(canvas);
 }

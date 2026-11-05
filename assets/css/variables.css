@@ -1,6 +1,6 @@
 @font-face {
   font-family: "KBL Jump Extended";
-  src: url("../fonts/KBLJump-ExtraBoldExtended.ttf") format("truetype");
+  src: url("../fonts/KBLJump-ExtraBoldExtended.woff2") format("woff2");
   font-style: normal;
   font-weight: 800;
   font-display: swap;

@@ -1,0 +1,17 @@
+/* Float the whole image frame so the existing crop and composition stay intact. */
+@media(prefers-reduced-motion:no-preference){
+  #selected>.feature>.feature-media{animation:home-image-float 7.5s ease-in-out infinite;animation-play-state:paused}
+  #selected>.feature:nth-child(2)>.feature-media{animation-duration:8.4s;animation-delay:-2.7s}
+  #selected>.feature:nth-child(3)>.feature-media{animation-duration:8s;animation-delay:-4.4s}
+  #selected>.feature.is-floating>.feature-media{animation-play-state:running}
+  #selected .motion-copy{opacity:0;filter:blur(6px);transform:translate3d(-22px,0,0);transition:opacity .85s cubic-bezier(.22,1,.36,1),filter .85s cubic-bezier(.22,1,.36,1),transform .95s cubic-bezier(.22,1,.36,1)}
+  #selected>.feature:nth-child(even) .motion-copy{transform:translate3d(22px,0,0)}
+  #selected>.feature .motion-copy.is-revealed{opacity:1;filter:blur(0);transform:translate3d(0,0,0)}
+  #selected>.feature .motion-copy.reveal-complete{filter:none;transform:none;transition:none}
+  @media(max-width:540px){
+    #selected .motion-copy,#selected>.feature:nth-child(even) .motion-copy{transform:translate3d(0,-16px,0)}
+    #selected>.feature .motion-copy.is-revealed{transform:translate3d(0,0,0)}
+    #selected>.feature .motion-copy.reveal-complete{transform:none}
+  }
+}
+@keyframes home-image-float{0%,100%{transform:translate3d(0,3px,0) rotate(-.12deg)}50%{transform:translate3d(0,-6px,0) rotate(.12deg)}}
