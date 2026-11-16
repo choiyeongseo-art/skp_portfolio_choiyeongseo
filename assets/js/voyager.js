@@ -15,7 +15,7 @@
       memberVideo.play().catch(() => {});
     } else {
       memberVideo.pause();
-      memberPhoto.src = `assets/images/voyager/sheets/${activeMember}-${value}.png`;
+      memberPhoto.src = `assets/images/voyager/sheets/${activeMember}-${value}-v2.png`;
       memberPhoto.alt = `${members[activeMember][2]} Costume ${value}`;
     }
   }
@@ -97,7 +97,7 @@
     if (!empty) {
       song.pause();
       player.src = films[key][1];
-      player.poster = key === 'group' ? 'assets/images/voyager/film-poster.jpg' : 'assets/images/voyager/chrome-logo.svg?v=1';
+      player.poster = key === 'group' ? 'assets/images/voyager/film-poster.jpg' : 'assets/images/voyager/logo-motion-poster.jpg';
       player.muted = true;
       player.play().catch(() => {});
     }
@@ -115,7 +115,9 @@
   track.addEventListener('scroll', syncArrows, {passive: true});
   new ResizeObserver(syncArrows).observe(track);
   syncArrows();
-  document.querySelectorAll('.member-grid [data-member]').forEach(button => button.addEventListener('click', () => {
+  const memberButtons = [...document.querySelectorAll('.member-grid [data-member]')];
+  function showMember(button, preserveMedia = false) {
+    const mode = preserveMedia ? mediaChoices.find(choice => choice.getAttribute('aria-pressed') === 'true')?.dataset.memberMedia || 'video' : 'video';
     const key = button.dataset.member;
     const [, name, korean] = members[key];
     activeMember = key;
@@ -129,16 +131,18 @@
     document.querySelector('#member-video-thumb').alt = `${korean} 프로필 영상`;
     for (const sheet of [1, 2]) {
       const thumbnail = document.querySelector(`#member-sheet-${sheet}`);
-      thumbnail.src = `assets/images/voyager/sheets/${key}-${sheet}.png`;
+      thumbnail.src = `assets/images/voyager/sheets/${key}-${sheet}-v2.png`;
       thumbnail.alt = `${korean} Costume ${sheet}`;
     }
     memberVideo.hidden = false;
     memberPhoto.hidden = true;
     memberPhoto.removeAttribute('src');
     mediaChoices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.memberMedia === 'video')));
-    open(memberVideoDialog, button);
-    memberVideo.play().catch(() => {});
-  }));
+    memberVideoDialog.querySelector('.popup-position').textContent = `${memberButtons.indexOf(button) + 1} / ${memberButtons.length}`;
+    if (!memberVideoDialog.open) open(memberVideoDialog, button);
+    selectMemberMedia(mode);
+  }
+  memberButtons.forEach(button => button.addEventListener('click', () => showMember(button)));
   document.querySelectorAll('.photo-wall [data-member]').forEach(button => button.addEventListener('click', () => {
     const key = button.dataset.member;
     const [index, name, korean, element] = members[key];
@@ -151,6 +155,37 @@
     document.querySelector('#member-element').textContent = element;
     open(memberDialog, button);
   }));
+  const photoDialog = document.querySelector('#photo-dialog');
+  const photoButtons = [...document.querySelectorAll('[data-photo]')];
+  let photoIndex = 0;
+  function showPhoto(button) {
+    photoIndex = photoButtons.indexOf(button);
+    const image = document.querySelector('#photo-dialog-image');
+    image.src = button.dataset.photo;
+    image.alt = button.querySelector('img').alt;
+    document.querySelector('#photo-dialog-title').textContent = button.dataset.photoTitle;
+    photoDialog.querySelector('.popup-position').textContent = `${photoIndex + 1} / ${photoButtons.length}`;
+    if (!photoDialog.open) open(photoDialog, button);
+  }
+  photoButtons.forEach(button => button.addEventListener('click', () => showPhoto(button)));
+  function stepPopup(dialog, step) {
+    if (dialog === memberVideoDialog) {
+      const index = memberButtons.findIndex(button => button.dataset.member === activeMember);
+      showMember(memberButtons[(index + step + memberButtons.length) % memberButtons.length], true);
+    } else {
+      showPhoto(photoButtons[(photoIndex + step + photoButtons.length) % photoButtons.length]);
+    }
+  }
+  [memberVideoDialog, photoDialog].forEach(dialog => {
+    dialog.querySelectorAll('[data-popup-step]').forEach(button => button.addEventListener('click', () => stepPopup(dialog, Number(button.dataset.popupStep))));
+    dialog.addEventListener('keydown', event => {
+      if (event.target.closest('video,input,textarea,select')) return;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        stepPopup(dialog, event.key === 'ArrowRight' ? 1 : -1);
+      }
+    });
+  });
   document.querySelectorAll('dialog').forEach(dialog => {
     dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', event => {
