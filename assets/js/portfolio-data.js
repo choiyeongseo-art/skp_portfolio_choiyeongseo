@@ -12,7 +12,7 @@ window.portfolioMarketing = {
 };
 window.portfolioProjects = {
   "drawing-1": {
-    "title": "PROJECT 01",
+    "title": "CASUAL GAME CONCEPT ART PORTFOLIO",
     "thumbnail": "assets/images/drawing/project-01/thumbnail.webp",
     "images": [
       {
@@ -90,7 +90,7 @@ window.portfolioProjects = {
     ]
   },
   "drawing-2": {
-    "title": "PROJECT 02",
+    "title": "STUDY",
     "thumbnail": "assets/images/drawing/project-02/thumbnail.webp",
     "images": [
       {

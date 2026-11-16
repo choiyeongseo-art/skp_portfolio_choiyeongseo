@@ -28,7 +28,7 @@ document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date
 const params = new URLSearchParams(location.search);
 const collection = params.get('collection') === 'art' ? 'art' : 'drawing';
 const rawNumber = Number(params.get('project'));
-const projectCount = collection === 'art' ? Math.max(...Object.keys(projects).filter(key => key.startsWith('art-')).map(key => Number(key.split('-')[1]))) : 6;
+const projectCount = collection === 'art' ? Math.max(...Object.keys(projects).filter(key => key.startsWith('art-')).map(key => Number(key.split('-')[1]))) : 2;
 const number = Number.isInteger(rawNumber) && rawNumber >= 1 && rawNumber <= projectCount ? rawNumber : 1;
 const label = collection === 'art' ? 'PROJECT' : 'DRAWING';
 const pad = value => String(value).padStart(2, '0');
@@ -70,7 +70,7 @@ if (archiveGrid && document.querySelector('#portfolio-nav a[aria-current="page"]
   const cards = [...archiveGrid.querySelectorAll('.project-card')];
   const yearsFor = card => {
     const id = new URL(card.href).searchParams.get('project');
-    const period = card.dataset.project === 'marketing' ? marketingProject.period : projects[`art-${id}`]?.period;
+    const period = card.dataset.period || (card.dataset.project === 'marketing' ? marketingProject.period : projects[`art-${id}`]?.period);
     const years = period?.match(/\d{4}/g)?.map(Number);
     return years?.length === 1 ? [years[0], years[0]] : years?.length === 2 ? years : null;
   };
