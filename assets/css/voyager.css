@@ -51,3 +51,12 @@ body p.intro-copy{font-family:Arial,"Noto Sans KR","Malgun Gothic",sans-serif}
 
 .header-symbol{display:block;flex-shrink:0;width:42px}.header-symbol img{display:block;width:42px;height:auto}.footer-symbol{display:block;width:48px}.footer-symbol img{width:48px;height:auto}.footer-bottom{flex-direction:column;justify-content:center;text-align:center;gap:20px}.intro-symbol{position:absolute;right:6%;top:45px;width:52px;height:auto;opacity:.5}@media(max-width:540px){.header-symbol,.header-symbol img{width:34px}.footer-bottom{align-items:center}.footer-bottom>span{max-width:none}.intro-symbol{top:30px;width:36px}}
 .popup-navigation{position:sticky;bottom:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 22px;border-top:1px solid #ffffff26;background:#101013}.popup-navigation button{display:flex;align-items:center;gap:12px;padding:10px 4px;min-height:44px;font-size:13px;color:#e9e5ee}.popup-navigation button:hover{color:#d4c8ef}.popup-navigation button>span{font-family:Arial,sans-serif;font-size:22px}.popup-position{font-size:11px;color:#a39aac;font-variant-numeric:tabular-nums}#photo-dialog-image{height:calc(88svh - 150px)}.member-media-stage #member-video,.member-media-stage #member-media-photo{max-height:calc(90svh - 150px)}@media(max-width:700px){.popup-navigation{padding:8px 16px}.popup-navigation button{font-size:12px;gap:8px}.popup-position{font-size:10px}}
+
+/* Keep profile content scrollable without the visible browser scrollbar. */
+#member-video-dialog{scrollbar-width:none;-ms-overflow-style:none}
+#member-video-dialog::-webkit-scrollbar{display:none;width:0;height:0}
+.photo-wall [data-photo]{cursor:zoom-in}
+#photo-dialog{width:98vw;max-width:1600px;max-height:96svh}
+#photo-dialog[open]{display:flex;flex-direction:column;height:96svh;overflow:hidden}
+#photo-dialog .dialog-bar,#photo-dialog .popup-navigation{flex-shrink:0}
+#photo-dialog-image{flex:1;min-height:0;height:auto;width:100%;object-fit:contain}
