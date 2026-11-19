@@ -74,6 +74,8 @@ main h2[id] { scroll-margin-top: 4.75rem; }
 .problem-visual { display: grid; gap: clamp(.75rem, 2vw, 1.5rem); padding-inline: var(--page-gutter); }
 .problem-visual-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: inherit; }
 .problem-visual-pair img { aspect-ratio: 4 / 5; object-fit: cover; }
+.campaign-mockup-pair { margin-block-start: .5rem; }
+.campaign-mockup-pair img { aspect-ratio: 3 / 4; }
 .problem-visual img { display: block; width: 100%; height: auto; border-radius: var(--squircle-large); corner-shape: squircle; }
 .problem-evidence {
   display: grid;
