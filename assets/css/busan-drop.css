@@ -116,7 +116,7 @@ main h2[id] { scroll-margin-top: 4.75rem; }
 .complaint-bar span:last-child, .complaint-values li:last-child::before { background: #c9c9c9; }
 .complaint-values { display: flex; flex-wrap: wrap; gap: .3rem .75rem; margin-top: .65rem; }
 .complaint-values li::before { display: inline-block; width: .65rem; height: .65rem; margin-right: .3rem; border-radius: .12rem; content: ""; }
-.problem .problem-source { max-width: none; font-size: .78rem; }
+.problem .problem-source { max-width: none; font-size: .468rem; }
 .problem-map {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -509,28 +509,6 @@ main h2[id] { scroll-margin-top: 4.75rem; }
 
 .ia-root, .ia-branch h3 { border-radius: .42rem; corner-shape: squircle; }
 
-.case-index {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: .15rem clamp(.4rem, 1.25vw, 1rem);
-  padding: .45rem var(--page-gutter);
-  border-bottom: 1px solid #e0e0e0;
-  background: #fffffff5;
-}
-.case-index a {
-  padding: .4rem .55rem;
-  border-radius: .4rem;
-  font-size: .85rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-.case-index a:hover, .case-index a:focus-visible { background: var(--accent); }
 @media (max-width: 620px) {
-  .case-index { position: static; gap: .1rem .15rem; }
-  .case-index a { padding-inline: .4rem; }
   main h2[id] { scroll-margin-top: 1rem; }
 }
