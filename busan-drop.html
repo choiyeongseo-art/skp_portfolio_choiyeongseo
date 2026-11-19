@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BUSAN DROP — 부산 쇼핑 정보 모음 앱 디자인 프로젝트">
+  <meta name="theme-color" content="#171717">
+  <title>BUSAN DROP — 부산 쇼핑 정보 모음 앱 · YEONGSEO CHOI</title>
+  <link rel="stylesheet" href="assets/css/busan-drop.css?v=34">
+  <script src="assets/js/busan-drop-films.js?v=2" defer></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">본문 바로가기</a>
+  <header class="case-nav">
+    <a href="art.html">← PROJECT</a>
+    <a href="index.html">TEAM 부산스럽네</a>
+  </header>
+  <main id="main" class="case">
+    <section class="cover" aria-labelledby="title">
+      <img class="cover-image" src="assets/images/portfolio/busan-drop-cover.png" width="1376" height="768" alt="노란 배경에서 정장을 입은 부산드랍 요원이 로고 태그를 내미는 장면" fetchpriority="high">
+      <div class="cover-title">
+        <h1 id="title">BUSAN<br>DROP</h1>
+        <p>모든 부산 쇼핑 정보는<br>부산드랍에서.</p>
+      </div>
+    </section>
+
+    <nav class="case-index" aria-label="BUSAN DROP 섹션 바로가기">
+      <a href="#overview-title">프로젝트 개요</a>
+      <a href="#problem-title">문제와 해결</a>
+      <a href="#process-title">디자인 과정</a>
+      <a href="#architecture-title">정보구조</a>
+      <a href="#foundations-title">컬러·타이포</a>
+      <a href="#screens-title">모바일 화면</a>
+      <a href="#campaign-title">CF</a>
+    </nav>
+
+    <section class="section overview" aria-labelledby="overview-title">
+      <p class="eyebrow" lang="en">PROJECT OVERVIEW</p>
+      <div>
+        <h2 id="overview-title">부산에서 어디를<br>둘러볼지 한눈에</h2>
+        <p>부산 곳곳의 팝업스토어와 쇼핑 소식을 모아, 관심 있는 장소를 찾고 방문에 필요한 정보를 확인할 수 있도록 구성했습니다.</p>
+        <dl class="facts">
+          <div><dt>프로젝트</dt><dd>BUSAN DROP</dd></div>
+          <div><dt>분야</dt><dd>쇼핑 정보 · 모바일 UX/UI</dd></div>
+        </dl>
+        <div class="brand-story">
+          <h3>BUSAN DROP의 의미</h3>
+          <p>쇼핑에서 ‘드롭(DROP)’은 신제품이나 한정판을 사전 예고 없이 정해진 시간에 출시하는 방식을 뜻합니다. BUSAN DROP은 그 이름에 부산에서 한정된 기간에 열리는 팝업과 세일을 쉽게 찾을 수 있다는 의미를 담았습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section preview">
+      <div class="preview-mockup">
+        <img src="assets/images/portfolio/busan-drop-phone-preview.jpg" width="4500" height="3000" alt="드롭 플랜과 홈 화면을 보여주는 BUSAN DROP 스마트폰 목업 두 대" loading="lazy" decoding="async">
+      </div>
+      <div class="preview-grid">
+        <img src="assets/images/portfolio/busan-drop-shopping-portrait.png" width="896" height="1200" alt="노란 부산드랍 쇼핑백을 들고 스마트폰을 보는 요원" loading="lazy" decoding="async">
+        <img src="assets/images/portfolio/busan-drop-event-preview.jpg" width="4500" height="3000" alt="행사 둘러보기 화면을 보여주는 부산드랍 스마트폰 목업" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+    <section class="section problem" aria-labelledby="problem-title">
+      <p class="eyebrow" lang="en">PROBLEM &amp; SOLUTION</p>
+      <h2 id="problem-title">쇼핑 수요를 부산의 여행 경험으로</h2>
+      <div class="problem-evidence">
+        <figure class="evidence-chart">
+          <figcaption>부산 외국인 방문객 추이</figcaption>
+          <svg class="visitor-chart" viewBox="0 0 360 128" aria-hidden="true">
+            <path class="visitor-grid" d="M22 112H338 M22 62H338 M22 12H338"/>
+            <path class="visitor-line" d="M45 66.5L135 38.8L225 20.9"/>
+            <path class="visitor-line visitor-partial" d="M225 20.9L315 13.6"/>
+            <circle cx="45" cy="66.5" r="4"/><circle cx="135" cy="38.8" r="4"/><circle cx="225" cy="20.9" r="4"/><circle class="visitor-latest" cx="315" cy="13.6" r="5"/>
+          </svg>
+          <ul class="visitor-values">
+            <li>2023<strong>182만</strong></li><li>2024<strong>293만</strong></li>
+            <li>2025<strong>364만</strong></li><li>2026.01–09<strong>393만</strong></li>
+          </ul>
+          <p>단위: 명 · 점선으로 이어진 2026년 값은 1–9월 누계</p>
+        </figure>
+        <figure class="evidence-chart">
+          <figcaption>외래관광객 쇼핑 참여율</figcaption>
+          <div class="shopping-donut"><strong>80.3%</strong></div>
+          <p>2025년 전국 조사 · 표본 16,110명 · 복수응답</p>
+        </figure>
+        <figure class="evidence-chart">
+          <figcaption>올리브영 외국인 매출</figcaption>
+          <dl class="sales-bars">
+            <div><dt>기준 매출</dt><dd><span class="sales-bar" aria-hidden="true"></span><strong>100</strong></dd></div>
+            <div><dt>증가 후 매출</dt><dd><span class="sales-bar sales-growth" aria-hidden="true"></span><strong>185</strong></dd></div>
+          </dl>
+          <p>85% 증가 · 기준 매출을 100으로 환산 · 비교 기간 미기재</p>
+        </figure>
+        <figure class="evidence-chart">
+          <figcaption>부산 관광 불편 신고</figcaption>
+          <strong class="complaint-total">총 224건</strong>
+          <div class="complaint-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+          <ul class="complaint-values"><li>44건 · 19.6%</li><li>24건 · 10.7%</li><li>156건 · 69.6%</li></ul>
+          <p>기획서 그래프의 집계 구간 · 신고 유형명 미기재</p>
+        </figure>
+      </div>
+      <p class="problem-source">자료 · BUSAN DROP 기획 배경, 부산관광통계·부산관광공사, 2025 외래관광객조사 표 39</p>
+      <div class="problem-map">
+        <div class="problem-group">
+          <article class="problem-point">
+            <h3><span lang="en">01 Problem</span>쇼핑 수요를 여행 일정으로 잇기 어렵다</h3>
+            <p>부산 방문 수요와 여행 중 쇼핑 참여율은 높지만, 기간 한정 행사와 주변 관광지·맛집을 함께 찾고 동선을 짜려면 여러 정보를 확인해야 합니다.</p>
+          </article>
+          <article class="problem-point">
+            <h3><span lang="en">02 Problem</span>외국인 관광객에게 구매 안내가 충분하지 않다</h3>
+            <p>외국인 관광객이 구매를 결정하려면 가격과 혜택, 적용 조건은 물론 교환·환불 기준까지 쉽게 이해할 수 있어야 합니다.</p>
+          </article>
+        </div>
+        <div class="solution-group">
+          <article class="solution-point">
+            <h3><span lang="en">01 Solution</span>행사에서 주변 여행지까지 연결</h3>
+            <p>홈과 매장 찾기에서 지역·카테고리별 행사를 탐색하고, 드롭 플랜에서 방문 일정에 맞춰 행사장과 주변 관광지·맛집을 함께 선택할 수 있게 했습니다.</p>
+          </article>
+          <article class="solution-point">
+            <h3><span lang="en">02 Solution</span>구매 전 확인할 정보를 한곳에</h3>
+            <p>행사 상세에 장소와 운영 시간, 가격·혜택과 적용 조건을 모았습니다. 교환·환불처럼 방문 전 확인이 필요한 사항은 해외 방문객 안내에서 쉽게 찾을 수 있도록 설계했습니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="problem-visual">
+      <img src="assets/images/portfolio/busan-drop-problem-visual.jpg" width="4500" height="3000" alt="부산드랍 행사 둘러보기 화면 앞에 쇼핑백과 여행 가방을 두고 앉은 요원" loading="lazy" decoding="async">
+      <div class="problem-visual-pair">
+        <img src="assets/images/portfolio/busan-drop-fashion-store.png" width="1776" height="2352" alt="노란 원형 장식과 흑백 의류가 진열된 매장" loading="lazy" decoding="async">
+        <img src="assets/images/portfolio/busan-drop-street-fashion.png" width="1776" height="2352" alt="노란 티셔츠와 검정 반바지를 입고 거리를 걷는 모델" loading="lazy" decoding="async">
+      </div>
+      <img src="assets/images/portfolio/busan-drop-brand-visual.png" width="1376" height="768" alt="노란 배경 위에 DROP 로고와 쇼핑백, 세일 태그를 배치한 브랜드 이미지" loading="lazy" decoding="async">
+    </div>
+
+    <section class="section process" aria-labelledby="process-title">
+      <p class="eyebrow" lang="en">DESIGN PROCESS</p>
+      <h2 id="process-title">쇼핑 정보를 찾는 순서로 화면 구성</h2>
+      <ol class="steps">
+        <li><strong>정보 정리</strong><p>쇼핑 소식과 방문 정보를 구분합니다.</p></li>
+        <li><strong>탐색 구조</strong><p>홈에서 관심 있는 소식으로 이동하는 경로를 잡습니다.</p></li>
+        <li><strong>화면 설계</strong><p>목록과 상세 화면에 필요한 정보를 배치합니다.</p></li>
+      </ol>
+    </section>
+
+    <section class="section architecture" aria-labelledby="architecture-title">
+      <p class="eyebrow" lang="en">INFORMATION ARCHITECTURE</p>
+      <h2 id="architecture-title">서비스 정보구조</h2>
+      <p class="ia-scroll-hint">좌우로 스크롤해 전체 구조를 볼 수 있어요.</p>
+      <div class="ia-map" role="region" aria-labelledby="architecture-title" tabindex="0">
+        <div class="ia-root">BUSAN DROP <span aria-hidden="true">↘</span></div>
+        <ul class="ia-branches">
+          <li class="ia-branch">
+            <h3>시작 · 로그인</h3>
+            <ul class="ia-menus">
+              <li>
+                <h4>인트로 영상</h4>
+                <ul class="ia-items">
+                  <li>영상 1회 재생</li>
+                  <li>건너뛰기</li>
+                </ul>
+              </li>
+              <li>
+                <h4>로그인</h4>
+                <ul class="ia-items">
+                  <li>구글</li>
+                  <li>애플</li>
+                  <li>회원가입</li>
+                  <li>먼저 둘러보기</li>
+                </ul>
+              </li>
+              <li>
+                <h4>회원가입</h4>
+                <ul class="ia-items">
+                  <li>아이디</li>
+                  <li>비밀번호</li>
+                  <li>닉네임 설정</li>
+                </ul>
+              </li>
+              <li>
+                <h4>재방문</h4>
+                <ul class="ia-items">
+                  <li>인트로 · 로그인 생략</li>
+                  <li>홈으로 바로 진입</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="ia-branch">
+            <h3>홈</h3>
+            <ul class="ia-menus">
+              <li>
+                <h4>배너</h4>
+                <ul class="ia-items">
+                  <li>가까운 순 10개 행사 배너</li>
+                </ul>
+              </li>
+              <li>
+                <h4>카테고리</h4>
+                <ul class="ia-items">
+                  <li>전체</li>
+                  <li>부산 이벤트</li>
+                  <li>팝업</li>
+                  <li>패션</li>
+                  <li>뷰티</li>
+                  <li>푸드</li>
+                  <li>디저트</li>
+                  <li>숙박</li>
+                </ul>
+              </li>
+              <li>
+                <h4>콘텐츠 피드</h4>
+                <ul class="ia-items">
+                  <li>전시 · 축제</li>
+                  <li>팝업</li>
+                  <li>패션</li>
+                  <li>뷰티</li>
+                  <li>푸드</li>
+                  <li>디저트</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="ia-branch">
+            <h3>매장 찾기</h3>
+            <ul class="ia-menus">
+              <li>
+                <h4>행사 필터</h4>
+                <ul class="ia-items">
+                  <li>8개 카테고리</li>
+                  <li>지역별</li>
+                </ul>
+              </li>
+              <li>
+                <h4>행사 안내</h4>
+                <ul class="ia-items">
+                  <li>목록</li>
+                  <li>지도</li>
+                </ul>
+              </li>
+              <li>
+                <h4>행사 상세</h4>
+                <ul class="ia-items">
+                  <li>행사 소개</li>
+                  <li>방문 요약</li>
+                  <li>방문 전 꼭 확인</li>
+                  <li>장소</li>
+                  <li>운영 시간</li>
+                  <li>행사 내용 · 프로그램</li>
+                  <li>상품 · 메뉴 · 패키지 가격</li>
+                  <li>혜택 · 적용 조건</li>
+                  <li>해외 방문객 안내</li>
+                  <li>기타 안내</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="ia-branch">
+            <h3>드롭 플랜</h3>
+            <ul class="ia-menus">
+              <li>
+                <h4>방문 일정</h4>
+                <ul class="ia-items">
+                  <li>부산 도착일</li>
+                  <li>마지막 날</li>
+                </ul>
+              </li>
+              <li>
+                <h4>행사장 선택</h4>
+                <ul class="ia-items">
+                  <li>저장한 행사 우선 표시</li>
+                  <li>방문 행사 · 지점 선택</li>
+                </ul>
+              </li>
+              <li>
+                <h4>주변 관광지 선택</h4>
+                <ul class="ia-items">
+                  <li>목록</li>
+                  <li>지도</li>
+                  <li>선택</li>
+                  <li>건너뛰기</li>
+                </ul>
+              </li>
+              <li>
+                <h4>주변 맛집 선택</h4>
+                <ul class="ia-items">
+                  <li>음식 분류</li>
+                  <li>목록</li>
+                  <li>지도</li>
+                  <li>선택</li>
+                  <li>건너뛰기</li>
+                </ul>
+              </li>
+              <li>
+                <h4>플랜 확인 · 저장</h4>
+                <ul class="ia-items">
+                  <li>방문 순서 확인 · 수정</li>
+                  <li>닉네임의 드롭 플랜 01</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="ia-branch">
+            <h3>저장</h3>
+            <ul class="ia-menus">
+              <li>
+                <h4>플랜 보기</h4>
+                <ul class="ia-items">
+                  <li>길찾기</li>
+                  <li>플랜 순서 변경</li>
+                  <li>방문 완료</li>
+                  <li>삭제</li>
+                </ul>
+              </li>
+              <li>
+                <h4>설정</h4>
+                <ul class="ia-items">
+                  <li>프로필 수정</li>
+                  <li>언어 설정</li>
+                  <li>로그아웃</li>
+                  <li>회원탈퇴</li>
+                </ul>
+              </li>
+              <li>
+                <h4>서비스 및 약관</h4>
+                <ul class="ia-items">
+                  <li>서비스 안내</li>
+                  <li>통계 수집 설정</li>
+                  <li>개인정보처리방침</li>
+                  <li>이용약관</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <ul class="ia-legend" aria-label="플로우차트 범례">
+        <li>주요 영역</li><li>화면·메뉴</li><li>기능·항목</li>
+      </ul>
+    </section>
+
+    <section class="section foundations" aria-labelledby="foundations-title">
+      <p class="eyebrow" lang="en">VISUAL DESIGN</p>
+      <h2 id="foundations-title">컬러와 타이포그래피</h2>
+      <h3>컬러 팔레트</h3>
+      <ul class="palette">
+        <li class="swatch-accent"><span class="palette-orbit" aria-hidden="true"><span>↘</span></span><div class="palette-label"><strong>강조색</strong><code>#FFD628</code></div></li>
+        <li class="swatch-ink"><div class="palette-label"><strong>기본 텍스트</strong><code>#171717</code></div></li>
+        <li class="swatch-muted"><div class="palette-label"><strong>보조 텍스트</strong><code>#626870</code></div></li>
+        <li class="swatch-card"><div class="palette-label"><strong>카드 배경</strong><code>#F5F6F7</code></div></li>
+        <li class="swatch-paper"><div class="palette-label"><strong>화면 배경</strong><code>#FFFFFF</code></div></li>
+      </ul>
+      <h3>컬러 기획과 선정 이유</h3>
+      <dl class="brand-colors">
+        <div><dt>블랙</dt><dd>대표적인 쇼핑 행사인 블랙프라이데이의 상징색에서 가져와 브랜드의 쇼핑 콘셉트를 드러냈습니다.</dd></div>
+        <div><dt>옐로우</dt><dd>기획 당시 참고한 광고 색상 연구에서 노란색이 온라인 구매 성향과 관련해 긍정적인 결과를 보인 점을 바탕으로 강조색으로 선정했습니다.</dd></div>
+        <div><dt>화이트</dt><dd>앱 화면의 바탕에 사용해 검정 텍스트와 노랑 강조 요소가 또렷하게 보이도록 했습니다.</dd></div>
+      </dl>
+      <h3>타이포그래피</h3>
+      <div class="type-specimen">
+        <p class="type-name" lang="en">SUIT</p>
+        <ul class="type-weights">
+          <li><span class="weight-thin">부산의 쇼핑 소식</span><small>Thin 100</small></li>
+          <li><span class="weight-extralight">부산의 쇼핑 소식</span><small>ExtraLight 200</small></li>
+          <li><span class="weight-light">부산의 쇼핑 소식</span><small>Light 300</small></li>
+          <li><span class="weight-regular">부산의 쇼핑 소식</span><small>Regular 400</small></li>
+          <li><span class="weight-medium">부산의 쇼핑 소식</span><small>Medium 500</small></li>
+          <li><span class="weight-semibold">부산의 쇼핑 소식</span><small>SemiBold 600</small></li>
+          <li><span class="weight-bold">부산의 쇼핑 소식</span><small>Bold 700</small></li>
+          <li><span class="weight-extrabold">부산의 쇼핑 소식</span><small>ExtraBold 800</small></li>
+          <li><span class="weight-heavy">부산의 쇼핑 소식</span><small>Heavy 900</small></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section screens" aria-labelledby="screens-title">
+      <p class="eyebrow" lang="en">MOBILE SCREENS</p>
+      <h2 id="screens-title">탐색부터 여행 일정 관리까지</h2>
+      <div class="screen-list">
+        <article class="screen">
+          <div class="screen-copy"><h3>홈</h3><p>부산의 쇼핑 소식을 한 화면에서 둘러봅니다.</p></div>
+          <div class="screen-device">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-home.jpg" width="4500" height="3000" alt="추천 행사 배너와 쇼핑 카테고리가 있는 홈 화면" loading="lazy" decoding="async">
+          </div>
+        </article>
+        <article class="screen screen-reverse">
+          <div class="screen-copy"><h3>매장찾기</h3><p>카테고리와 지역으로 행사를 찾고 목록이나 지도에서 확인합니다.</p></div>
+          <div class="screen-device">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-stores.jpg" width="4500" height="3000" alt="카테고리, 상세 필터, 행사 목록이 있는 매장찾기 화면" loading="lazy" decoding="async">
+          </div>
+        </article>
+        <article class="screen">
+          <div class="screen-copy"><h3>드롭 플랜</h3><p>부산 방문 날짜를 정하고 여행 중 들를 행사를 선택합니다.</p></div>
+          <div class="screen-device">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-plan.jpg" width="4500" height="3000" alt="방문 일정과 행사를 선택하는 드롭 플랜 화면" loading="lazy" decoding="async">
+          </div>
+        </article>
+        <article class="screen screen-reverse">
+          <div class="screen-copy"><h3>저장</h3><p>찜한 행사를 다시 보거나 저장한 행사로 드롭 플랜을 시작합니다.</p></div>
+          <div class="screen-device">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-saved.jpg" width="4500" height="3000" alt="찜한 행사와 드롭 플랜 만들기 버튼이 있는 저장 화면" loading="lazy" decoding="async">
+          </div>
+        </article>
+        <article class="screen">
+          <div class="screen-copy"><h3>마이 페이지</h3><p>만들어 둔 드롭 플랜을 확인하고 여행 일정을 관리합니다.</p></div>
+          <div class="screen-device">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-my-page.jpg" width="4500" height="3000" alt="내 드롭 플랜 목록과 수정 메뉴가 있는 마이 페이지" loading="lazy" decoding="async">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section campaign" aria-labelledby="campaign-title">
+      <p class="eyebrow" lang="en">CAMPAIGN VISUALS</p>
+      <h2 id="campaign-title">부산드랍 CF</h2>
+      <p id="film-swipe-hint">좌우로 밀어 다음 영상을 확인하세요.</p>
+      <div class="film-carousel" id="campaign-films" role="region" aria-labelledby="campaign-title" aria-describedby="film-swipe-hint" tabindex="0">
+        <article class="film-slide">
+          <video controls playsinline preload="none" width="1280" height="720" poster="assets/videos/busan-drop/operation.webp" aria-labelledby="film-operation">
+            <source src="assets/videos/busan-drop/operation.mp4" type="video/mp4">
+          </video>
+          <div class="film-caption"><h3 id="film-operation">1편 · 작전편</h3><p>국내 관광객 대상</p></div>
+        </article>
+        <article class="film-slide">
+          <video controls playsinline preload="none" width="1280" height="720" poster="assets/videos/busan-drop/royal-inspector.webp" aria-labelledby="film-inspector">
+            <source src="assets/videos/busan-drop/royal-inspector.mp4" type="video/mp4">
+          </video>
+          <div class="film-caption"><h3 id="film-inspector">2편 · 암행어사편</h3><p>국내 관광객 대상</p></div>
+        </article>
+        <article class="film-slide">
+          <video controls playsinline preload="none" width="1280" height="720" poster="assets/videos/busan-drop/xiaohongshu.webp" aria-labelledby="film-xiaohongshu">
+            <source src="assets/videos/busan-drop/xiaohongshu.mp4" type="video/mp4">
+          </video>
+          <div class="film-caption"><h3 id="film-xiaohongshu">3편 · 샤오홍슈편</h3><p>중국인 관광객 대상 · 샤오홍슈용 중국어 영상</p></div>
+        </article>
+      </div>
+      <div class="film-controls" hidden>
+        <button type="button" data-film-direction="-1" aria-controls="campaign-films" aria-label="이전 영상">←</button>
+        <span class="film-count" aria-live="polite">1 / 3</span>
+        <button type="button" data-film-direction="1" aria-controls="campaign-films" aria-label="다음 영상">→</button>
+      </div>
+    </section>
+    <section class="app-promo" aria-labelledby="app-promo-title">
+      <img class="app-promo-icon" src="assets/images/portfolio/busan-drop-app-icon.webp" width="192" height="192" alt="" loading="lazy" decoding="async">
+      <div>
+        <h2 id="app-promo-title">BUSAN DROP</h2>
+        <p>부산 쇼핑 정보 모음 앱</p>
+      </div>
+      <a class="app-store-link" href="https://apps.apple.com/us/app/busan-drop/id6832880324" aria-label="App Store에서 BUSAN DROP 보기">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" width="135" height="45" alt="Download on the App Store" loading="lazy">
+      </a>
+    </section>
+  </main>
+  <footer class="case-nav case-footer">
+    <a href="art.html">← PROJECT</a>
+    <nav class="case-social" aria-label="부산드랍 인스타그램">
+      <span>INSTAGRAM</span>
+      <a href="https://www.instagram.com/busandrop.kr/" target="_blank" rel="noopener noreferrer">@busandrop.kr ↗</a>
+      <a href="https://www.instagram.com/busandrop.jp/" target="_blank" rel="noopener noreferrer">@busandrop.jp ↗</a>
+    </nav>
+    <a href="#top">맨 위로 ↑</a>
+  </footer>
+</body>
+</html>
