@@ -28,12 +28,12 @@ body .brand-guide-title h1{color:var(--color-primary-dark);letter-spacing:-.055e
 /* A magazine cover: oversized typography, sea-blue field, quiet metadata. */
 .marketing-hero{padding:clamp(30px,5vw,64px) 0 0;background:var(--color-brand-main);border-bottom:1px solid var(--color-line);isolation:isolate}
 .marketing-hero .hero-grid{display:flex;flex-direction:column;gap:0;align-items:stretch;position:relative;z-index:2}
-body .marketing-hero h1.hero-title{font-family:var(--font-display);font-weight:800;font-size:clamp(64px,12.8vw,176px);line-height:.87;letter-spacing:-.075em;color:var(--color-primary-dark);margin:0;overflow-wrap:normal}
+body .marketing-hero h1.hero-title{font-family:var(--font-display);font-weight:800;font-size:clamp(21px,6.5vw,82px);line-height:1.04;letter-spacing:-.045em;color:var(--color-primary-dark);margin:0;overflow-wrap:normal}
 .marketing-hero .hero-title span{display:block;color:var(--color-primary);text-align:right}
 .marketing-hero-visual{position:relative;margin:0;width:100%;background:transparent}
 .marketing-hero-visual img{position:relative;display:block;width:100%;height:auto}
 @media(min-width:1100px){.marketing-hero .hero-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:30px}.marketing-hero .hero-grid>div,.marketing-hero-visual{grid-column:1/-1}}
-@media(max-width:767px){body .marketing-hero h1.hero-title{font-size:clamp(52px,14.3vw,110px)}.marketing-hero{padding-top:30px}}
+@media(max-width:767px){.marketing-hero{padding-top:30px}}
 /* Tourism Content Archive, using the palette from variables.css. */
 .tourism-original-palette body{background:var(--color-white)}
 .tourism-original-palette .site-header{background:color-mix(in srgb,var(--color-white) 94%,transparent)}

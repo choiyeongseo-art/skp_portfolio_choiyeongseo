@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-thin.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-extralight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-semibold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-extrabold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A2Z";
+  src: url("../fonts/a2z-black.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: "A2Z", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-display: var(--font-sans);
+  --font-impact: var(--font-sans);
+}
+
+.sns-portfolio :is(.instagram-section, .youtube-section) > .container > .section-head .section-title {
+  font-family: var(--font-sans);
+}
+
+button, input, select, textarea {
+  font-family: var(--font-sans);
+}

@@ -35,13 +35,14 @@ const pad = value => String(value).padStart(2, '0');
 const current = projects[`${collection}-${number}`];
 
 // The same source controls gallery titles and thumbnails and detail image stacks.
-document.querySelectorAll('.project-card').forEach(card => {
+document.querySelectorAll('a.project-card[href]').forEach(card => {
   const query = new URL(card.href).searchParams;
   const entry = card.dataset.project === 'marketing' ? marketingProject : projects[`${query.get('collection')}-${query.get('project')}`];
   if (!entry) return;
-  if (entry.title) {
-    card.querySelector('h2').textContent = entry.title;
-    card.setAttribute('aria-label', `${entry.title} 열기`);
+  const cardTitle = entry.cardTitle || entry.title;
+  if (cardTitle) {
+    card.querySelector('h2').textContent = cardTitle;
+    card.setAttribute('aria-label', `${cardTitle} 열기`);
   }
   if (entry.imageNotice || entry.textCover) {
     const cover = document.createElement('div');
@@ -50,9 +51,7 @@ document.querySelectorAll('.project-card').forEach(card => {
     category.textContent = entry.coverLabel || (entry.genre ? `LIVE SERVICE GAME / ${entry.genre}` : 'LIVE SERVICE GAME');
     const name = document.createElement('strong');
     name.textContent = entry.title;
-    const caption = document.createElement('span');
-    caption.textContent = '참여 내역 보기 ↗';
-    cover.append(category, name, caption);
+    cover.append(category, name);
     card.querySelector('.square').replaceChildren(cover);
   }
   if (entry.thumbnail || entry.images?.length) {
@@ -69,7 +68,7 @@ const archiveGrid = document.querySelector('.project-grid');
 if (archiveGrid && document.querySelector('#portfolio-nav a[aria-current="page"][href="art.html"]')) {
   const cards = [...archiveGrid.querySelectorAll('.project-card')];
   const yearsFor = card => {
-    const id = new URL(card.href).searchParams.get('project');
+    const id = card.href ? new URL(card.href).searchParams.get('project') : null;
     const period = card.dataset.period || (card.dataset.project === 'marketing' ? marketingProject.period : projects[`art-${id}`]?.period);
     const years = period?.match(/\d{4}/g)?.map(Number);
     return years?.length === 1 ? [years[0], years[0]] : years?.length === 2 ? years : null;
@@ -120,8 +119,6 @@ if (archiveGrid && document.querySelector('#portfolio-nav a[aria-current="page"]
     status.textContent = `${year === 'all' ? 'ALL PROJECTS' : year + ' PROJECTS'} / ${String(count).padStart(2, '0')}`;
     empty.hidden = count > 0;
   }
-  const index = document.querySelector('.gallery-heading-bottom .micro');
-  if (index) index.textContent = '진행 기간 기준 · 연도별 프로젝트';
   selectYear('all');
 }
 
@@ -135,10 +132,14 @@ if (document.querySelector('#project-title')) {
     description.textContent = current.description;
     document.querySelector('#project-title').after(description);
   }
-  if (current?.period || current?.role) {
+  if (current?.period || current?.role || current?.collaboration) {
     const credits = document.createElement('dl');
     credits.className = 'project-credits';
-    for (const [label, value] of [['진행 기간', current.period], ['참여 분야', current.role]]) {
+    for (const [label, value] of [
+      ['진행 기간', current.period],
+      ['참여 분야', current.role],
+      ['협업 경험', current.collaboration],
+    ]) {
       if (!value) continue;
       const row = document.createElement('div');
       const term = document.createElement('dt');

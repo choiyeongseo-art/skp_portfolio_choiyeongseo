@@ -6,8 +6,9 @@
 */
 window.portfolioMarketing = {
   title: 'CONTENTS MARKETING',
-  thumbnail: 'assets/images/portfolio/marketing-thumbnail.webp',
-  thumbnailAlt: '콘텐츠 마케팅 포트폴리오 — 네온 블루 조명 속 NØISE 캐릭터',
+  cardTitle: 'SK플래닛 주관 — 부산 관광 콘텐츠·서비스·마케팅',
+  thumbnail: 'assets/images/portfolio/naru-friends-square.webp',
+  thumbnailAlt: '모래, 나루, 달리, 부크 네 캐릭터가 부산 바다 앞에 모인 모습',
   period: '2026'
 };
 window.portfolioProjects = {
@@ -108,6 +109,7 @@ window.portfolioProjects = {
     "description": "때리고, 뺏고, 내 구역을 지키는 4인 멀티 경쟁 게임",
     "period": "2026.05.27 – 2026.06.26",
     "role": "게임 아트 · 애니메이션 · 이펙트",
+    "collaboration": "4인 멀티 경쟁 게임의 팀 제작에 참여해 게임 아트, 애니메이션, 이펙트 작업을 담당했습니다.",
     "thumbnail": "assets/images/art/project-01/thumbnail.webp",
     "video": {
       "src": "assets/videos/art/hit-salon.mp4",
@@ -156,6 +158,7 @@ window.portfolioProjects = {
     "description": "힘내라! 교통쨩 — 페이퍼플리즈와 테트리스의 장르를 결합한 퍼즐 인디게임. 2일간의 게임잼에서 2D 아트 리소스 제작에 참여했습니다.",
     "period": "2025.07 – 2025.07 (2일)",
     "role": "2D 아트 리소스 제작",
+    "collaboration": "이틀간 진행된 게임잼에서 팀의 퍼즐 게임 제작에 참여해 2D 아트 리소스를 맡았습니다.",
     "thumbnail": "assets/images/art/project-05/thumbnail-upscaled.webp",
     "thumbnailAlt": "힘내라! 교통쨩 경찰 캐릭터 일러스트",
     "images": [
@@ -239,12 +242,14 @@ window.portfolioProjects = {
 },
   "art-6": {
     "title": "Spready",
+    "cardTitle": "INDIE GAME — Spready",
     "thumbnail": "assets/images/art/project-06/thumbnail.jpg",
     "thumbnailAlt": "Spready 3D 착시 퍼즐 게임 화면",
     "trailer": {"src": "https://video.akamai.steamstatic.com/store_trailers/2944240/774959/d516d9eda4e027384307534de9fdec16e82a8469/1750891035/hls_264_master.m3u8?t=1729519010", "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257067103/af9edf2d0769ddc94e8facc778b29f66dcc362da/movie_600x337.jpg?t=1729519010"},
     "description": "3D 착시 퍼즐 인디게임",
     "period": "2023.05 – 2025.07",
     "role": "2D 아트 리소스 제작 · PV 영상 편집 · 텀블벅 굿즈 기획 및 작업",
+    "collaboration": "팀의 3D 착시 퍼즐 게임 제작에 2D 아트로 참여하고, PV 편집과 텀블벅 굿즈 기획·제작도 맡았습니다.",
     "textCover": true,
     "coverLabel": "INDIE GAME / 3D ILLUSION PUZZLE",
     "achievements": [
@@ -267,12 +272,14 @@ window.portfolioProjects = {
 },
   "art-7": {
     "title": "Splash Carnival",
+    "cardTitle": "INDIE GAME — Splash Carnival",
     "thumbnail": "assets/images/art/project-07/thumbnail.webp",
     "thumbnailAlt": "Splash Carnival 로고와 도시 배경",
     "trailer": {"src": "https://video.akamai.steamstatic.com/store_trailers/2870950/669927/ca5ecf877d44e6e5683b98c7041eaf4d6bbe2386/1750949226/hls_264_master.m3u8?t=1709697204", "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257005214/movie.293x165.jpg?t=1709697204"},
     "description": "탑뷰 로그라이크 슈팅 인디게임",
     "period": "2023.03 – 2024.02",
     "role": "2D 아트 리소스 제작 · PV 영상 편집 · 애니메이션",
+    "collaboration": "팀의 탑뷰 슈팅 게임 제작에서 2D 아트 리소스와 애니메이션을 담당하고, 프로젝트 PV도 편집했습니다.",
     "textCover": true,
     "coverLabel": "INDIE GAME / TOP-DOWN ROGUELIKE SHOOTER",
     "achievements": [
@@ -288,9 +295,11 @@ window.portfolioProjects = {
 },
   "art-8": {
     "title": "Pancht",
+    "cardTitle": "INDIE GAME — Pancht",
     "description": "야추 시스템 기반 서브컬쳐풍 인디게임",
     "period": "2024.08 – 2025.08",
     "role": "캐릭터 콘셉트 디자인 · 캐릭터 포트레이트 일러스트",
+    "collaboration": "팀의 서브컬처 게임 제작에 참여해 캐릭터 콘셉트 디자인과 포트레이트 일러스트를 담당했습니다.",
     "tasks": [
         "캐릭터 콘셉트 디자인",
         "캐릭터 포트레이트 일러스트 3건 작업"
@@ -300,12 +309,14 @@ window.portfolioProjects = {
 },
   "art-9": {
     "title": "Trumpush",
+    "cardTitle": "INDIE GAME — Trumpush",
     "thumbnail": "assets/images/art/project-09/thumbnail-square-upscaled.webp",
     "thumbnailAlt": "Trumpush 타이틀과 카드 캐릭터 게임 아트",
     "thumbnailFit": "cover",
     "description": "디펜스 인디게임",
     "period": "2022.12 – 2023.02 (2개월)",
     "role": "2D 아트 리소스 제작",
+    "collaboration": "디펜스 게임을 만드는 팀에서 2D 아트 리소스 제작을 맡았습니다.",
     "images": [
         {
             "src": "assets/images/art/project-09/page-01.webp",
