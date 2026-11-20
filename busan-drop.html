@@ -6,8 +6,12 @@
   <meta name="description" content="BUSAN DROP — 부산 쇼핑 정보 모음 앱 디자인 프로젝트">
   <meta name="theme-color" content="#171717">
   <title>BUSAN DROP — 부산 쇼핑 정보 모음 앱 · YEONGSEO CHOI</title>
-  <link rel="stylesheet" href="assets/css/busan-drop.css?v=54">
+  <link rel="stylesheet" href="assets/css/busan-drop.css?v=83">
   <script src="assets/js/busan-drop-films.js?v=2" defer></script>
+  <script src="assets/js/busan-drop-palette.js" defer></script>
+  <script src="assets/js/busan-drop-architecture.js" defer></script>
+  <script src="assets/js/busan-drop-motion.js?v=5" defer></script>
+  <script src="assets/js/busan-drop-comparisons.js?v=3" defer></script>
 </head>
 <body id="top">
   <a class="skip" href="#main">본문 바로가기</a>
@@ -19,7 +23,7 @@
     <section class="cover" aria-labelledby="title">
       <img class="cover-image" src="assets/images/portfolio/busan-drop-cover.png" width="1376" height="768" alt="노란 배경에서 정장을 입은 부산드랍 요원이 로고 태그를 내미는 장면" fetchpriority="high">
       <div class="cover-title">
-        <h1 id="title">BUSAN<br>DROP</h1>
+        <h1 id="title"><span class="cover-line">BUSAN</span><br><span class="cover-wordmark"><span class="cover-line">DROP</span><span class="cover-arrow" aria-hidden="true"></span></span></h1>
         <p>모든 부산 쇼핑 정보는<br>부산드랍에서.</p>
       </div>
     </section>
@@ -58,7 +62,8 @@
           <figcaption>부산 외국인 방문객 추이</figcaption>
           <svg class="visitor-chart" viewBox="0 0 360 128" aria-hidden="true">
             <path class="visitor-grid" d="M22 112H338 M22 62H338 M22 12H338"/>
-            <path class="visitor-line" d="M45 66.5L135 38.8L225 20.9"/>
+            <path class="visitor-line" pathLength="1" d="M45 66.5L135 38.8"/>
+            <path class="visitor-line" pathLength="1" d="M135 38.8L225 20.9"/>
             <path class="visitor-line visitor-partial" d="M225 20.9L315 13.6"/>
             <circle cx="45" cy="66.5" r="4"/><circle cx="135" cy="38.8" r="4"/><circle cx="225" cy="20.9" r="4"/><circle class="visitor-latest" cx="315" cy="13.6" r="5"/>
           </svg>
@@ -70,7 +75,13 @@
         </figure>
         <figure class="evidence-chart">
           <figcaption>외래관광객 쇼핑 참여율</figcaption>
-          <div class="shopping-donut"><strong>80.3%</strong></div>
+          <div class="shopping-donut">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="42"/>
+              <circle class="shopping-progress" cx="50" cy="50" r="42" pathLength="100"/>
+            </svg>
+            <strong>80.3%</strong>
+          </div>
           <p>2025년 전국 조사 · 표본 16,110명 · 복수응답</p>
         </figure>
         <figure class="evidence-chart">
@@ -180,7 +191,7 @@
     <section class="section process" aria-labelledby="process-title">
       <p class="eyebrow" lang="en">DESIGN PROCESS</p>
       <h2 id="process-title">쇼핑 정보를 찾는 순서로 화면 구성</h2>
-      <ol class="steps">
+      <ol class="steps" role="list">
         <li><strong>정보 정리</strong><p>쇼핑 소식과 방문 정보를 구분합니다.</p></li>
         <li><strong>탐색 구조</strong><p>홈에서 관심 있는 소식으로 이동하는 경로를 잡습니다.</p></li>
         <li><strong>화면 설계</strong><p>목록과 상세 화면에 필요한 정보를 배치합니다.</p></li>
@@ -194,7 +205,8 @@
     <section class="section architecture" aria-labelledby="architecture-title">
       <p class="eyebrow" lang="en">INFORMATION ARCHITECTURE</p>
       <h2 id="architecture-title">서비스 정보구조</h2>
-      <p class="ia-scroll-hint">좌우로 스크롤해 전체 구조를 볼 수 있어요.</p>
+      <p class="ia-scroll-hint" id="ia-swipe-hint" hidden>좌우로 밀거나 드래그해 전체 구조를 볼 수 있어요.</p>
+      <div class="ia-map-frame">
       <div class="ia-map" role="region" aria-labelledby="architecture-title" tabindex="0">
         <div class="ia-root">BUSAN DROP <span aria-hidden="true">↘</span></div>
         <ul class="ia-branches">
@@ -382,6 +394,7 @@
           </li>
         </ul>
       </div>
+      </div>
       <ul class="ia-legend" aria-label="플로우차트 범례">
         <li>주요 영역</li><li>화면·메뉴</li><li>기능·항목</li>
       </ul>
@@ -390,14 +403,22 @@
     <section class="section foundations" aria-labelledby="foundations-title">
       <p class="eyebrow" lang="en">VISUAL DESIGN</p>
       <h2 id="foundations-title">컬러와 타이포그래피</h2>
-      <h3>컬러 팔레트</h3>
-      <ul class="palette">
-        <li class="swatch-accent"><span class="palette-orbit" aria-hidden="true"><span>↘</span></span><div class="palette-label"><strong>강조색</strong><code>#FFD628</code></div></li>
-        <li class="swatch-ink"><div class="palette-label"><strong>기본 텍스트</strong><code>#171717</code></div></li>
-        <li class="swatch-muted"><div class="palette-label"><strong>보조 텍스트</strong><code>#626870</code></div></li>
-        <li class="swatch-card"><div class="palette-label"><strong>카드 배경</strong><code>#F5F6F7</code></div></li>
-        <li class="swatch-paper"><div class="palette-label"><strong>화면 배경</strong><code>#FFFFFF</code></div></li>
+      <h3 id="palette-title">컬러 팔레트</h3>
+      <ul id="busan-palette" class="palette" aria-labelledby="palette-title">
+        <li class="palette-feature swatch-accent" data-description="주요 버튼과 핵심 정보에 시선을 모으는 브랜드 강조색입니다.">
+          <span class="palette-orbit" aria-hidden="true"><i></i><span>↘</span></span>
+          <div class="palette-label"><strong>강조색</strong><code>#FFD628</code><p>주요 버튼과 핵심 정보에 시선을 모으는 브랜드 강조색입니다.</p></div>
+        </li>
+        <li class="swatch-ink" data-description="제목과 본문에 사용해 밝은 배경에서 정보를 선명하게 전달합니다."><div class="palette-label"><strong>기본 텍스트</strong><code>#171717</code></div></li>
+        <li class="swatch-muted" data-description="날짜와 부가 정보에 사용해 제목과 본문에 시선이 먼저 가도록 합니다."><div class="palette-label"><strong>보조 텍스트</strong><code>#626870</code></div></li>
+        <li class="swatch-card" data-description="콘텐츠 카드에 사용해 흰 화면에서도 정보 묶음을 쉽게 구분할 수 있습니다."><div class="palette-label"><strong>카드 배경</strong><code>#F5F6F7</code></div></li>
+        <li class="swatch-paper" data-description="앱 화면 바탕에 사용해 검정 텍스트와 노랑 강조 요소를 돋보이게 합니다."><div class="palette-label"><strong>화면 배경</strong><code>#FFFFFF</code></div></li>
       </ul>
+      <div class="palette-controls" hidden>
+        <button type="button" data-palette-play aria-controls="busan-palette">일시정지</button>
+        <button type="button" data-palette-next aria-controls="busan-palette">다음 색상 →</button>
+        <span class="palette-status" role="status"></span>
+      </div>
       <h3>컬러 기획과 선정 이유</h3>
       <dl class="brand-colors">
         <div><dt>블랙</dt><dd>대표적인 쇼핑 행사인 블랙프라이데이의 상징색에서 가져와 브랜드의 쇼핑 콘셉트를 드러냈습니다.</dd></div>
@@ -431,7 +452,7 @@
             <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-home.jpg" width="4500" height="3000" alt="추천 행사 배너와 쇼핑 카테고리가 있는 홈 화면" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
-            <summary><span class="screen-comparison-name">홈 </span>개선 전·후 보기</summary>
+            <summary><span class="screen-comparison-name">홈 </span>사용자 경험 테스트 전·후 개선</summary>
             <p>추천과 직접 탐색의 역할을 나눴어요. 홈은 테마별 추천과 아이콘 카테고리를 앞세워 관심 있는 쇼핑 소식을 빠르게 둘러볼 수 있게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
@@ -456,7 +477,7 @@
             <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-stores.jpg" width="4500" height="3000" alt="카테고리, 상세 필터, 행사 목록이 있는 매장찾기 화면" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
-            <summary><span class="screen-comparison-name">매장찾기 </span>개선 전·후 보기</summary>
+            <summary><span class="screen-comparison-name">매장찾기 </span>사용자 경험 테스트 전·후 개선</summary>
             <p>텍스트 필터가 한 화면에 몰려 있었어요. 카테고리는 아이콘으로 구분하고 상세 필터는 따로 배치해, 조건을 좁히면서 행사명과 기간을 쉽게 비교할 수 있게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
@@ -481,7 +502,7 @@
             <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-plan.jpg" width="4500" height="3000" alt="방문 일정과 행사를 선택하는 드롭 플랜 화면" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
-            <summary><span class="screen-comparison-name">드롭 플랜 </span>개선 전·후 보기</summary>
+            <summary><span class="screen-comparison-name">드롭 플랜 </span>사용자 경험 테스트 전·후 개선</summary>
             <p>일정 입력이 어디까지 진행됐는지 파악하기 어려웠어요. 방문 일정과 행사 선택에 단계 번호를 붙이고 상세 정보는 필요할 때 펼치도록 해, 현재 단계와 다음 행동이 보이게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
@@ -506,7 +527,7 @@
             <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-saved.jpg" width="4500" height="3000" alt="찜한 행사와 드롭 플랜 만들기 버튼이 있는 저장 화면" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
-            <summary><span class="screen-comparison-name">저장 </span>개선 전·후 보기</summary>
+            <summary><span class="screen-comparison-name">저장 </span>사용자 경험 테스트 전·후 개선</summary>
             <p>큰 카드 이미지 때문에 한 화면에 보이는 찜 항목이 적었어요. 이미지 높이와 카드 여백을 줄여 더 적은 스크롤로 저장한 행사를 훑어볼 수 있게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
@@ -531,7 +552,7 @@
             <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-my-page.jpg" width="4500" height="3000" alt="내 드롭 플랜 목록과 수정 메뉴가 있는 마이 페이지" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
-            <summary><span class="screen-comparison-name">마이 페이지 </span>개선 전·후 보기</summary>
+            <summary><span class="screen-comparison-name">마이 페이지 </span>사용자 경험 테스트 전·후 개선</summary>
             <p>플랜이 여러 개 쌓이면 구분하기 어려웠어요. 이름·기간·구성 정보를 목록에 정리하고 이름 편집을 추가해, 원하는 일정을 쉽게 찾아 관리할 수 있게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
@@ -551,6 +572,44 @@
           </details>
         </article>
       </div>
+      <ul class="social-credits" aria-label="모바일 화면 디자인·개발 참여진" role="list">
+        <li class="social-credit-assist">
+          <img src="assets/images/portfolio/busan-drop-sns-yeongseo.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+          <div class="social-credit-bubble"><strong>최영서</strong><span>화면 디자인 · 프론트엔드 기초 구현 일부</span></div>
+        </li>
+        <li class="social-credit-team">
+          <div class="social-credit-bubble"><strong>정민욱 개발자</strong><span>핵심 로직·백엔드 구현 및 데이터 연동</span></div>
+          <img src="assets/images/portfolio/busan-drop-screen-minuk.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+        </li>
+      </ul>
+    </section>
+
+    <section class="section persona" aria-labelledby="persona-lin-title">
+      <p class="eyebrow" lang="en">USER PERSONA</p>
+      <h2 id="persona-lin-title">부산 쇼핑과 맛집을 함께 즐기려는 28세 대만 자유여행객</h2>
+      <div class="persona-layout">
+        <div class="persona-profile">
+          <img src="assets/images/portfolio/busan-drop-persona-lin-yuting.png" width="1024" height="1024" alt="린위팅 페르소나 이미지" loading="lazy" decoding="async">
+          <h3>린위팅</h3>
+        </div>
+        <article class="persona-note persona-note--left">
+          <h3><span class="persona-icon" aria-hidden="true">!</span>불편한 점</h3>
+          <p>팝업 안내를 번역해도 날짜와 지점, 혜택을 따로 확인해야 한다.</p>
+        </article>
+        <article class="persona-note">
+          <h3><span class="persona-icon" aria-hidden="true">✧</span>기대하는 점</h3>
+          <p>행사 정보를 중국어 번체로 보고 주변 맛집도 저장하고 싶다.</p>
+        </article>
+        <article class="persona-note persona-note--left">
+          <h3><span class="persona-icon" aria-hidden="true">◎</span>이용 동기</h3>
+          <p>친구와 팝업을 중심으로 식사와 관광 동선을 미리 짜고 싶다.</p>
+        </article>
+        <article class="persona-note">
+          <h3><span class="persona-icon" aria-hidden="true">☺︎</span>즐거운 순간</h3>
+          <p>여행 날짜에 맞는 팝업을 찾고, 저장한 맛집까지 들르면 즐겁다.</p>
+        </article>
+      </div>
+      <blockquote>“행사 안내는 중국어 번체로 보는 게 더 편해요. 부산에 있는 날 팝업이 열리는지, 어느 매장으로 가야 하는지 미리 확인하고 근처 맛집도 일정에 넣고 싶어요.”</blockquote>
     </section>
 
     <section class="section persona" aria-labelledby="persona-title">
@@ -583,32 +642,110 @@
 
     <section class="section campaign" aria-labelledby="campaign-title">
       <p class="eyebrow" lang="en">CAMPAIGN VISUALS</p>
-      <h2 id="campaign-title">부산드랍 CF</h2>
+      <h2 id="campaign-title">CF</h2>
       <p id="film-swipe-hint">좌우로 밀어 다음 영상을 확인하세요.</p>
       <div class="film-carousel" id="campaign-films" role="region" aria-labelledby="campaign-title" aria-describedby="film-swipe-hint" tabindex="0">
         <article class="film-slide">
           <video controls playsinline preload="none" width="1280" height="720" poster="assets/videos/busan-drop/operation.webp?v=2" aria-labelledby="film-operation">
             <source src="assets/videos/busan-drop/operation.mp4" type="video/mp4">
           </video>
-          <div class="film-caption"><h3 id="film-operation">1편 · 작전편</h3><p>국내 관광객 대상</p></div>
+          <div class="film-caption">
+            <h3 id="film-operation">1편 · 작전편</h3>
+            <p>국내 여행객을 위한 캠페인</p>
+            <p class="film-intent">첩보물의 반전 유머로 ‘DROP’의 두 가지 의미를 전했습니다.<br>가격은 내려가고 여행과 쇼핑의 부담은 가벼워집니다.</p>
+          </div>
         </article>
         <article class="film-slide">
           <video controls playsinline preload="none" width="1280" height="720" poster="assets/videos/busan-drop/royal-inspector.webp?v=2" aria-labelledby="film-inspector">
             <source src="assets/videos/busan-drop/royal-inspector.mp4" type="video/mp4">
           </video>
-          <div class="film-caption"><h3 id="film-inspector">2편 · 암행어사편</h3><p>국내 관광객 대상</p></div>
+          <div class="film-caption">
+            <h3 id="film-inspector">2편 · 암행어사편</h3>
+            <p>국내 여행객을 위한 캠페인</p>
+            <p class="film-intent">암행어사가 마패 대신 할인 영수증을 내미는 퓨전 사극입니다.<br>국악에서 첩보 음악으로 전환하고 부산 사투리로 반전을 살렸습니다.</p>
+          </div>
         </article>
         <article class="film-slide">
-          <video controls playsinline preload="none" width="1280" height="720" poster="assets/videos/busan-drop/xiaohongshu.webp?v=2" aria-labelledby="film-xiaohongshu">
+          <video controls playsinline preload="none" width="1280" height="720" poster="assets/videos/busan-drop/xiaohongshu.webp?v=2" aria-labelledby="film-romance-fantasy">
             <source src="assets/videos/busan-drop/xiaohongshu.mp4" type="video/mp4">
           </video>
-          <div class="film-caption"><h3 id="film-xiaohongshu">3편 · 샤오홍슈편</h3><p>중국인 관광객 대상 · 샤오홍슈용 중국어 영상</p></div>
+          <div class="film-caption">
+            <h3 id="film-romance-fantasy">3편 · 로맨스판타지편</h3>
+            <p><strong>김다빈 기획 · 최영서 인물·전개 각색 및 제작</strong></p>
+            <p class="film-intent">중국인 여행객에게 로맨스 판타지 이야기로 부산드랍을 소개하는 중국어 캠페인입니다.</p>
+          </div>
         </article>
       </div>
       <div class="film-controls" hidden>
         <button type="button" data-film-direction="-1" aria-controls="campaign-films" aria-label="이전 영상">←</button>
         <span class="film-count" aria-live="polite">1 / 3</span>
         <button type="button" data-film-direction="1" aria-controls="campaign-films" aria-label="다음 영상">→</button>
+      </div>
+      <ul class="social-credits film-credits" aria-label="CF 참여진" role="list">
+        <li class="social-credit-assist">
+          <img src="assets/images/portfolio/busan-drop-sns-yeongseo.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+          <div class="social-credit-bubble"><strong>최영서</strong><span>작전편·암행어사편 기획 및 제작<br>로맨스판타지편 인물·전개 각색 및 제작</span></div>
+        </li>
+        <li class="social-credit-team">
+          <div class="social-credit-bubble"><strong>김다빈 마케터</strong><span>로맨스판타지편 기획</span></div>
+          <img src="assets/images/portfolio/busan-drop-sns-dabin.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+        </li>
+      </ul>
+    </section>
+    <section class="section campaign-social" aria-labelledby="sns-title">
+      <p class="eyebrow" lang="en">INSTAGRAM</p>
+      <h2 id="sns-title">SNS</h2>
+      <p class="campaign-social-intro">국내외 여행객에게 부산의 쇼핑과 맛집, 여행지를 알리기 위해 카드뉴스를 제작하고, 한국어와 일본어 인스타그램 계정을 운영했습니다.</p>
+      <div class="social-profile-grid">
+        <a href="https://www.instagram.com/busandrop.kr/" target="_blank" rel="noopener noreferrer" aria-label="부산드랍 한국어 인스타그램 @busandrop.kr (새 탭)">
+          <img src="assets/images/portfolio/busan-drop-instagram-kr.jpg" width="1037" height="719" alt="부산드랍 한국어 인스타그램 프로필과 카드뉴스 게시물" loading="lazy" decoding="async">
+          <span class="social-profile-overlay" lang="en" aria-hidden="true">Korean</span>
+        </a>
+        <a href="https://www.instagram.com/busandrop.jp/" target="_blank" rel="noopener noreferrer" aria-label="부산드랍 일본어 인스타그램 @busandrop.jp (새 탭)">
+          <img src="assets/images/portfolio/busan-drop-instagram-jp.jpg" width="933" height="647" alt="부산드랍 일본어 인스타그램 프로필과 카드뉴스 게시물" loading="lazy" decoding="async">
+          <span class="social-profile-overlay" lang="en" aria-hidden="true">Japanese</span>
+        </a>
+      </div>
+      <ul class="social-credits" aria-label="부산드랍 SNS 참여진" role="list">
+        <li class="social-credit-assist">
+          <img src="assets/images/portfolio/busan-drop-sns-yeongseo.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+          <div class="social-credit-bubble"><strong>최영서</strong><span>카드뉴스 제작 보조</span></div>
+        </li>
+        <li class="social-credit-team">
+          <div class="social-credit-bubble"><strong>황청화 기획자 · 김다빈 마케터</strong><span>SNS 공동 운영</span></div>
+          <div class="social-credit-portraits">
+            <img src="assets/images/portfolio/busan-drop-sns-cheonghwa.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+            <img src="assets/images/portfolio/busan-drop-sns-dabin.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+          </div>
+        </li>
+      </ul>
+      <div class="social-feature">
+        <p class="eyebrow" lang="en">YOUTUBE / INSTAGRAM</p>
+        <h3 id="joseongiirok-title">조선기이록</h3>
+        <p class="campaign-social-intro">영국인 기자 로즈가 조선의 요괴와 마주하는 AI 숏드라마입니다.<br>영상 끝에는 부산드랍 앱을 홍보했습니다.</p>
+        <div class="social-profile-grid">
+          <a href="https://www.youtube.com/@joseongiirok/videos" target="_blank" rel="noopener noreferrer" aria-label="조선기이록 유튜브 채널 (새 탭)">
+            <img src="assets/images/portfolio/joseongiirok-youtube.jpg" width="900" height="623" alt="조선기이록 유튜브 채널과 동영상 목록" loading="lazy" decoding="async">
+            <span class="social-profile-overlay" lang="en" aria-hidden="true">YouTube</span>
+          </a>
+          <a href="https://www.instagram.com/joseon.giirok/" target="_blank" rel="noopener noreferrer" aria-label="조선기이록 인스타그램 계정 (새 탭)">
+            <img src="assets/images/portfolio/joseongiirok-instagram.jpg" width="933" height="647" alt="조선기이록 인스타그램 프로필과 릴스 게시물" loading="lazy" decoding="async">
+            <span class="social-profile-overlay" lang="en" aria-hidden="true">Instagram</span>
+          </a>
+        </div>
+        <ul class="social-credits" aria-label="조선기이록 참여진" role="list">
+          <li class="social-credit-assist">
+            <img src="assets/images/portfolio/busan-drop-sns-yeongseo.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+            <div class="social-credit-bubble"><strong>최영서</strong><span>숏폼 자막 스타일 제안<br>색상·글꼴·크기·배치</span></div>
+          </li>
+          <li class="social-credit-team">
+            <div class="social-credit-bubble"><strong>황청화 기획자 · 김다빈 마케터</strong><span>SNS 공동 운영 · 영상 기획 및 제작</span></div>
+            <div class="social-credit-portraits">
+              <img src="assets/images/portfolio/busan-drop-sns-cheonghwa.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+              <img src="assets/images/portfolio/busan-drop-sns-dabin.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
     <img class="campaign-mockup" id="campaign-mockup" src="assets/images/portfolio/busan-drop-handheld-mockup.jpg" width="4000" height="2666" alt="손에 든 스마트폰에 표시된 부산드랍 앱 홈 화면" loading="lazy" decoding="async">
@@ -625,11 +762,6 @@
   </main>
   <footer class="case-nav case-footer">
     <a href="art.html">← PROJECT</a>
-    <nav class="case-social" aria-label="부산드랍 인스타그램">
-      <span>INSTAGRAM</span>
-      <a href="https://www.instagram.com/busandrop.kr/" target="_blank" rel="noopener noreferrer">@busandrop.kr ↗</a>
-      <a href="https://www.instagram.com/busandrop.jp/" target="_blank" rel="noopener noreferrer">@busandrop.jp ↗</a>
-    </nav>
     <a href="#top">맨 위로 ↑</a>
   </footer>
 </body>
