@@ -6,7 +6,9 @@
   <title>VOYAGER — AI IDOL PROJECT</title>
   <link rel="icon" href="assets/images/common/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/kkakdugi-drafting/KkakdugiDrafting-Regular.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="assets/css/voyager.css?v=22"><script src="assets/js/voyager.js?v=12" defer></script>
+  <link rel="stylesheet" href="assets/css/voyager.css?v=25"><script src="assets/js/voyager.js?v=14" defer></script>
+  <link rel="stylesheet" href="assets/css/voyager-memory.css?v=16">
+  <script src="assets/js/voyager-memory.js?v=6" defer></script>
 </head>
 <body>
 <a class="skip" href="#about">본문 바로가기</a>
@@ -49,8 +51,69 @@
       실험이 남긴 힘과 희미한 기억은 이들을 잃어버린 과거로 이끕니다.<br class="desktop-break">
       돌아온 세상에서 마주할 미지의 운명, 그 너머로 VOYAGER의 이야기가 펼쳐집니다.</p>
     </div>
-    <div class="universe-scene" aria-hidden="true">
-      <div class="universe-background">
+    <div class="memory-transition" id="memory">
+    <div class="memory-launch">
+      <div class="memory-entry">
+        <button type="button" id="memory-open" aria-label="TOUCH · 기억의 파편 열기" aria-expanded="false" aria-controls="memory-game">
+          <span class="memory-fragment">
+            <img src="assets/images/voyager/memory-fragments.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+          </span>
+          <span class="memory-touch" lang="en">TOUCH</span>
+        </button>
+      </div>
+    </div>
+    <section class="memory-game" id="memory-game" aria-labelledby="memory-title" hidden>
+      <button class="memory-close" type="button" id="memory-back">← 유니버스로 돌아가기</button>
+      <header class="memory-heading">
+        <div>
+          <h3 id="memory-title" lang="en" tabindex="-1">Memory Fragments</h3>
+          <p>떠다니는 빛을 눌러 심볼의 다섯 획을 되찾으세요.</p>
+        </div>
+      </header>
+      <div class="memory-stage" id="memory-stage" role="group" aria-label="빛 조각 다섯 개">
+        <img class="memory-silhouette" src="assets/images/voyager/memory-silhouette.png" alt="" decoding="async">
+        <svg class="memory-symbol" viewBox="0 0 1254 1254" aria-hidden="true">
+          <defs>
+            <mask id="memory-symbol-alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1254" height="1254">
+              <image href="assets/images/voyager/memory-symbol-source.png" width="1254" height="1254"/>
+            </mask>
+            <rect id="memory-emblem" width="1254" height="1254" mask="url(#memory-symbol-alpha)"/>
+            <path id="memory-left-arc" d="M696 280 C508 240 344 360 300 510 C228 717 322 889 491 953"/>
+            <path id="memory-right-arc" d="M745 302 C953 371 1025 621 939 796 C850 973 695 1017 541 975"/>
+            <path id="memory-upper-slash" d="M437 820 C413 702 525 475 690 324 Q827 190 951 124"/>
+            <path id="memory-orbit" d="M625 467 C781 358 994 301 1033 350 C1084 434 913 612 737 733 C542 862 288 967 217 894 C156 823 310 667 508 521"/>
+            <mask id="memory-stroke-left"><use href="#memory-left-arc" class="memory-mask-line"/></mask>
+            <mask id="memory-stroke-right"><use href="#memory-right-arc" class="memory-mask-line"/></mask>
+            <mask id="memory-stroke-upper"><use href="#memory-upper-slash" class="memory-mask-line"/></mask>
+            <mask id="memory-stroke-orbit"><use href="#memory-orbit" class="memory-mask-line"/></mask>
+            <mask id="memory-stroke-last">
+              <rect width="1254" height="1254" fill="white"/>
+              <g class="memory-mask-line memory-mask-erase">
+                <use href="#memory-left-arc"/><use href="#memory-right-arc"/>
+                <use href="#memory-upper-slash"/><use href="#memory-orbit"/>
+              </g>
+            </mask>
+          </defs>
+          <use href="#memory-emblem" class="memory-symbol-guide"/>
+          <use href="#memory-emblem" class="memory-stroke" mask="url(#memory-stroke-left)" data-target="24 44"/>
+          <use href="#memory-emblem" class="memory-stroke" mask="url(#memory-stroke-right)" data-target="75 61"/>
+          <use href="#memory-emblem" class="memory-stroke" mask="url(#memory-stroke-upper)" data-target="56 26"/>
+          <use href="#memory-emblem" class="memory-stroke" mask="url(#memory-stroke-orbit)" data-target="29 70"/>
+          <use href="#memory-emblem" class="memory-stroke" mask="url(#memory-stroke-last)" data-target="51 64"/>
+        </svg>
+        <button class="memory-orb" type="button" aria-label="첫 번째 빛 조각"><span></span></button>
+        <button class="memory-orb" type="button" aria-label="두 번째 빛 조각"><span></span></button>
+        <button class="memory-orb" type="button" aria-label="세 번째 빛 조각"><span></span></button>
+        <button class="memory-orb" type="button" aria-label="네 번째 빛 조각"><span></span></button>
+        <button class="memory-orb" type="button" aria-label="다섯 번째 빛 조각"><span></span></button>
+      </div>
+      <p class="memory-announcement" id="memory-status" role="status"></p>
+      <button type="button" id="memory-reset" hidden>다시 모으기</button>
+      <noscript><p>게임을 플레이하려면 JavaScript를 켜세요.</p></noscript>
+    </section>
+    </div>
+    <div class="universe-scene">
+      <div class="universe-background" aria-hidden="true">
         <img src="assets/images/voyager/universe-earth-original.png?v=2" alt="" width="1456" height="816" loading="lazy" decoding="async">
         <div class="universe-edge-blur"></div>
       </div>
