@@ -1,12 +1,8 @@
 .seaside-intro{position:fixed;inset:0;z-index:20000;overflow:hidden;background:#a9d8f3;pointer-events:none;animation:seaside-failsafe .3s 2.3s forwards}
 .seaside-intro canvas{display:block;width:100%;height:100%}
 .seaside-intro-copy{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;color:#17324d;text-align:center;pointer-events:none}
-.seaside-intro-copy small{font:10px var(--font-sans);letter-spacing:.25em}
 .seaside-intro-copy strong{font:800 clamp(40px,10vw,120px)/.95 var(--font-display);letter-spacing:-.065em}
-.seaside-intro-copy span{font:11px var(--font-sans);letter-spacing:.15em}
-.seaside-intro button{position:absolute;right:5vw;bottom:6vh;background:transparent;color:#17324d;border:1px solid #17324d66;border-radius:999px;padding:10px 16px;pointer-events:auto;cursor:pointer;font:11px var(--font-sans)}
 .seaside-intro.is-leaving{opacity:0;transition:opacity .35s ease;pointer-events:none}
-.seaside-intro.is-leaving button{pointer-events:none}
 @keyframes seaside-failsafe{to{opacity:0;visibility:hidden}}
 @media(prefers-reduced-motion:reduce){.seaside-intro{display:none}}
 /* Adapted from Animista slide-in-bottom, generated 2026-11-02.

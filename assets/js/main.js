@@ -87,12 +87,11 @@ if (reportHub && reportWorkspaces.length) {
 
   const requestedSection = window.location.hash.slice(1);
   if (requestedSection) {
-    const bicSection = document.querySelector(`[data-report-workspace="bic"] #${CSS.escape(requestedSection)}`);
-    const mapleSection = document.querySelector(`[data-report-workspace="maple"] #${CSS.escape(requestedSection)}`);
-    if (bicSection || mapleSection) {
-      const key = bicSection ? "bic" : "maple";
-      openReport(key);
-      window.requestAnimationFrame(() => document.getElementById(requestedSection)?.scrollIntoView());
+    const section = document.getElementById(requestedSection);
+    const workspace = section?.closest("[data-report-workspace]");
+    if (workspace) {
+      openReport(workspace.dataset.reportWorkspace);
+      window.requestAnimationFrame(() => section.scrollIntoView());
     }
   }
 }
@@ -144,6 +143,99 @@ if (brandTabs.length && brandPanels.length) {
 }
 
 const carousels = document.querySelectorAll("[data-carousel]");
+
+document.querySelectorAll("[data-cardnews-open]").forEach((cover) => {
+  const dialog = document.getElementById(cover.dataset.cardnewsOpen);
+  const track = dialog.querySelector(".cardnews-swipe-track");
+  const arrows = [...dialog.querySelectorAll("[data-swipe-step]")];
+  let drag;
+  let pressedBackdrop;
+  const currentSlide = () => Math.round(track.scrollLeft / track.clientWidth);
+  const updateArrows = () => {
+    arrows.forEach((arrow) => {
+      const target = currentSlide() + Number(arrow.dataset.swipeStep);
+      const hidden = target < 0 || target >= track.children.length;
+      if (hidden && document.activeElement === arrow) track.focus({ preventScroll: true });
+      arrow.hidden = hidden;
+    });
+  };
+  const goToSlide = (index) => {
+    const slide = Math.max(0, Math.min(index, track.children.length - 1));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    track.scrollTo({ left: slide * track.clientWidth, behavior: reduceMotion ? "instant" : "smooth" });
+  };
+  cover.addEventListener("click", () => {
+    dialog.showModal();
+    track.scrollLeft = 0;
+    track.focus({ preventScroll: true });
+    updateArrows();
+  });
+  arrows.forEach((arrow) => arrow.addEventListener("click", () => {
+    goToSlide(currentSlide() + Number(arrow.dataset.swipeStep));
+  }));
+  track.addEventListener("scroll", updateArrows, { passive: true });
+  track.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    drag = { start: event.clientX, left: track.scrollLeft };
+    track.classList.add("is-dragging");
+    track.setPointerCapture(event.pointerId);
+  });
+  track.addEventListener("pointermove", (event) => {
+    if (drag) track.scrollLeft = drag.left + drag.start - event.clientX;
+  });
+  const endDrag = (event) => {
+    if (!drag) return;
+    const distance = drag.start - event.clientX;
+    const initialSlide = Math.round(drag.left / track.clientWidth);
+    drag = undefined;
+    track.classList.remove("is-dragging");
+    goToSlide(initialSlide + (event.type === "pointerup" && Math.abs(distance) >= 36 ? Math.sign(distance) : 0));
+  };
+  track.addEventListener("pointerup", endDrag);
+  track.addEventListener("lostpointercapture", endDrag);
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    goToSlide(currentSlide() + (event.key === "ArrowRight" ? 1 : -1));
+  });
+  dialog.addEventListener("pointerdown", (event) => { pressedBackdrop = event.target === dialog; });
+  dialog.addEventListener("click", (event) => {
+    if (pressedBackdrop && event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener("close", () => cover.focus());
+});
+
+const shortformDialog = document.getElementById("shortform-player");
+if (shortformDialog) {
+  const player = shortformDialog.querySelector("video");
+  let trigger;
+  let pressedBackdrop;
+  document.querySelectorAll("[data-shortform-src]").forEach((cover) => {
+    cover.addEventListener("click", () => {
+      trigger = cover;
+      const label = cover.getAttribute("aria-label");
+      shortformDialog.setAttribute("aria-label", label);
+      player.setAttribute("aria-label", label);
+      player.poster = cover.querySelector("img").src;
+      player.src = cover.dataset.shortformSrc;
+      shortformDialog.showModal();
+      player.play().catch(() => {});
+    });
+  });
+  shortformDialog.addEventListener("pointerdown", (event) => {
+    pressedBackdrop = event.target === shortformDialog;
+  });
+  shortformDialog.addEventListener("click", (event) => {
+    if (pressedBackdrop && event.target === shortformDialog) shortformDialog.close();
+  });
+  shortformDialog.addEventListener("close", () => {
+    if (shortformDialog.open) return;
+    player.pause();
+    player.removeAttribute("src");
+    player.load();
+    trigger?.focus();
+  });
+}
 
 carousels.forEach((carousel) => {
   const slides = [...carousel.querySelectorAll("[data-carousel-slide]")];
@@ -273,6 +365,22 @@ const previewFullscreenButton = document.querySelector("[data-preview-fullscreen
 const phonePreview = document.querySelector("[data-phone-preview]");
 
 if (previewFrame && previewLoading) {
+  const screen = previewFrame.parentElement;
+  const scrollbarProbe = document.createElement("div");
+  scrollbarProbe.style.cssText = "position:fixed;visibility:hidden;width:100px;height:100px;overflow:scroll";
+  document.body.append(scrollbarProbe);
+  screen.style.setProperty("--preview-scrollbar", `${scrollbarProbe.offsetWidth - scrollbarProbe.clientWidth}px`);
+  scrollbarProbe.remove();
+
+  const fitPreview = () => {
+    const scale = screen.clientWidth / 390;
+    if (!scale) return;
+    screen.style.setProperty("--preview-scale", String(scale));
+    screen.style.setProperty("--preview-height", `${screen.clientHeight / scale}px`);
+  };
+  fitPreview();
+  new ResizeObserver(fitPreview).observe(screen);
+
   let previewTimer = window.setTimeout(() => {
     previewLoading.classList.add("is-loaded");
     if (previewError) previewError.hidden = false;

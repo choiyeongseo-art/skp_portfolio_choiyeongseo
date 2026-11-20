@@ -100,7 +100,11 @@
   }
 
   .phone-stage {
-    margin-top: 20px;
+    margin-top: 0;
+  }
+
+  .spoton-demo-grid {
+    gap: 32px;
   }
 
   .process-list li {
@@ -440,11 +444,10 @@
   }
 
   .phone-stage {
-    margin-top: 8px;
+    margin-top: 0;
   }
 
   .phone-shell {
-    width: min(100%, 390px);
     border-radius: 46px;
   }
 

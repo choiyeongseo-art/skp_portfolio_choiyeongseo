@@ -9,16 +9,16 @@
   <link rel="icon" href="assets/images/common/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/reset.css?v=dd05135085">
   <link rel="stylesheet" href="assets/css/variables.css?v=48916cc799">
-  <link rel="stylesheet" href="assets/css/common.css?v=60207d22da">
-  <link rel="stylesheet" href="assets/css/pages.css?v=f899c01fe2">
-  <link rel="stylesheet" href="assets/css/responsive.css?v=bc4f5a0952">
-  <script src="assets/js/main.js?v=03fdff6c28" defer></script>
+  <link rel="stylesheet" href="assets/css/common.css?v=archive-footer">
+  <link rel="stylesheet" href="assets/css/pages.css?v=spoton-fixed-viewport">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=spoton-preview-fit">
+  <script src="assets/js/main.js?v=spoton-fixed-viewport" defer></script>
   <link rel="stylesheet" href="assets/css/main-headings.css?v=2b70dc718a">
   <link rel="stylesheet" href="assets/css/chatbot.css?v=c975e8141b">
   <script src="assets/js/chatbot.js?v=78e0d7e2d0" defer></script>
 
 </head>
-<body class="spoton-theme">
+<body id="page-top" class="spoton-theme">
   <a class="skip-link" href="#main-content">본문 바로가기</a>
   <header class="site-header">
     <div class="container header-inner">
@@ -41,12 +41,10 @@
     <header class="page-header spoton-page-header">
       <div class="container spoton-intro-grid">
         <div>
-          <p class="eyebrow">04 · Interactive Service</p>
           <h1 class="page-title">SPOT:ON<span class="accent">.</span></h1>
           <p class="page-intro">부산의 덕질 명소와 실시간 정보를 바탕으로 제한된 시간 안에 방문할 수 있는 여행 코스를 설계하는 인터랙티브 서비스입니다.</p>
         </div>
         <div class="spoton-intro-aside">
-          <span class="spoton-live"><i aria-hidden="true"></i> LIVE SERVICE</span>
           <p>아래 스마트폰 화면에서 실제 서비스를 스크롤하고 직접 조작해 보세요.</p>
           <a class="button" href="https://appservice-test2-3a5n.vercel.app/" target="_blank" rel="noopener noreferrer">전체 화면으로 열기</a>
         </div>
@@ -59,11 +57,6 @@
           <p class="eyebrow">Mobile Preview</p>
           <h2 class="section-title" id="spoton-preview-heading">Plan your<br>fandom trip.</h2>
           <p>출발지와 복귀 시간을 기준으로 지금 방문할 수 있는 장소를 탐색하고, 추천 코스와 실시간 스팟 정보를 확인할 수 있습니다.</p>
-          <ol class="spoton-feature-list" aria-label="SPOT:ON 이용 순서">
-            <li><span>01</span><strong>시간 설정</strong></li>
-            <li><span>02</span><strong>장소 선택</strong></li>
-            <li><span>03</span><strong>코스 확인</strong></li>
-          </ol>
           <div class="spoton-controls" aria-label="미리보기 제어">
             <button type="button" class="preview-control" data-preview-reload><span aria-hidden="true">↻</span> 다시 불러오기</button>
             <button type="button" class="preview-control" data-preview-fullscreen><span aria-hidden="true">⛶</span> 크게 보기</button>
@@ -82,17 +75,16 @@
               <div class="phone-home-indicator" aria-hidden="true"></div>
             </div>
           </div>
-          <p class="phone-caption">390 × 844</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top"><p class="footer-title"></p><div class="footer-meta"><div><span class="footer-label">PROJECT</span><p>관광 마케팅 콘텐츠 아카이브</p></div><div><span class="footer-label">SERVICE</span><p>SPOT:ON</p></div></div></div>
-      <div class="footer-bottom"><p>© <span data-current-year>2026</span> Tourism Content Archive.</p><p>Designed for Tourism Marketing Content Archive.</p></div>
-    </div>
+  <footer class="site-footer archive-footer">
+    <nav class="container archive-footer-links" aria-label="하단 메뉴">
+      <a href="art.html">← 프로젝트로 돌아가기</a>
+      <a href="#page-top">맨 위로 ↑</a>
+    </nav>
   </footer>
 </body>
 </html>

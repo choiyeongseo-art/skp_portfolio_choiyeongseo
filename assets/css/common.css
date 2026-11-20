@@ -360,6 +360,30 @@ body.menu-open {
   border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
+.archive-footer .archive-footer-links {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding-inline-end: 112px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.archive-footer-links a {
+  width: fit-content;
+  padding-block: 6px;
+}
+
+.archive-footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .archive-footer .archive-footer-links { padding-inline-end: 94px; }
+}
+
 /* KBL Jump has wide glyphs and tall visual bounds; Inter's tight tracking causes collisions. */
 .page-title,
 .section-title,

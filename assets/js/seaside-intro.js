@@ -61,7 +61,6 @@
     } catch { finish(); }
   }
   const timer=setTimeout(finish,2100);
-  overlay.querySelector('button').addEventListener('click',finish);
   addEventListener('keydown',key); addEventListener('resize',resize); addEventListener('pagehide',finish);
   document.addEventListener('visibilitychange',visibility); reduced.addEventListener('change',finish);
   resize();frame=requestAnimationFrame(render);

@@ -2,7 +2,6 @@ const noiseDialogs = document.querySelectorAll('.noise-dialog');
 let noiseTrigger;
 function openNoiseDialog(dialog, trigger) { noiseTrigger = trigger; dialog.showModal(); }
 document.querySelectorAll('[data-noise-dialog]').forEach(button => button.addEventListener('click', () => openNoiseDialog(document.getElementById(button.dataset.noiseDialog), button)));
-document.querySelectorAll('[data-noise-photo]').forEach(button => button.addEventListener('click', () => { const dialog = document.getElementById('noise-image-dialog'); const image = dialog.querySelector('img'); image.src = button.dataset.noisePhoto; image.alt = button.querySelector('img').alt; openNoiseDialog(dialog, button); }));
 noiseDialogs.forEach(dialog => { dialog.querySelector('[data-noise-close]').addEventListener('click', () => dialog.close()); dialog.addEventListener('close', () => noiseTrigger?.focus()); dialog.addEventListener('click', event => { if(event.target === dialog){ const box = dialog.getBoundingClientRect(); if(event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close(); } }); });
 
 // A single audio element owns playback across the album, feature and floating player.
@@ -16,6 +15,24 @@ if (trackAudio && titleTrack) {
  let activeTrack = titleTrack;
  let titleDuration = NaN;
  let playRequest = 0;
+ let waveforms = {};
+ const drawWaveform = (seek, src) => {
+  const levels = waveforms[src];
+  if (!levels?.length) return;
+  const canvas = seek.previousElementSibling;
+  const context = canvas.getContext('2d');
+  if (!context) return;
+  const { width, height } = canvas;
+  const step = width / levels.length;
+  const played = Number(seek.value) / 100;
+  context.clearRect(0, 0, width, height);
+  levels.forEach((level, index) => {
+   const barHeight = Math.max(1, level / 100 * (height - 6));
+   context.fillStyle = index / levels.length < played ? '#a7bbff' : '#838da7';
+   context.fillRect(index * step, (height - barHeight) / 2, step * .68, barHeight);
+  });
+  canvas.parentElement.classList.add('has-waveform');
+ };
  trackAudio.volume = 0.72;
  const reportStatus = message => {
   select('[data-album-status]').textContent = message;
@@ -50,7 +67,10 @@ if (trackAudio && titleTrack) {
   select('[data-track-label]').textContent = isTitle && playing ? 'PAUSE TRACK' : 'PLAY TRACK';
   select('[data-track-current]').textContent = trackTime(isTitle ? trackAudio.currentTime : 0);
   select('[data-track-duration]').textContent = trackTime(titleDuration);
-  select('[data-track-seek]').value = isTitle ? albumSeek.value : 0;
+  const titleSeek = select('[data-track-seek]');
+  titleSeek.value = isTitle ? albumSeek.value : 0;
+  drawWaveform(albumSeek, activeTrack.dataset.trackSrc);
+  drawWaveform(titleSeek, titleTrack.dataset.trackSrc);
  };
  const toggleTrack = async button => {
   const request = ++playRequest;
@@ -79,4 +99,8 @@ if (trackAudio && titleTrack) {
  ['loadedmetadata', 'timeupdate', 'play', 'pause', 'ended', 'emptied', 'durationchange'].forEach(event => trackAudio.addEventListener(event, syncPlayback));
  trackAudio.addEventListener('error', () => reportStatus('음원을 재생할 수 없습니다. 다시 시도해 주세요.'));
  syncPlayback();
+ fetch('assets/audio/noise-waveforms.json')
+  .then(response => response.ok ? response.json() : {})
+  .then(data => { waveforms = data; syncPlayback(); })
+  .catch(() => {});
 }
