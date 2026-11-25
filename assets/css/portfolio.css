@@ -29,6 +29,28 @@ body{background:var(--pf-bg);color:var(--pf-text);font-family:var(--font-sans);l
 .banner-top{position:relative;z-index:1;color:#fff;text-shadow:0 1px 6px #000}.banner::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(#0007,transparent 25%,transparent 80%,#0004)}.banner-control{position:absolute;bottom:24px;right:4.4%;z-index:2;color:#fff;border:1px solid #ffffff80;background:#0008;font-size:10px;letter-spacing:.12em;padding:12px 18px;min-height:44px;cursor:pointer}.banner-control:hover{border-color:var(--pf-accent);color:var(--pf-accent)}
 
 .feature-media--marketing img{object-fit:cover;object-position:50% 48%}
+.empty-media.naru-project-cover {
+  position: relative;
+  overflow: hidden;
+  background: #f4f7fb;
+}
+.naru-project-cover .naru-project-characters {
+  position: absolute;
+  inset: auto auto 0 50%;
+  display: block;
+  width: 215%;
+  max-width: none;
+  height: auto;
+  transform: translateX(-50%);
+}
+.naru-project-cover .naru-project-logo {
+  position: absolute;
+  inset: 3.5% auto auto 50.5%;
+  display: block;
+  width: 97.5%;
+  height: auto;
+  transform: translateX(-50%);
+}
 
 .project-images>video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#000;margin-bottom:80px}
 

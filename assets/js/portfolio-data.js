@@ -7,8 +7,8 @@
 window.portfolioMarketing = {
   title: 'CONTENTS MARKETING',
   cardTitle: 'SK플래닛 주관 — 부산 관광 콘텐츠·서비스·마케팅',
-  thumbnail: 'assets/images/portfolio/naru-friends-square.webp',
-  thumbnailAlt: '모래, 나루, 달리, 부크 네 캐릭터가 부산 바다 앞에 모인 모습',
+  thumbnail: 'assets/images/brand/naru-trio-beach.w640.webp',
+  thumbnailAlt: '부산 바다 앞에 나란히 선 모래, 나루, 달리',
   period: '2026'
 };
 window.portfolioProjects = {

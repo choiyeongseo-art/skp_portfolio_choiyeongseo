@@ -54,7 +54,7 @@ document.querySelectorAll('a.project-card[href]').forEach(card => {
     cover.append(category, name);
     card.querySelector('.square').replaceChildren(cover);
   }
-  if (entry.thumbnail || entry.images?.length) {
+  if ((entry.thumbnail || entry.images?.length) && !card.querySelector('[data-custom-cover]')) {
     const image = document.createElement('img');
     window.setSiteImage(image, entry.thumbnail || entry.images[0].src, '(max-width:540px) 44vw, 30vw');
     image.alt = entry.thumbnailAlt || entry.images?.[0]?.alt || entry.title || '프로젝트 썸네일';

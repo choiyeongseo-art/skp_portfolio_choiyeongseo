@@ -1528,7 +1528,7 @@
   .character-ensemble-title { width: 58%; }
   .character-bi-caption { grid-template-columns: 1fr; gap: 20px; margin-top: 28px; }
 }
-#brand-panel-character .character-selector { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+#brand-panel-character .character-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 #brand-panel-character .character-selector-button { overflow: hidden; padding: 22px 18px; }
 #brand-panel-character .character-selector-button::before { position: absolute; inset: 0 0 auto; height: 5px; background: var(--character-color); content: ""; }
 #brand-panel-character .character-selector-button[href="#character-naru"] { --character-color: var(--color-brand-main); }

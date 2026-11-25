@@ -29,7 +29,7 @@ body .brand-guide-title h1{color:var(--color-primary-dark);letter-spacing:-.055e
 .marketing-hero{padding:clamp(30px,5vw,64px) 0 0;background:var(--color-brand-main);border-bottom:1px solid var(--color-line);isolation:isolate}
 .marketing-hero .hero-grid{display:flex;flex-direction:column;gap:0;align-items:stretch;position:relative;z-index:2}
 body .marketing-hero h1.hero-title{font-family:var(--font-display);font-weight:800;font-size:clamp(21px,6.5vw,82px);line-height:1.04;letter-spacing:-.045em;color:var(--color-primary-dark);margin:0;overflow-wrap:normal}
-.marketing-hero .hero-title span{display:block;color:var(--color-primary);text-align:right}
+.marketing-hero .hero-title span{display:block;margin-block-start:clamp(12px,2.8vw,36px);color:var(--color-primary);text-align:right}
 .marketing-hero-visual{position:relative;margin:0;width:100%;background:transparent}
 .marketing-hero-visual img{position:relative;display:block;width:100%;height:auto}
 @media(min-width:1100px){.marketing-hero .hero-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:30px}.marketing-hero .hero-grid>div,.marketing-hero-visual{grid-column:1/-1}}

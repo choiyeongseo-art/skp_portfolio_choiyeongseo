@@ -8,6 +8,11 @@
   if (internal || reduced.matches || location.hash || performance.getEntriesByType('navigation')[0]?.type === 'back_forward') { overlay.remove(); return; }
   const canvas = overlay.querySelector('canvas'), ctx = canvas.getContext('2d', {alpha:false});
   if (!ctx) { overlay.remove(); return; }
+  const theme = getComputedStyle(overlay);
+  const color = (name) => theme.getPropertyValue(name).trim();
+  const background = color('--color-brand-main');
+  const foam = color('--color-white');
+  const waveColors = [color('--color-support'), background, color('--color-brand-sub'), foam];
   const siblings = [...document.body.children].filter(el => el !== overlay && /^(A|HEADER|MAIN|FOOTER)$/.test(el.tagName));
   const inert = siblings.map(el => el.inert);
   siblings.forEach(el => { el.inert = true; });
@@ -36,11 +41,10 @@
     try {
       const t = (now-start)/1000;
       if(t >= 1.55) { finish(); return; }
-      ctx.fillStyle = '#a9d8f3'; ctx.fillRect(0,0,width,height);
+      ctx.fillStyle = background; ctx.fillRect(0,0,width,height);
       // Broad sea swells with a fine foam edge, rather than glowing ribbons.
       const progress = Math.min(1,t/1.55);
-      const colors = ['#087cc1','#63b3df','#eaf6fc','#f7fcff'];
-      colors.forEach((color,i) => {
+      waveColors.forEach((waveColor,i) => {
         const base = height*(1.26-progress*1.85) + i*height*.17;
         ctx.beginPath();
         for(let x=0;x<=width+12;x+=12) {
@@ -48,13 +52,13 @@
           if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
         }
         ctx.lineTo(width,height+2); ctx.lineTo(0,height+2); ctx.closePath();
-        ctx.fillStyle=color; ctx.fill();
+        ctx.fillStyle=waveColor; ctx.fill();
         ctx.beginPath();
         for(let x=0;x<=width+12;x+=12) {
           const y=base+Math.sin(x/width*Math.PI*2+t*3.2+i*.65)*height*.06+Math.sin(x/width*7-t*2)*height*.015;
           if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
         }
-        ctx.strokeStyle='#ffffff99';ctx.lineWidth=i===2?5:1.5;ctx.stroke();
+        ctx.strokeStyle=foam;ctx.globalAlpha=.6;ctx.lineWidth=i===2?5:1.5;ctx.stroke();ctx.globalAlpha=1;
       });
       overlay.querySelector('.seaside-intro-copy').style.opacity=String(Math.min(1,t/.18)*Math.max(0,1-(t-.9)/.35));
       frame=requestAnimationFrame(render);
