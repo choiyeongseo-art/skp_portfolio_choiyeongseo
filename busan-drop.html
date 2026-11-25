@@ -6,7 +6,8 @@
   <meta name="description" content="BUSAN DROP — 부산 쇼핑 정보 모음 앱 디자인 프로젝트">
   <meta name="theme-color" content="#171717">
   <title>BUSAN DROP — 부산 쇼핑 정보 모음 앱 · YEONGSEO CHOI</title>
-  <link rel="stylesheet" href="assets/css/busan-drop.css?v=83">
+  <script src="assets/js/busan-drop-navigation.js"></script>
+  <link rel="stylesheet" href="assets/css/busan-drop.css?v=91">
   <script src="assets/js/busan-drop-films.js?v=2" defer></script>
   <script src="assets/js/busan-drop-palette.js" defer></script>
   <script src="assets/js/busan-drop-architecture.js" defer></script>
@@ -15,16 +16,24 @@
 </head>
 <body id="top">
   <a class="skip" href="#main">본문 바로가기</a>
-  <header class="case-nav">
+  <header class="case-nav case-masthead">
     <a href="art.html">← PROJECT</a>
     <a href="index.html">최영서 · 디자이너, 팀 부산스럽네</a>
   </header>
+  <nav class="case-views" aria-label="부산드롭 페이지 전환">
+    <a class="case-view" href="busan-drop.html" aria-current="page">
+      <span class="case-view-button"><span class="case-view-arrow" aria-hidden="true">←</span> <span lang="en">BUSAN DROP</span></span>
+    </a>
+    <a class="case-view" href="busan-drop-presentation.html">
+      <span class="case-view-button">프레젠테이션 디자인 <span class="case-view-arrow" aria-hidden="true">→</span></span>
+    </a>
+  </nav>
   <main id="main" class="case">
     <section class="cover" aria-labelledby="title">
       <img class="cover-image" src="assets/images/portfolio/busan-drop-cover.png" width="1376" height="768" alt="노란 배경에서 정장을 입은 부산드랍 요원이 로고 태그를 내미는 장면" fetchpriority="high">
       <div class="cover-title">
         <h1 id="title"><span class="cover-line">BUSAN</span><br><span class="cover-wordmark"><span class="cover-line">DROP</span><span class="cover-arrow" aria-hidden="true"></span></span></h1>
-        <p>모든 부산 쇼핑 정보는<br>부산드랍에서.</p>
+        <p>모든 부산 이벤트 정보는<br>부산드랍에서.</p>
       </div>
     </section>
 
@@ -32,14 +41,14 @@
       <p class="eyebrow" lang="en">PROJECT OVERVIEW</p>
       <div>
         <h2 id="overview-title">부산에서 어디를<br>둘러볼지 한눈에</h2>
-        <p>부산 곳곳의 팝업스토어와 쇼핑 소식을 모아, 관심 있는 장소를 찾고 방문에 필요한 정보를 확인할 수 있도록 구성했습니다.</p>
+        <p>부산 곳곳의 팝업스토어와 쇼핑 이벤트 소식을 모아, 관심 있는 장소를 찾고 방문에 필요한 정보를 확인할 수 있도록 구성했습니다.</p>
         <dl class="facts">
           <div><dt>프로젝트</dt><dd>BUSAN DROP</dd></div>
           <div><dt>분야</dt><dd>쇼핑 정보 · 모바일 UX/UI</dd></div>
         </dl>
         <div class="brand-story">
           <h3>BUSAN DROP의 의미</h3>
-          <p>쇼핑에서 ‘드롭(DROP)’은 신제품이나 한정판을 사전 예고 없이 정해진 시간에 출시하는 방식을 뜻합니다. BUSAN DROP은 그 이름에 부산에서 한정된 기간에 열리는 팝업과 세일을 쉽게 찾을 수 있다는 의미를 담았습니다.</p>
+          <p>쇼핑에서 ‘드롭(DROP)’은 신제품이나 한정판을 사전 예고 없이 정해진 시간에 출시하는 방식을 뜻합니다. BUSAN DROP은 그 이름에 부산에서 한정된 기간에 열리는 이벤트를 쉽게 찾을 수 있다는 의미를 담았습니다.</p>
         </div>
       </div>
     </section>
@@ -50,13 +59,13 @@
       </div>
       <div class="preview-grid">
         <img src="assets/images/portfolio/busan-drop-shopping-portrait.png" width="896" height="1200" alt="노란 부산드랍 쇼핑백을 들고 스마트폰을 보는 요원" loading="lazy" decoding="async">
-        <img src="assets/images/portfolio/busan-drop-event-preview.jpg" width="4500" height="3000" alt="행사 둘러보기 화면을 보여주는 부산드랍 스마트폰 목업" loading="lazy" decoding="async">
+        <img src="assets/images/portfolio/busan-drop-event-preview.jpg" width="4500" height="3000" alt="이벤트 둘러보기 화면을 보여주는 부산드랍 스마트폰 목업" loading="lazy" decoding="async">
       </div>
     </div>
 
     <section class="section problem" aria-labelledby="problem-title">
       <p class="eyebrow" lang="en">PROBLEM &amp; SOLUTION</p>
-      <h2 id="problem-title">쇼핑 수요를 부산의 여행 경험으로</h2>
+      <h2 id="problem-title">쇼핑과 팝업 수요를 부산의 여행 경험으로</h2>
       <div class="problem-evidence">
         <figure class="evidence-chart">
           <figcaption>부산 외국인 방문객 추이</figcaption>
@@ -104,8 +113,8 @@
       <div class="problem-map">
         <div class="problem-group">
           <article class="problem-point">
-            <h3><span lang="en">01 Problem</span>쇼핑 수요를 여행 일정으로 잇기 어렵다</h3>
-            <p>부산 방문 수요와 여행 중 쇼핑 참여율은 높지만, 기간 한정 행사와 주변 관광지·맛집을 함께 찾고 동선을 짜려면 여러 정보를 확인해야 합니다.</p>
+            <h3><span lang="en">01 Problem</span>쇼핑과 팝업 수요를 여행 일정으로 잇기 어렵다</h3>
+            <p>부산 여행 중 쇼핑과 팝업을 즐기려면 기간 한정 이벤트와 주변 관광지·맛집을 각각 찾아보고, 여러 정보를 모아 동선을 짜야 합니다.</p>
           </article>
           <article class="problem-point">
             <h3><span lang="en">02 Problem</span>외국인 관광객에게 구매 안내가 충분하지 않다</h3>
@@ -114,12 +123,12 @@
         </div>
         <div class="solution-group">
           <article class="solution-point">
-            <h3><span lang="en">01 Solution</span>행사에서 주변 여행지까지 연결</h3>
-            <p>홈과 매장 찾기에서 지역·카테고리별 행사를 탐색하고, 드롭 플랜에서 방문 일정에 맞춰 행사장과 주변 관광지·맛집을 함께 선택할 수 있게 했습니다.</p>
+            <h3><span lang="en">01 Solution</span>이벤트에서 주변 여행지까지 연결</h3>
+            <p>홈과 매장 찾기에서 지역·카테고리별 이벤트를 탐색하고, 드롭 플랜에서 방문 일정에 맞춰 이벤트 장소와 주변 관광지·맛집을 함께 선택할 수 있게 했습니다.</p>
           </article>
           <article class="solution-point">
             <h3><span lang="en">02 Solution</span>구매 전 확인할 정보를 한곳에</h3>
-            <p>행사 상세에 장소와 운영 시간, 가격·혜택과 적용 조건을 모았습니다. 교환·환불처럼 방문 전 확인이 필요한 사항은 해외 방문객 안내에서 쉽게 찾을 수 있도록 설계했습니다.</p>
+            <p>이벤트 상세에 장소와 운영 시간, 가격·혜택과 적용 조건을 모았습니다. 교환·환불처럼 방문 전 확인이 필요한 사항은 해외 방문객 안내에서 쉽게 찾을 수 있도록 설계했습니다.</p>
           </article>
         </div>
       </div>
@@ -162,8 +171,8 @@
         <div class="service-review-takeaway">
           <h3>부산드랍의 설계 방향</h3>
           <ol class="service-review-flow">
-            <li><strong>행사 탐색</strong><span>날짜·지역·카테고리로 찾고 방문 조건 확인</span></li>
-            <li><strong>주변 장소 연결</strong><span>행사장 인근 맛집·관광지를 동선에 추가</span></li>
+            <li><strong>이벤트 탐색</strong><span>날짜·지역·카테고리로 찾고 방문 조건 확인</span></li>
+            <li><strong>주변 장소 연결</strong><span>이벤트 장소 인근 맛집·관광지를 동선에 추가</span></li>
             <li><strong>플랜 저장</strong><span>선택한 장소를 하나의 일정으로 정리</span></li>
           </ol>
         </div>
@@ -173,9 +182,9 @@
     <div class="problem-visual">
       <p class="problem-statement" id="core-value">
         <span class="problem-statement-label">핵심 과제</span>
-        행사장을 중심으로 주변 여행을 하나로 연결하는
+        쇼핑 이벤트를 중심으로 주변 여행을 하나로 연결하는
       </p>
-      <img src="assets/images/portfolio/busan-drop-problem-visual.jpg" width="4500" height="3000" alt="부산드랍 행사 둘러보기 화면 앞에 쇼핑백과 여행 가방을 두고 앉은 요원" loading="lazy" decoding="async">
+      <img src="assets/images/portfolio/busan-drop-problem-visual.jpg" width="4500" height="3000" alt="부산드랍 이벤트 둘러보기 화면 앞에 쇼핑백과 여행 가방을 두고 앉은 요원" loading="lazy" decoding="async">
       <div class="problem-visual-pair">
         <img src="assets/images/portfolio/busan-drop-fashion-store.png" width="1776" height="2352" alt="노란 원형 장식과 흑백 의류가 진열된 매장" loading="lazy" decoding="async">
         <img src="assets/images/portfolio/busan-drop-street-fashion.png" width="1776" height="2352" alt="노란 티셔츠와 검정 반바지를 입고 거리를 걷는 모델" loading="lazy" decoding="async">
@@ -190,9 +199,9 @@
 
     <section class="section process" aria-labelledby="process-title">
       <p class="eyebrow" lang="en">DESIGN PROCESS</p>
-      <h2 id="process-title">쇼핑 정보를 찾는 순서로 화면 구성</h2>
+      <h2 id="process-title">이벤트 정보를 찾는 순서로 화면 구성</h2>
       <ol class="steps" role="list">
-        <li><strong>정보 정리</strong><p>쇼핑 소식과 방문 정보를 구분합니다.</p></li>
+        <li><strong>정보 정리</strong><p>이벤트 소식과 방문 정보를 구분합니다.</p></li>
         <li><strong>탐색 구조</strong><p>홈에서 관심 있는 소식으로 이동하는 경로를 잡습니다.</p></li>
         <li><strong>화면 설계</strong><p>목록과 상세 화면에 필요한 정보를 배치합니다.</p></li>
       </ol>
@@ -252,7 +261,7 @@
               <li>
                 <h4>배너</h4>
                 <ul class="ia-items">
-                  <li>가까운 순 10개 행사 배너</li>
+                  <li>가까운 이벤트 10개 배너</li>
                 </ul>
               </li>
               <li>
@@ -285,28 +294,28 @@
             <h3>매장 찾기</h3>
             <ul class="ia-menus">
               <li>
-                <h4>행사 필터</h4>
+                <h4>이벤트 필터</h4>
                 <ul class="ia-items">
                   <li>8개 카테고리</li>
                   <li>지역별</li>
                 </ul>
               </li>
               <li>
-                <h4>행사 안내</h4>
+                <h4>이벤트 안내</h4>
                 <ul class="ia-items">
                   <li>목록</li>
                   <li>지도</li>
                 </ul>
               </li>
               <li>
-                <h4>행사 상세</h4>
+                <h4>이벤트 상세</h4>
                 <ul class="ia-items">
-                  <li>행사 소개</li>
+                  <li>이벤트 소개</li>
                   <li>방문 요약</li>
                   <li>방문 전 꼭 확인</li>
                   <li>장소</li>
                   <li>운영 시간</li>
-                  <li>행사 내용 · 프로그램</li>
+                  <li>이벤트 내용 · 프로그램</li>
                   <li>상품 · 메뉴 · 패키지 가격</li>
                   <li>혜택 · 적용 조건</li>
                   <li>해외 방문객 안내</li>
@@ -326,10 +335,10 @@
                 </ul>
               </li>
               <li>
-                <h4>행사장 선택</h4>
+                <h4>이벤트 장소 선택</h4>
                 <ul class="ia-items">
-                  <li>저장한 행사 우선 표시</li>
-                  <li>방문 행사 · 지점 선택</li>
+                  <li>저장한 이벤트 우선 표시</li>
+                  <li>방문 이벤트 · 지점 선택</li>
                 </ul>
               </li>
               <li>
@@ -421,7 +430,7 @@
       </div>
       <h3>컬러 기획과 선정 이유</h3>
       <dl class="brand-colors">
-        <div><dt>블랙</dt><dd>대표적인 쇼핑 행사인 블랙프라이데이의 상징색에서 가져와 브랜드의 쇼핑 콘셉트를 드러냈습니다.</dd></div>
+        <div><dt>블랙</dt><dd>식품 포장 연구에서 검은색 표시가 들어간 포장은 대부분의 제품에서 더 고급스럽게 보였습니다. 이 결과를 참고해 부산드롭의 로고와 주요 글자에 검은색을 써서, 노란색 배경 위에서도 또렷하게 보이도록 했습니다. <a href="https://doi.org/10.1016/j.ijgfs.2022.100656">연구 출처</a></dd></div>
         <div><dt>옐로우</dt><dd>기획 당시 참고한 광고 색상 연구에서 노란색이 온라인 구매 성향과 관련해 긍정적인 결과를 보인 점을 바탕으로 강조색으로 선정했습니다.</dd></div>
         <div><dt>화이트</dt><dd>앱 화면의 바탕에 사용해 검정 텍스트와 노랑 강조 요소가 또렷하게 보이도록 했습니다.</dd></div>
       </dl>
@@ -447,13 +456,13 @@
       <h2 id="screens-title">탐색부터 여행 일정 관리까지</h2>
       <div class="screen-list">
         <article class="screen">
-          <div class="screen-copy"><h3>홈</h3><p>부산의 쇼핑 소식을 한 화면에서 둘러봅니다.</p></div>
+          <div class="screen-copy"><h3>홈</h3><p>부산의 이벤트 소식을 한 화면에서 둘러봅니다.</p></div>
           <div class="screen-device">
-            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-home.jpg" width="4500" height="3000" alt="추천 행사 배너와 쇼핑 카테고리가 있는 홈 화면" loading="lazy" decoding="async">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-home.jpg" width="4500" height="3000" alt="추천 이벤트 배너와 이벤트 카테고리가 있는 홈 화면" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
             <summary><span class="screen-comparison-name">홈 </span>사용자 경험 테스트 전·후 개선</summary>
-            <p>추천과 직접 탐색의 역할을 나눴어요. 홈은 테마별 추천과 아이콘 카테고리를 앞세워 관심 있는 쇼핑 소식을 빠르게 둘러볼 수 있게 했어요.</p>
+            <p>추천과 직접 탐색의 역할을 나눴어요. 홈은 테마별 추천과 아이콘 카테고리를 앞세워 관심 있는 이벤트 소식을 빠르게 둘러볼 수 있게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
                 <figcaption>개선 전</figcaption>
@@ -465,20 +474,20 @@
               <figure>
                 <figcaption>개선 후</figcaption>
                 <div class="screen-comparison-device">
-                  <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-home.jpg" width="4500" height="3000" alt="추천 행사 배너와 쇼핑 카테고리가 있는 홈 화면" loading="lazy" decoding="async">
+                  <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-home.jpg" width="4500" height="3000" alt="추천 이벤트 배너와 이벤트 카테고리가 있는 홈 화면" loading="lazy" decoding="async">
                 </div>
               </figure>
             </div>
           </details>
         </article>
         <article class="screen screen-reverse">
-          <div class="screen-copy"><h3>매장찾기</h3><p>카테고리와 지역으로 행사를 찾고 목록이나 지도에서 확인합니다.</p></div>
+          <div class="screen-copy"><h3>매장찾기</h3><p>카테고리와 지역으로 이벤트를 찾고 목록이나 지도에서 확인합니다.</p></div>
           <div class="screen-device">
-            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-stores.jpg" width="4500" height="3000" alt="카테고리, 상세 필터, 행사 목록이 있는 매장찾기 화면" loading="lazy" decoding="async">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-stores.jpg" width="4500" height="3000" alt="카테고리, 상세 필터, 이벤트 목록이 있는 매장찾기 화면" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
             <summary><span class="screen-comparison-name">매장찾기 </span>사용자 경험 테스트 전·후 개선</summary>
-            <p>텍스트 필터가 한 화면에 몰려 있었어요. 카테고리는 아이콘으로 구분하고 상세 필터는 따로 배치해, 조건을 좁히면서 행사명과 기간을 쉽게 비교할 수 있게 했어요.</p>
+            <p>텍스트 필터가 한 화면에 몰려 있었어요. 카테고리는 아이콘으로 구분하고 상세 필터는 따로 배치해, 조건을 좁히면서 이벤트명과 기간을 쉽게 비교할 수 있게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
                 <figcaption>개선 전</figcaption>
@@ -490,20 +499,20 @@
               <figure>
                 <figcaption>개선 후</figcaption>
                 <div class="screen-comparison-device">
-                  <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-stores.jpg" width="4500" height="3000" alt="카테고리, 상세 필터, 행사 목록이 있는 매장찾기 화면" loading="lazy" decoding="async">
+                  <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-stores.jpg" width="4500" height="3000" alt="카테고리, 상세 필터, 이벤트 목록이 있는 매장찾기 화면" loading="lazy" decoding="async">
                 </div>
               </figure>
             </div>
           </details>
         </article>
         <article class="screen">
-          <div class="screen-copy"><h3>드롭 플랜</h3><p>부산 방문 날짜를 정하고 여행 중 들를 행사를 선택합니다.</p></div>
+          <div class="screen-copy"><h3>드롭 플랜</h3><p>부산 방문 날짜를 정하고 여행 중 들를 이벤트를 선택합니다.</p></div>
           <div class="screen-device">
-            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-plan.jpg" width="4500" height="3000" alt="방문 일정과 행사를 선택하는 드롭 플랜 화면" loading="lazy" decoding="async">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-plan.jpg" width="4500" height="3000" alt="방문 일정과 이벤트를 선택하는 드롭 플랜 화면" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
             <summary><span class="screen-comparison-name">드롭 플랜 </span>사용자 경험 테스트 전·후 개선</summary>
-            <p>일정 입력이 어디까지 진행됐는지 파악하기 어려웠어요. 방문 일정과 행사 선택에 단계 번호를 붙이고 상세 정보는 필요할 때 펼치도록 해, 현재 단계와 다음 행동이 보이게 했어요.</p>
+            <p>일정 입력이 어디까지 진행됐는지 파악하기 어려웠어요. 방문 일정과 이벤트 선택에 단계 번호를 붙이고 상세 정보는 필요할 때 펼치도록 해, 현재 단계와 다음 행동이 보이게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
                 <figcaption>개선 전</figcaption>
@@ -515,20 +524,20 @@
               <figure>
                 <figcaption>개선 후</figcaption>
                 <div class="screen-comparison-device">
-                  <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-plan.jpg" width="4500" height="3000" alt="방문 일정과 행사를 선택하는 드롭 플랜 화면" loading="lazy" decoding="async">
+                  <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-plan.jpg" width="4500" height="3000" alt="방문 일정과 이벤트를 선택하는 드롭 플랜 화면" loading="lazy" decoding="async">
                 </div>
               </figure>
             </div>
           </details>
         </article>
         <article class="screen screen-reverse">
-          <div class="screen-copy"><h3>저장</h3><p>찜한 행사를 다시 보거나 저장한 행사로 드롭 플랜을 시작합니다.</p></div>
+          <div class="screen-copy"><h3>저장</h3><p>찜한 이벤트를 다시 보거나 저장한 이벤트로 드롭 플랜을 시작합니다.</p></div>
           <div class="screen-device">
-            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-saved.jpg" width="4500" height="3000" alt="찜한 행사와 드롭 플랜 만들기 버튼이 있는 저장 화면" loading="lazy" decoding="async">
+            <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-saved.jpg" width="4500" height="3000" alt="찜한 이벤트와 드롭 플랜 만들기 버튼이 있는 저장 화면" loading="lazy" decoding="async">
           </div>
           <details class="screen-comparison">
             <summary><span class="screen-comparison-name">저장 </span>사용자 경험 테스트 전·후 개선</summary>
-            <p>큰 카드 이미지 때문에 한 화면에 보이는 찜 항목이 적었어요. 이미지 높이와 카드 여백을 줄여 더 적은 스크롤로 저장한 행사를 훑어볼 수 있게 했어요.</p>
+            <p>큰 카드 이미지 때문에 한 화면에 보이는 찜 항목이 적었어요. 이미지 높이와 카드 여백을 줄여 더 적은 스크롤로 저장한 이벤트를 훑어볼 수 있게 했어요.</p>
             <div class="screen-comparison-grid">
               <figure>
                 <figcaption>개선 전</figcaption>
@@ -540,7 +549,7 @@
               <figure>
                 <figcaption>개선 후</figcaption>
                 <div class="screen-comparison-device">
-                  <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-saved.jpg" width="4500" height="3000" alt="찜한 행사와 드롭 플랜 만들기 버튼이 있는 저장 화면" loading="lazy" decoding="async">
+                  <img class="screen-image" src="assets/images/portfolio/busan-drop-screen-saved.jpg" width="4500" height="3000" alt="찜한 이벤트와 드롭 플랜 만들기 버튼이 있는 저장 화면" loading="lazy" decoding="async">
                 </div>
               </figure>
             </div>
@@ -586,7 +595,7 @@
 
     <section class="section persona" aria-labelledby="persona-lin-title">
       <p class="eyebrow" lang="en">USER PERSONA</p>
-      <h2 id="persona-lin-title">부산 쇼핑과 맛집을 함께 즐기려는 28세 대만 자유여행객</h2>
+      <h2 id="persona-lin-title">부산 팝업과 맛집을 함께 즐기려는 28세 대만 자유여행객</h2>
       <div class="persona-layout">
         <div class="persona-profile">
           <img src="assets/images/portfolio/busan-drop-persona-lin-yuting.png" width="1024" height="1024" alt="린위팅 페르소나 이미지" loading="lazy" decoding="async">
@@ -598,7 +607,7 @@
         </article>
         <article class="persona-note">
           <h3><span class="persona-icon" aria-hidden="true">✧</span>기대하는 점</h3>
-          <p>행사 정보를 중국어 번체로 보고 주변 맛집도 저장하고 싶다.</p>
+          <p>이벤트 정보를 중국어 번체로 보고 주변 맛집도 저장하고 싶다.</p>
         </article>
         <article class="persona-note persona-note--left">
           <h3><span class="persona-icon" aria-hidden="true">◎</span>이용 동기</h3>
@@ -609,7 +618,7 @@
           <p>여행 날짜에 맞는 팝업을 찾고, 저장한 맛집까지 들르면 즐겁다.</p>
         </article>
       </div>
-      <blockquote>“행사 안내는 중국어 번체로 보는 게 더 편해요. 부산에 있는 날 팝업이 열리는지, 어느 매장으로 가야 하는지 미리 확인하고 근처 맛집도 일정에 넣고 싶어요.”</blockquote>
+      <blockquote>“이벤트 안내는 중국어 번체로 보는 게 더 편해요. 부산에 있는 날 팝업이 열리는지, 어느 매장으로 가야 하는지 미리 확인하고 근처 맛집도 일정에 넣고 싶어요.”</blockquote>
     </section>
 
     <section class="section persona" aria-labelledby="persona-title">
@@ -622,11 +631,11 @@
         </div>
         <article class="persona-note persona-note--left">
           <h3><span class="persona-icon" aria-hidden="true">!</span>불편한 점</h3>
-          <p>행사 일정과 장소를 다시 찾아보고, 흩어진 저장 목록으로 동선을 짜기 어렵다.</p>
+          <p>이벤트 일정과 장소를 다시 찾아보고, 흩어진 저장 목록으로 동선을 짜기 어렵다.</p>
         </article>
         <article class="persona-note">
           <h3><span class="persona-icon" aria-hidden="true">✧</span>기대하는 점</h3>
-          <p>날짜와 지역으로 행사를 찾고, 운영시간과 혜택을 한눈에 확인하고 싶다.</p>
+          <p>날짜와 지역으로 이벤트를 찾고, 운영시간과 혜택을 한눈에 확인하고 싶다.</p>
         </article>
         <article class="persona-note persona-note--left">
           <h3><span class="persona-icon" aria-hidden="true">◎</span>이용 동기</h3>
@@ -695,7 +704,7 @@
     <section class="section campaign-social" aria-labelledby="sns-title">
       <p class="eyebrow" lang="en">INSTAGRAM</p>
       <h2 id="sns-title">SNS</h2>
-      <p class="campaign-social-intro">국내외 여행객에게 부산의 쇼핑과 맛집, 여행지를 알리기 위해 카드뉴스를 제작하고, 한국어와 일본어 인스타그램 계정을 운영했습니다.</p>
+      <p class="campaign-social-intro">국내외 여행객에게 부산의 쇼핑 이벤트와 맛집, 여행지를 알리기 위해 카드뉴스를 제작하고, 한국어와 일본어 인스타그램 계정을 운영했습니다.</p>
       <div class="social-profile-grid">
         <a href="https://www.instagram.com/busandrop.kr/" target="_blank" rel="noopener noreferrer" aria-label="부산드랍 한국어 인스타그램 @busandrop.kr (새 탭)">
           <img src="assets/images/portfolio/busan-drop-instagram-kr.jpg" width="1037" height="719" alt="부산드랍 한국어 인스타그램 프로필과 카드뉴스 게시물" loading="lazy" decoding="async">
