@@ -92,9 +92,13 @@ body :is(.brand-guide-title, .report-hub, .page-header) h1.archive-page-title {
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -.045em;
+  font-kerning: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "kern" 0, "liga" 0, "clig" 0;
 }
 
 main .archive-title-band {
+  min-height: 0;
   min-block-size: clamp(185px, 23vw, 294px);
   padding: clamp(36px, 5vw, 64px) 0;
   background: var(--color-brand-sub);
@@ -104,7 +108,9 @@ main .archive-title-band {
 .archive-title-band > .container > p {
   margin: 12px 0 0;
   color: var(--color-muted);
+  font-family: var(--font-sans);
   font-size: clamp(14px, 1.5vw, 19px);
   font-weight: 400;
   line-height: 1.5;
+  word-break: keep-all;
 }

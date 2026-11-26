@@ -68,7 +68,6 @@
 .sns-portfolio .instagram-section {
   position: relative;
   background: var(--color-surface);
-  border-top: 5px solid var(--color-brand-main);
 }
 .sns-portfolio .instagram-section > .container > .section-head .platform-kicker {
   display: inline-flex;
@@ -83,10 +82,14 @@
 }
 .sns-portfolio .instagram-section > .container > .section-head .section-title {
   font-family: var(--font-sans);
-  font-size: clamp(38px, 5.5vw, 72px);
+  font-size: clamp(1.65rem, 5.2vw, 4rem);
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -.025em;
+}
+.sns-portfolio .instagram-section > .container > .section-head {
+  gap: .6rem 1.5rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
 .instagram-heading-accent {
   color: var(--color-primary-dark);
@@ -118,6 +121,11 @@
 .instagram-insight-chart figcaption { margin-bottom: 16px; }
 .instagram-insight-chart h3 { margin-top: 8px; color: var(--color-ink); font-size: 22px; font-weight: 800; }
 .instagram-insight-chart img { display: block; width: 100%; height: auto; }
+.sns-portfolio .sns-insights-grid > * { min-width: 0; }
+.sns-insights-grid .instagram-insight-chart { margin: 0; }
+.sns-insights-grid .reaction-summary { margin-top: 1rem; }
+.sns-insights-grid .reaction-summary > div { padding-block: .75rem; }
+.instagram-section .sns-role-grid { grid-template-columns: minmax(0, 1fr); }
 .sns-portfolio .youtube-section > .container > .section-head .section-title { font-family: var(--font-sans); font-size: clamp(38px, 5.5vw, 72px); font-weight: 800; line-height: 1.25; letter-spacing: -.025em; }
 
 .sns-portfolio .youtube-section {
@@ -180,11 +188,6 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-}
-
-.sns-portfolio .sns-page-header.archive-title-band {
-  min-block-size: 0;
-  padding-block: clamp(1.75rem, 4vw, 3rem);
 }
 
 .sns-portfolio #sns-records > .instagram-section {
