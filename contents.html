@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="assets/css/tourism-seaside.css?v=compact-archive">
 <script src="assets/js/media-loading.js?v=3bf5dde5a5" defer></script>
   <link rel="stylesheet" href="assets/css/tourism-fonts.css?v=archive-title-band">
+  <link rel="stylesheet" href="assets/css/contents-profile.css?v=wide-profile">
 </head>
 <body id="page-top">
   <a class="skip-link" href="#main-content">본문 바로가기</a>
@@ -35,10 +36,30 @@
     <section class="section section--soft" aria-label="콘텐츠 목록"><div class="container">
       <div class="filter-list" data-filter-group data-filter-target=".filterable-content" aria-label="콘텐츠 형식 필터">
         <button class="filter-button is-active" type="button" data-filter="cardnews" aria-pressed="true">카드뉴스</button>
-        <button class="filter-button" type="button" data-filter="web" aria-pressed="false">웹사이트</button>
         <button class="filter-button" type="button" data-filter="instatoon" aria-pressed="false">인스타툰</button>
         <button class="filter-button" type="button" data-filter="video" aria-pressed="false">숏폼</button>
+        <button class="filter-button" type="button" data-filter="web" aria-pressed="false">웹사이트</button>
       </div>
+      <section class="contents-profile filterable-content" data-category="cardnews instatoon video" aria-labelledby="contents-profile-title">
+        <div class="contents-profile-main">
+          <img class="contents-profile-avatar" src="assets/images/contents/naru-instagram-avatar.png" width="188" height="188" alt="" loading="lazy">
+          <div>
+            <h2 id="contents-profile-title">naru.studio.busan</h2>
+            <p class="contents-profile-handle">나루와 취향들</p>
+          </div>
+          <p class="contents-profile-bio"><span>크리에이터 · AI로 생성한 프로필</span><br>부산에서 취향을 찾아봐! 💙<br><a href="https://choiyeongseo-art.github.io/naru-taste-house/#home" target="_blank" rel="noopener noreferrer">choiyeongseo-art.github.io/naru-taste-house/#home</a></p>
+          <div class="contents-profile-links">
+            <a href="https://www.instagram.com/naru.studio.busan/" target="_blank" rel="noopener noreferrer">인스타그램에서 팔로우 ↗</a>
+            <a href="https://www.instagram.com/naru.studio.busan/" target="_blank" rel="noopener noreferrer" aria-label="인스타그램 프로필에서 메시지 보내기 (새 탭)">프로필에서 메시지 보내기 ↗</a>
+          </div>
+        </div>
+        <div class="contents-profile-details">
+          <a class="contents-profile-highlight" href="https://choiyeongseo-art.github.io/naru-taste-house/#home" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/contents/naru-instagram-highlight.png" width="106" height="106" alt="" loading="lazy">
+            <span>나의 취향방 ↗</span>
+          </a>
+        </div>
+      </section>
       <div class="content-stack">
 
         <div class="cardnews-cover-grid filterable-content" data-category="cardnews">
@@ -154,7 +175,7 @@
 
   <footer class="site-footer site-footer--compact archive-footer">
     <nav class="container archive-footer-links" aria-label="하단 메뉴">
-      <a href="art.html">← 프로젝트로 돌아가기</a>
+      <a href="art.html">← PROJECT</a>
       <a href="#page-top">맨 위로 ↑</a>
     </nav>
   </footer>

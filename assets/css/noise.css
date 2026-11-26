@@ -7,7 +7,9 @@
 .noise-game-label{color:#a0a5af;font-size:10px;letter-spacing:.15em;margin-bottom:18px}
 .noise-game h2{font-size:clamp(76px,10vw,152px);font-weight:900;line-height:.85;letter-spacing:-.065em;color:#f1f0eb}
 .noise-game h2 span{color:var(--noise-blue)}
-.noise-game-description{margin-top:32px;font-size:clamp(17px,1.7vw,23px);line-height:1.7;color:#e0e5ef;word-break:keep-all}
+.noise-game-description{margin-top:16px;font-size:clamp(17px,1.7vw,23px);line-height:1.7;color:#e0e5ef;word-break:keep-all}
+.noise-theme .previs-tool-copy{padding-top:0}
+.noise-theme .previs-tool-copy .previs-open{margin-top:16px}
 .noise-game-detail{max-width:400px;margin-top:18px;font-size:13px;line-height:1.9;color:#b2b5bd;word-break:keep-all}
 .noise-game-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
 .noise-game-controls button,.noise-game-controls a{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:12px 15px;border:1px solid #596477;color:#e0e5ef;background:transparent;font:inherit;font-size:11px;cursor:pointer}
@@ -151,6 +153,7 @@ html{background:var(--noise-bg)}
 .noise-statement-grid h2 { margin-top: 0; }
 .noise-members .noise-section-head { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
 .noise-upcoming .noise-section-head { grid-template-columns: 1fr; }
+.noise-upcoming .noise-upcoming-grid { grid-template-columns: minmax(0, 1fr); }
 .noise-upcoming-grid article { min-height: 0; }
 .noise-upcoming-grid h3 { margin: 0 0 14px; }
 .noise-album-info h3 { margin-top: 0; }
